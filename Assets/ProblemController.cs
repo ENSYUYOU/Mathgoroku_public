@@ -100,6 +100,7 @@ public class ProblemController : MonoBehaviour
         yield return new WaitForSeconds(time);
         blackboard.SetActive(false);
         maru_image.SetActive(false);
+        batu_image.SetActive(false);
         SceneManager.LoadScene("SampleScene");
         if(isAnswered)isWalk = true;
     }
@@ -109,6 +110,7 @@ public class ProblemController : MonoBehaviour
     public AudioClip maru;
     public AudioClip batu;
     public GameObject maru_image;
+    public GameObject batu_image;
     public void InputText(){
         audioSource.Stop();//時計の音を止める
         Problem.text += ans_list[last_problem];//答えを表示する
@@ -119,7 +121,7 @@ public class ProblemController : MonoBehaviour
             GameController.players_coin[GameController.players_turn]+=5;
         }else if (isTimeUp==false && isAnswered==false){
             audioSource.PlayOneShot(batu);
-            maru_image.SetActive(true);
+            batu_image.SetActive(true);
             ans-=ans;
         }
         isAnswered = true;
