@@ -14,7 +14,7 @@ public class ProblemController : MonoBehaviour
     public TextMeshProUGUI Timer;
     public TMP_InputField Answer;
     bool isTimeUp = false;
-    bool solved = false;
+    bool isAnswered = false;
     float time = 1000000000000000000f;
     public static bool isWalk;
     public static int ans;
@@ -58,7 +58,7 @@ public class ProblemController : MonoBehaviour
         problem5.text = problem_list[five];
         problem6.text = problem_list[six];
 
-        solved = false;
+        isAnswered = false;
         StartCoroutine(MoveDice());
     }
 
@@ -84,26 +84,25 @@ public class ProblemController : MonoBehaviour
         if (0 < time && time<=10) {//10秒にセットされないと減らない。
             time -= Time.deltaTime;
             Timer.text = "Timer:"+time.ToString("F1");
-        }else if (time < 0 && isTimeUp==false && solved==false){
+        }else if (time < 0 && isTimeUp==false && isAnswered==false){
             audioSource.Stop();//時計の音を止める
             audioSource.PlayOneShot(batu);
             isTimeUp = true;
-            GameController.players_turn += 1;
+            GameController.players_coin[GameController.players_turn]+=3;
+            GameController.players_turn += 1;//時間切れのときはこのタイミングでターン変更
             GameController.players_turn %= 3;
             StartCoroutine(Erase(3));//時間切れ
         }
     }
     
-
     IEnumerator Erase(float time){
-        if (isTimeUp && solved==false)Problem.text = "Time up";
+        if (isTimeUp && isAnswered==false)Problem.text = "Time up";
         yield return new WaitForSeconds(time);
         blackboard.SetActive(false);
         maru_image.SetActive(false);
         SceneManager.LoadScene("SampleScene");
-        if(solved)isWalk = true;
+        if(isAnswered)isWalk = true;
     }
-
 
     //InputFieldの文字が変更されたらコールバックされる。
     //TMProの、InputFieldである、AnswerWindow、のOn End Editによって、GameMasterの、この関数(InputText)を選択し、コールバックできるようにした
@@ -111,19 +110,22 @@ public class ProblemController : MonoBehaviour
     public AudioClip batu;
     public GameObject maru_image;
     public void InputText(){
-        if(Answer.text == ans_list[last_problem] && solved==false){
-            audioSource.Stop();//時計の音を止める
+        audioSource.Stop();//時計の音を止める
+        Problem.text += ans_list[last_problem];//答えを表示する
+        ans = int.Parse(ans_list[last_problem]);
+        if(Answer.text == ans_list[last_problem] && isAnswered==false){
             audioSource.PlayOneShot(maru);
-            Problem.text += ans_list[last_problem];
             maru_image.SetActive(true);
-            ans = int.Parse(ans_list[last_problem]);
-            solved = true;
-            Timer.text = "";
-            time =- 1;//タイマーが減らないようにする
-            StartCoroutine(Erase(3f));
-        }else if (isTimeUp==false && solved==false){
+            GameController.players_coin[GameController.players_turn]+=5;
+        }else if (isTimeUp==false && isAnswered==false){
             audioSource.PlayOneShot(batu);
+            maru_image.SetActive(true);
+            ans-=ans;
         }
+        isAnswered = true;
+        Timer.text = "";
+        time =- 1;//タイマーが減らないようにする
+        StartCoroutine(Erase(3f));
     }
 
     public void Dice(){

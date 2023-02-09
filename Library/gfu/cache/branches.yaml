@@ -13,15 +13,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2022-11-22T21:07:49.304+09:00
-  initializedAtString: 2022-11-22T21:07:49.286+09:00
+  lastUpdatedAtString: 2023-02-08T20:18:31.550+09:00
+  initializedAtString: 2023-02-08T20:18:31.387+09:00
   localBranches:
   - name: main
     tracking: origin/main
+  - name: "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
+    tracking: "origin/\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
+  - name: "\u4F0A\u85E41"
+    tracking: "origin/\u4F0A\u85E41"
   remoteBranches:
   - name: origin/HEAD
     tracking: '[None]'
   - name: origin/main
+    tracking: '[None]'
+  - name: "origin/\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
+    tracking: '[None]'
+  - name: "origin/\u4F0A\u85E41"
     tracking: '[None]'
   remotes:
   - name: origin
@@ -34,12 +42,24 @@ MonoBehaviour:
   localConfigBranches:
     keys:
     - main
+    - "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
+    - "\u4F0A\u85E41"
     values:
     - name: main
       remote:
         name: origin
         url: https://github.com/ENSYUYOU/mathgoroku_public.git
       trackingBranch: main
+    - name: "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
+      remote:
+        name: origin
+        url: https://github.com/ENSYUYOU/mathgoroku_public.git
+      trackingBranch: "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
+    - name: "\u4F0A\u85E41"
+      remote:
+        name: origin
+        url: https://github.com/ENSYUYOU/mathgoroku_public.git
+      trackingBranch: "\u4F0A\u85E41"
   remoteConfigBranches:
     keys:
     - origin
@@ -47,6 +67,8 @@ MonoBehaviour:
     - Values:
       - HEAD
       - main
+      - "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
+      - "\u4F0A\u85E41"
     subKeyValues:
     - Values:
       - name: HEAD
@@ -55,6 +77,16 @@ MonoBehaviour:
           url: https://github.com/ENSYUYOU/mathgoroku_public.git
         trackingBranch: 
       - name: main
+        remote:
+          name: origin
+          url: https://github.com/ENSYUYOU/mathgoroku_public.git
+        trackingBranch: 
+      - name: "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
+        remote:
+          name: origin
+          url: https://github.com/ENSYUYOU/mathgoroku_public.git
+        trackingBranch: 
+      - name: "\u4F0A\u85E41"
         remote:
           name: origin
           url: https://github.com/ENSYUYOU/mathgoroku_public.git
