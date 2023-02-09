@@ -91,11 +91,14 @@ public class GameController : MonoBehaviour
     public Sprite[] turnImages;
     public AudioClip walkSound;//歩く音
     private IEnumerator Change(int x, int y, int nokori, float waitTime){
+         Debug.Log("1111");
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
         audioSource.PlayOneShot(walkSound);
+        Debug.Log("bbbb");
         if(nokori==0){
             yield return new WaitForSeconds(waitTime);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
+            Debug.Log("aaaaaaaa");
             players_turn += 1;
             players_turn %= PLAYERS_NUM;
             turn.interactable = true;
@@ -158,6 +161,11 @@ public class GameController : MonoBehaviour
 
     
     private void Walk(int ans, int flg=0, int nexts_index=0){
+        if(ans==0){
+            Debug.Log("Walk");
+            StartCoroutine(Change(players_position[players_turn, 0], players_position[players_turn, 1], 0, 0.3f));
+            return;
+        }
         int[,] delta = new int[,] {{0,-1}, {1,0}, {0,1}, {-1,0},};//下右上左の方向、jが変わるとアクセスされるデルタが変わる
         var bound = tilemap.cellBounds;
         for(int i=0; i<ans; i++){//ansが正のときでないと動かない
