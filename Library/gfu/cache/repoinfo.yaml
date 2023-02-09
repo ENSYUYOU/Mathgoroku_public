@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2022-12-04T01:30:29.714+09:00
-  initializedAtString: 2022-12-04T01:30:29.714+09:00
+  lastUpdatedAtString: 2023-02-08T20:58:18.578+09:00
+  initializedAtString: 2023-02-08T20:58:18.578+09:00
   currentGitRemote:
     name: origin
     url: https://github.com/ENSYUYOU/mathgoroku_public.git
@@ -24,14 +24,14 @@ MonoBehaviour:
     function: 0
     token: 
   currentGitBranch:
-    name: main
-    tracking: origin/main
+    name: "\u4F0A\u85E41"
+    tracking: "origin/\u4F0A\u85E41"
   currentConfigBranch:
-    name: main
+    name: "\u4F0A\u85E41"
     remote:
       name: origin
       url: https://github.com/ENSYUYOU/mathgoroku_public.git
-    trackingBranch: main
+    trackingBranch: "\u4F0A\u85E41"
   currentConfigRemote:
     name: origin
     url: https://github.com/ENSYUYOU/mathgoroku_public.git

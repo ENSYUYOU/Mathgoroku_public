@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     static int[,] players_position; 
     public static int players_turn = 0;//今誰のターンか
     static int[,,] used;
+    public static int[] players_coin = new int[3];//追加2/8(伊藤)
     static List<Vector3> player_destination = new List<Vector3>();
 
     System.Random saikoro = new System.Random();
@@ -35,11 +36,22 @@ public class GameController : MonoBehaviour
     public AudioClip BGM;//BGM用のpublic変数
     static float bgmTime;//シーンに映るときにBGMが初めに戻らないようにする変数。
     void Start(){
+        var builder = new StringBuilder();//タイルマップ表示用プログラム
+        var bound = tilemap.cellBounds;
+        for (int y = bound.max.y-1; y >= bound.min.y; --y)
+        {
+            for (int x = bound.min.x; x < bound.max.x; ++x)
+            {
+                builder.Append(tilemap.HasTile(new Vector3Int(x, y, 0))? "■" : "□");
+            }
+            builder.Append("\n");
+        }
+        Debug.Log(builder);
         player1 = GameObject.Find("fox");
         player2 = GameObject.Find("fox_red");
         player3 = GameObject.Find("fox_yellow");
         players = new List<GameObject>() {player1, player2, player3};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
-        var bound = tilemap.cellBounds;
+        //var bound = tilemap.cellBounds;
         if (syokika){
             bgmTime = 0f;//BGMを初めから
             int sx = -5;//スタート地点の座標。
@@ -91,13 +103,21 @@ public class GameController : MonoBehaviour
     float speed = 0.5f;
 
     void Update(){
+        /*
+        Debug.Log("-----------1----------");
+        Debug.Log(players_coin[0]);
+        Debug.Log("-----------2----------");
+        Debug.Log(players_coin[1]);
+        Debug.Log("-----------3----------");
+        Debug.Log(players_coin[2]);
+        Debug.Log(players_coin[players_turn]);*/
         Vector3 delta = new Vector3(0,0.5f,0);//パネルの上に立ってるように見える補正
         Vector3 dist = player_destination[players_turn] + delta;
         players[players_turn].transform.position = Vector3.MoveTowards(players[players_turn].transform.position,  dist, speed);//player_destination[players_turn], speed);
 
         if (Input.GetMouseButtonDown(0)){
                 Vector3 pos = Input.mousePosition;   
-                Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
         }
     }
 
@@ -129,16 +149,16 @@ public class GameController : MonoBehaviour
             yield return null;
         }
         tilemap.SetTile(selectCellPos,m_tileRed);
-        Walk(nokori, 1, nexts_index);//無限ループ防止用フラグ
+        Walk(nokori, 1, nexts_index);//無限ループ防止用フラグ(分岐で移動しなくなる)
     }
 
     
     private void Walk(int ans, int flg=0, int nexts_index=0){
-        int[,] delta = new int[,] {{0,-1}, {1,0}, {0,1}, {-1,0},};
+        int[,] delta = new int[,] {{0,-1}, {1,0}, {0,1}, {-1,0},};//下右上左の方向、jが変わるとアクセスされるデルタが変わる
         var bound = tilemap.cellBounds;
-        for(int i=0; i<ans; i++){
+        for(int i=0; i<ans; i++){//ansが正のときでないと動かない
             List<List<int>> Nexts = new List<List<int>>();
-            for(int j=0; j<4; j++){
+            for(int j=0; j<4; j++){//上下左右の探索
                 List<int> next = new List<int>();
                 int nx_kouho = players_position[players_turn, 0] + delta[j, 0];
                 int ny_kouho = players_position[players_turn, 1] + delta[j, 1];
@@ -148,21 +168,21 @@ public class GameController : MonoBehaviour
                 next.Add(ny_kouho);
                 Nexts.Add(next);
             } 
-            if(Nexts.Count==0){
+            if(Nexts.Count==0){//行き止まりはゴールとして判定
                 Ending();
                 return;
             }
             int nx, ny;
-            int[,] bunki = {{-2, -1}};
-            bool isBunki = false;
+            int[,] bunki = {{-2, -1}};//分岐の座標を設定
+            bool isBunki = false;//分岐の初期化
            
             for(int j=0; j<bunki.GetLength(0); j++){
-                if((players_position[players_turn, 0]==bunki[j,0]&&players_position[players_turn, 1]==bunki[j,1]))isBunki = true;
+                if((players_position[players_turn, 0]==bunki[j,0]&&players_position[players_turn, 1]==bunki[j,1]))isBunki = true;//プレイヤーの座標が分岐点の座標かどうか判定
             }
 
             if(isBunki){
-                if(flg==0){
-                    StartCoroutine(WaitInput(ans-i, Nexts));
+                if(flg==0){//フラグを1にしないとnx, nyを変更できない
+                    StartCoroutine(WaitInput(ans-i, Nexts));//黄色のポインタを出す
                 return;
                 }else{
                     nx = Nexts[nexts_index][0];
@@ -175,11 +195,13 @@ public class GameController : MonoBehaviour
             
             players_position[players_turn, 0] = nx;
             players_position[players_turn, 1] = ny;
-            used[players_turn, nx-bound.min.x, ny-bound.min.y] = 1;
+            used[players_turn, nx-bound.min.x, ny-bound.min.y] = 1;//通った道を記録
             StartCoroutine(Change(nx, ny, ans-i-1, 0.3f*i));
             player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(nx, ny, 0));//タイル換算の位置にしている
         }
     }
+
+    //private void WalkRev
 
     void Ending(){
         endingtext.text = "Player" + players_turn.ToString() + " Wins!";
@@ -190,5 +212,4 @@ public class GameController : MonoBehaviour
         turn.interactable = false;
         SceneManager.LoadScene("problem");
     }
-
 }
