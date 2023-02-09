@@ -13,23 +13,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2023-02-08T20:18:31.550+09:00
-  initializedAtString: 2023-02-08T20:18:31.387+09:00
+  lastUpdatedAtString: 2023-02-09T19:42:03.348+09:00
+  initializedAtString: 2023-02-09T19:42:03.315+09:00
   localBranches:
+  - name: Ch1
+    tracking: origin/Ch1
+  - name: CohnosK
+    tracking: 
   - name: main
     tracking: origin/main
   - name: "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
     tracking: "origin/\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
-  - name: "\u4F0A\u85E41"
-    tracking: "origin/\u4F0A\u85E41"
   remoteBranches:
+  - name: origin/Ch1
+    tracking: '[None]'
+  - name: origin/CohnosK2
+    tracking: '[None]'
   - name: origin/HEAD
     tracking: '[None]'
   - name: origin/main
     tracking: '[None]'
   - name: "origin/\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
-    tracking: '[None]'
-  - name: "origin/\u4F0A\u85E41"
     tracking: '[None]'
   remotes:
   - name: origin
@@ -41,10 +45,21 @@ MonoBehaviour:
     token: 
   localConfigBranches:
     keys:
+    - Ch1
+    - CohnosK
     - main
     - "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
-    - "\u4F0A\u85E41"
     values:
+    - name: Ch1
+      remote:
+        name: origin
+        url: https://github.com/ENSYUYOU/mathgoroku_public.git
+      trackingBranch: Ch1
+    - name: CohnosK
+      remote:
+        name: 
+        url: 
+      trackingBranch: 
     - name: main
       remote:
         name: origin
@@ -55,22 +70,28 @@ MonoBehaviour:
         name: origin
         url: https://github.com/ENSYUYOU/mathgoroku_public.git
       trackingBranch: "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
-    - name: "\u4F0A\u85E41"
-      remote:
-        name: origin
-        url: https://github.com/ENSYUYOU/mathgoroku_public.git
-      trackingBranch: "\u4F0A\u85E41"
   remoteConfigBranches:
     keys:
     - origin
     subKeys:
     - Values:
+      - Ch1
+      - CohnosK2
       - HEAD
       - main
       - "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
-      - "\u4F0A\u85E41"
     subKeyValues:
     - Values:
+      - name: Ch1
+        remote:
+          name: origin
+          url: https://github.com/ENSYUYOU/mathgoroku_public.git
+        trackingBranch: 
+      - name: CohnosK2
+        remote:
+          name: origin
+          url: https://github.com/ENSYUYOU/mathgoroku_public.git
+        trackingBranch: 
       - name: HEAD
         remote:
           name: origin
@@ -82,11 +103,6 @@ MonoBehaviour:
           url: https://github.com/ENSYUYOU/mathgoroku_public.git
         trackingBranch: 
       - name: "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
-        remote:
-          name: origin
-          url: https://github.com/ENSYUYOU/mathgoroku_public.git
-        trackingBranch: 
-      - name: "\u4F0A\u85E41"
         remote:
           name: origin
           url: https://github.com/ENSYUYOU/mathgoroku_public.git

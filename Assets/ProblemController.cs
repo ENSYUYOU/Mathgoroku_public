@@ -10,7 +10,7 @@ public class ProblemController : MonoBehaviour
 {
     const int PLAYERS_NUM = 3;
     string[] problem_list = new string [] {"", "log<sub>2</sub>4=", "1+2=", "sin<sup>2</sup><i>Θ</i>+cos<sup>2</sup><i>Θ</i>=", "<i>a</i><sub>1</sub>=2, <i>a<sub>n</i>+1</sub>=2<i>a<sub>n</sub></i>+1, <i>a</i><sub>3</sub>=</i>", "(2+<i>i</i>)(2-<i>i</i>)=", "2sin(<i>π</i>/4)cos(<i>π</i>/4)=", "log<sub>3</sub>9=", "2<sup>2</sup>=", "-6cos<i>π</i>="};
-    string[] ans_list = new string [] {"", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
+    string[] ans_list = new string [] {"", "10", "-2", "-2", "-2", "-2", "-2", "10", "-2", "-2"};
     //string[] ans_list = new string [] {"", "2", "3", "1", "11", "5", "1", "2", "4", "6"};
     public TextMeshProUGUI Problem;
     public TextMeshProUGUI Timer;
@@ -116,20 +116,21 @@ public class ProblemController : MonoBehaviour
     public void InputText(){
         audioSource.Stop();//時計の音を止める
         Problem.text += ans_list[last_problem];//答えを表示する
-        ans = int.Parse(ans_list[last_problem]);
         if(Answer.text == ans_list[last_problem] && isAnswered==false){
             audioSource.PlayOneShot(maru);
             maru_image.SetActive(true);
             GameController.players_coin[GameController.players_turn]+=5;
+            ans = int.Parse(ans_list[last_problem]);
         }else if (isTimeUp==false && isAnswered==false){
             audioSource.PlayOneShot(batu);
             batu_image.SetActive(true);
-            ans-=ans;
+            ans = -int.Parse(ans_list[last_problem]);
         }
         isAnswered = true;
         Timer.text = "";
         time =- 1;//タイマーが減らないようにする
         StartCoroutine(Erase(3f));
+        Debug.Log(ans);
     }
 
     

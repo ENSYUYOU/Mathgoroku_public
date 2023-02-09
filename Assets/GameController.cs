@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     List<GameObject> players = new List<GameObject>();
 
 
-    static int[,] players_position; 
+    static int[,] players_position;
     public static int players_turn = 0;//今誰のターンか
     static int[,,] used;
     public static int[] players_coin = new int[PLAYERS_NUM];//追加2/8(伊藤)
@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
             }
             builder.Append("\n");
         }
-        Debug.Log(builder);
+        //Debug.Log(builder);
         player1 = GameObject.Find("fox");
         player2 = GameObject.Find("fox_red");
         player3 = GameObject.Find("fox_yellow");
@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
             
             used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
             used[0, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする
-            used[1, sx-bound.min.x, sy-bound.min.y] = 1;//幅優先探索ように訪れた頂点を初期化している
+            used[1, sx-bound.min.x, sy-bound.min.y] = 1;//幅優先探索用に訪れた頂点を初期化している
             used[2, sx-bound.min.x, sy-bound.min.y] = 1;
             syokika = false;
         }else{
@@ -77,7 +77,12 @@ public class GameController : MonoBehaviour
         CameraControl2.MoveCamera();
         if(ProblemController.isWalk){
             turn.interactable = false;
-            Walk(ProblemController.ans);
+            if(ProblemController.ans >= 0){
+                Debug.Log("junkyuu");
+                Walk(ProblemController.ans);
+            }else if(ProblemController.ans < 0){
+                WalkRev(Math.Abs(ProblemController.ans));
+            }
         }
         ProblemController.isWalk = false;
 
@@ -122,9 +127,9 @@ public class GameController : MonoBehaviour
         players[players_turn].transform.position = Vector3.MoveTowards(players[players_turn].transform.position,  dist, speed);//player_destination[players_turn], speed);
 
         if (Input.GetMouseButtonDown(0)){
-                //Vector3 pos = Input.mousePosition;   
+                Vector3 pos = Input.mousePosition;   
                 //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
-                EventMasu();
+                //EventMasu();
         }
     }
 
@@ -174,8 +179,8 @@ public class GameController : MonoBehaviour
                 List<int> next = new List<int>();
                 int nx_kouho = players_position[players_turn, 0] + delta[j, 0];
                 int ny_kouho = players_position[players_turn, 1] + delta[j, 1];
-                if (!tilemap.HasTile(new Vector3Int(nx_kouho, ny_kouho, 0)))continue;
-                if (used[players_turn, nx_kouho-bound.min.x, ny_kouho-bound.min.y] >= 1)continue;
+                if (!tilemap.HasTile(new Vector3Int(nx_kouho, ny_kouho, 0)))continue;//タイルマップ上にタイルがあるか調べる
+                if (used[players_turn, nx_kouho-bound.min.x, ny_kouho-bound.min.y] >= 1)continue;//n番目のプレイヤーの通った道の記録を呼び出して、
                 next.Add(nx_kouho);
                 next.Add(ny_kouho);
                 Nexts.Add(next);
@@ -213,7 +218,40 @@ public class GameController : MonoBehaviour
         }
     }
 
-    //private void WalkRev
+    private void WalkRev(int ans, int flg=0, int nexts_index=0){
+        Debug.Log("walkrev");
+        int[,] delta = new int[,] {{0,-1}, {1,0}, {0,1}, {-1,0},};//下右上左の方向、jが変わるとアクセスされるデルタが変わる
+        var bound = tilemap.cellBounds;
+        for(int i=0; i<ans; i++){//ansが負のときでないと動かない
+            List<List<int>> Nexts = new List<List<int>>();
+            for(int j=0; j<4; j++){//上下左右の探索
+                List<int> next = new List<int>();
+                int nx_kouho = players_position[players_turn, 0] + delta[j, 0];
+                int ny_kouho = players_position[players_turn, 1] + delta[j, 1];
+                if (!tilemap.HasTile(new Vector3Int(nx_kouho, ny_kouho, 0)))continue;
+                if (used[players_turn, nx_kouho-bound.min.x, ny_kouho-bound.min.y] == 0)continue;
+                next.Add(nx_kouho);
+                next.Add(ny_kouho);
+                Nexts.Add(next);
+            } 
+            if(Nexts.Count==0){//行き止まりはスタートとして判定
+                Debug.Log("ikidomari");
+                StartCoroutine(Change(players_position[players_turn, 0], players_position[players_turn, 1], 0, 0.3f));
+                return;
+            }
+            Debug.Log("owari");
+            int nx, ny;
+            nx = Nexts[0][0];
+            ny = Nexts[0][1];
+            
+            players_position[players_turn, 0] = nx;
+            players_position[players_turn, 1] = ny;
+            used[players_turn, nx-bound.min.x, ny-bound.min.y] = 0;//通った道を記録
+            StartCoroutine(Change(nx, ny, ans-i-1, 0.3f*i));
+            player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(nx, ny, 0));//タイル換算の位置にしている
+        }
+    }
+    
 
     void Ending(){
         endingtext.text = "Player" + players_turn.ToString() + " Wins!";
