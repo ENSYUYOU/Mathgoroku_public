@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {   
+    const int PLAYERS_NUM = 3;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
     public TextMeshProUGUI turntext;
     public TextMeshProUGUI endingtext;
@@ -24,7 +25,9 @@ public class GameController : MonoBehaviour
     static int[,] players_position; 
     public static int players_turn = 0;//今誰のターンか
     static int[,,] used;
-    public static int[] players_coin = new int[3];//追加2/8(伊藤)
+    public static int[] players_coin = new int[PLAYERS_NUM];//追加2/8(伊藤)
+    static int[] players_medal = new int[PLAYERS_NUM];//それぞれのプレイヤーのメダルの数
+    static int[,] players_item = new int[PLAYERS_NUM, 5];//それぞれのプレイヤーのアイテムの数
     static List<Vector3> player_destination = new List<Vector3>();
 
     System.Random saikoro = new System.Random();
@@ -59,7 +62,7 @@ public class GameController : MonoBehaviour
             players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
             player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
             
-            used = new int[3, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
+            used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
             used[0, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする
             used[1, sx-bound.min.x, sy-bound.min.y] = 1;//幅優先探索ように訪れた頂点を初期化している
             used[2, sx-bound.min.x, sy-bound.min.y] = 1;
@@ -94,7 +97,7 @@ public class GameController : MonoBehaviour
         if(nokori==0){
             yield return new WaitForSeconds(waitTime);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
             players_turn += 1;
-            players_turn %= 3;
+            players_turn %= PLAYERS_NUM;
             turn.interactable = true;
             turnImage.sprite = turnImages[players_turn];
         }
@@ -116,8 +119,9 @@ public class GameController : MonoBehaviour
         players[players_turn].transform.position = Vector3.MoveTowards(players[players_turn].transform.position,  dist, speed);//player_destination[players_turn], speed);
 
         if (Input.GetMouseButtonDown(0)){
-                Vector3 pos = Input.mousePosition;   
+                //Vector3 pos = Input.mousePosition;   
                 //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                EventMasu();
         }
     }
 
@@ -211,5 +215,23 @@ public class GameController : MonoBehaviour
         bgmTime = audioSource.time;
         turn.interactable = false;
         SceneManager.LoadScene("problem");
+    }
+
+    private void EventMasu(){//イベントマス用の関数
+        /*eventid
+        0: メダルをもらえる
+        1: メダルを失う
+        2: アイテムをもらえる
+        */
+        int eventid = saikoro.Next(0,3);
+        if (eventid==0){
+            players_medal[players_turn] += 1;
+        }else if(eventid==1){
+            //players_medal[players_turn] -= 1;
+            players_medal[players_turn] = Math.Max(0, players_medal[players_turn]);
+        }else if(eventid==2){
+            int itemid = saikoro.Next(0,4);
+            players_item[players_turn, itemid] += 1; 
+        }
     }
 }
