@@ -371,4 +371,46 @@ public class GameController : MonoBehaviour
             nekoImage.sprite = nekoImages[saikoro.Next(0,5)];
         }
     }
+
+    string[] comment = new string[] {"こんにちは", "ここは関所です", "コイン50枚でメダルに交換できます。", "交換しますか?"};
+    int commentid=0;
+    public TextMeshProUGUI Dirichletcomment;
+    public GameObject yes;
+    public GameObject no;
+    public GameObject SekisyoHaikeiButton;
+    public TextMeshProUGUI DirichleSyojikin;
+    public void SekisyoMasu(){//とりあえずクリックしたときに呼ばれる
+        DirichleSyojikin.text = "×" + players_coin[players_turn].ToString();
+        if (commentid < 3){
+            commentid += 1;
+            Dirichletcomment.text = comment[commentid];
+        }else{
+            yes.SetActive(true);
+            no.SetActive(true);
+        }
+    }
+
+    public void yesfunction(){
+        if(players_coin[players_turn] < 50){
+            Dirichletcomment.text = "お金が足りません";
+        }else{
+            players_coin[players_turn] -= 50;
+            players_medal[players_turn] += 1;
+            yes.SetActive(false);
+            no.SetActive(false);
+            Dirichletcomment.text = "まいどありがとうございます";
+            DirichleSyojikin.text = "×" + players_coin[players_turn].ToString();
+            StartCoroutine(ReturnFromSekisyo());
+        }
+    }
+    public void nofunction(){
+        Dirichletcomment.text = "さようなら";
+        yes.SetActive(false);
+        no.SetActive(false);
+        StartCoroutine(ReturnFromSekisyo());
+    }
+    IEnumerator ReturnFromSekisyo(){
+        yield return new WaitForSeconds(3f);
+        SekisyoHaikeiButton.SetActive(false);
+    }
 }   
