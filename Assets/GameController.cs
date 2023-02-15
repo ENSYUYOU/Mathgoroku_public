@@ -14,6 +14,10 @@ public class GameController : MonoBehaviour
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
     public TextMeshProUGUI turntext;
     public TextMeshProUGUI endingtext;
+    public TextMeshProUGUI shopitem1;//ショップますで使うボタンのテキスト
+    public TextMeshProUGUI shopitem2;
+    public TextMeshProUGUI shopitem3;
+    
 
     public static GameObject player1;
     public static GameObject player2;
@@ -25,9 +29,10 @@ public class GameController : MonoBehaviour
     static int[,] players_position;
     public static int players_turn = 0;//今誰のターンか
     static int[,,] used;
-    public static int[] players_coin = new int[PLAYERS_NUM];//追加2/8(伊藤)
+    public static int[] players_coin = new int[]{10, 10, 10};//追加2/8(伊藤)
     static int[] players_medal = new int[PLAYERS_NUM];//それぞれのプレイヤーのメダルの数
     static int[,] players_item = new int[PLAYERS_NUM, 5];//それぞれのプレイヤーのアイテムの数
+
     static List<Vector3> player_destination = new List<Vector3>();
 
     System.Random saikoro = new System.Random();
@@ -39,6 +44,7 @@ public class GameController : MonoBehaviour
     public AudioClip BGM;//BGM用のpublic変数
     static float bgmTime;//シーンに映るときにBGMが初めに戻らないようにする変数。
     void Start(){
+        ShopMasu(0,1,2);
         var builder = new StringBuilder();//タイルマップ表示用プログラム
         var bound = tilemap.cellBounds;
         for (int y = bound.max.y-1; y >= bound.min.y; --y)
@@ -49,7 +55,8 @@ public class GameController : MonoBehaviour
             }
             builder.Append("\n");
         }
-        //Debug.Log(builder);
+    
+        Debug.Log(builder);
         player1 = GameObject.Find("fox");
         player2 = GameObject.Find("fox_red");
         player3 = GameObject.Find("fox_yellow");
@@ -273,11 +280,95 @@ public class GameController : MonoBehaviour
         if (eventid==0){
             players_medal[players_turn] += 1;
         }else if(eventid==1){
-            //players_medal[players_turn] -= 1;
+            players_medal[players_turn] -= 1;
             players_medal[players_turn] = Math.Max(0, players_medal[players_turn]);
         }else if(eventid==2){
             int itemid = saikoro.Next(0,4);
             players_item[players_turn, itemid] += 1; 
         }
     }
-}
+
+
+    private void CoinPlus(){
+        players_coin[players_turn] += 1;
+    }
+
+    private void CoinMinus(){
+        players_coin[players_turn] -= 1;
+        players_coin[players_turn] = Math.Max(players_coin[players_turn], 0);
+    }
+
+    /*
+    Syop画面の残りの作業
+    ・アイテムの値段を決めて、購入後に所持金を減らす
+    ・購入後の画面の切り替えとか色々
+    */
+    string[] ITEMS = new string[] {"アイテム1", "アイテム2", "アイテム3", "アイテム4", "アイテム5"};
+    int selected_item;
+    int item1, item2, item3;
+    public Image nekoImage;
+    public Sprite[] nekoImages;
+    public TextMeshProUGUI nekoserihu;//ショップの猫のセリフ
+    public TextMeshProUGUI syojikin;//右下のコインの枚数のテキスト
+    private void ShopMasu(int newitem1, int newitem2, int newitem3){//入荷アイテム3種類。今選択したアイテム。
+        item1 = newitem1;
+        item2 = newitem2;
+        item3 = newitem3;
+        selected_item = -1;//はじめは存在しないアイテムで初期化
+        shopitem1.text = ITEMS[item1];
+        shopitem2.text = ITEMS[item2];
+        shopitem3.text = ITEMS[item3];
+        syojikin.text = "×"+ players_coin[players_turn].ToString();
+    }
+    //ItemButton1とかはアイテムリストのボタンを押したときに反応
+    public void ItemButton1(){//全部黒にしてから選んだものだけ黄色にする
+        shopitem1.color = new Color(0, 0, 0, 1f);
+        shopitem2.color = new Color(0, 0, 0, 1f);
+        shopitem3.color = new Color(0, 0, 0, 1f);
+        shopitem1.color = new Color(1f, 0.92f, 0.016f, 1f);
+        if(selected_item==0){
+            players_item[players_turn, item1] += 1;
+            nekoserihu.text = "お買い上げありがとうございます！";
+            nekoImage.sprite = nekoImages[5];
+            syojikin.text = "×"+ players_coin[players_turn].ToString();
+        }else{
+            nekoserihu.text = ITEMS[item1] + "にしますか?";
+            selected_item = item1;
+            nekoImage.sprite = nekoImages[saikoro.Next(0,5)];
+        }
+    }
+
+    public void ItemButton2(){
+        shopitem1.color = new Color(0, 0, 0, 1f);
+        shopitem2.color = new Color(0, 0, 0, 1f);
+        shopitem3.color = new Color(0, 0, 0, 1f);
+        shopitem2.color = new Color(1f, 0.92f, 0.016f, 1f);
+        if(selected_item==1){
+                players_item[players_turn, item2] += 1;
+                nekoserihu.text = "お買い上げありがとうございます！";
+                nekoImage.sprite = nekoImages[5];
+                syojikin.text = "×"+ players_coin[players_turn].ToString();
+        }else{
+            nekoserihu.text = ITEMS[item2] + "にしますか?";
+            selected_item = item2;
+            nekoImage.sprite = nekoImages[saikoro.Next(0,5)];
+        }
+    }
+
+    public void ItemButton3(){
+        shopitem1.color = new Color(0, 0, 0, 1f);
+        shopitem2.color = new Color(0, 0, 0, 1f);
+        shopitem3.color = new Color(0, 0, 0, 1f);
+        shopitem3.color = new Color(1f, 0.92f, 0.016f, 1f);
+        if(selected_item==2){
+            players_item[players_turn, item3] += 1;
+            nekoserihu.text = "お買い上げありがとうございます！";
+            nekoImage.sprite = nekoImages[5];
+            syojikin.text = "×"+ players_coin[players_turn].ToString();
+        }else{
+            nekoserihu.text = ITEMS[item3] + "にしますか?";
+            selected_item = item3;
+            nekoImage.sprite = nekoImages[saikoro.Next(0,5)];
+        }
+    }
+}   
