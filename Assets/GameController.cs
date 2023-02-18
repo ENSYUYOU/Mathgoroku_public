@@ -43,8 +43,14 @@ public class GameController : MonoBehaviour
     public AudioSource audioSource;//オーディオソースは透明なゲームオブジェクトについてる。
     public AudioClip BGM;//BGM用のpublic変数
     static float bgmTime;//シーンに映るときにBGMが初めに戻らないようにする変数。
+    int nameid1;
+    int nameid2;
+    int nameid3;
+    int nameid4;
+    bool moveName;
+    int nameID;
     void Start(){
-        ShopMasu(0,1,2);
+        EventMasu();
         var builder = new StringBuilder();//タイルマップ表示用プログラム
         var bound = tilemap.cellBounds;
         for (int y = bound.max.y-1; y >= bound.min.y; --y)
@@ -119,16 +125,8 @@ public class GameController : MonoBehaviour
     }
     
     float speed = 0.5f;
-
+    float currentTime;
     void Update(){
-        /*
-        Debug.Log("-----------1----------");
-        Debug.Log(players_coin[0]);
-        Debug.Log("-----------2----------");
-        Debug.Log(players_coin[1]);
-        Debug.Log("-----------3----------");
-        Debug.Log(players_coin[2]);
-        Debug.Log(players_coin[players_turn]);*/
         Vector3 delta = new Vector3(0,0.5f,0);//パネルの上に立ってるように見える補正
         Vector3 dist = player_destination[players_turn] + delta;
         players[players_turn].transform.position = Vector3.MoveTowards(players[players_turn].transform.position,  dist, speed);//player_destination[players_turn], speed);
@@ -137,6 +135,20 @@ public class GameController : MonoBehaviour
                 Vector3 pos = Input.mousePosition;   
                 //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
                 //EventMasu();
+        }
+        currentTime += Time.deltaTime;
+        if(currentTime>0.1f && moveName){
+            nameID+=1;
+            nameID%=4;//4人選択
+            currentTime = 0f;
+            name1.color = new Color(0, 0, 0, 1f);
+            name2.color = new Color(0, 0, 0, 1f);
+            name3.color = new Color(0, 0, 0, 1f);
+            name4.color = new Color(0, 0, 0, 1f);
+            if(nameID==0)name1.color = new Color(1f, 0.92f, 0.016f, 1f);
+            if(nameID==1)name2.color = new Color(1f, 0.92f, 0.016f, 1f);
+            if(nameID==2)name3.color = new Color(1f, 0.92f, 0.016f, 1f);
+            if(nameID==3)name4.color = new Color(1f, 0.92f, 0.016f, 1f);
         }
     }
 
@@ -269,13 +281,9 @@ public class GameController : MonoBehaviour
         turn.interactable = false;
         SceneManager.LoadScene("problem");
     }
-
+    /*
     private void EventMasu(){//イベントマス用の関数
-        /*eventid
-        0: メダルをもらえる
-        1: メダルを失う
-        2: アイテムをもらえる
-        */
+       
         int eventid = saikoro.Next(0,3);
         if (eventid==0){
             players_medal[players_turn] += 1;
@@ -286,7 +294,7 @@ public class GameController : MonoBehaviour
             int itemid = saikoro.Next(0,4);
             players_item[players_turn, itemid] += 1; 
         }
-    }
+    }*/
 
 
     private void CoinPlus(){
@@ -413,4 +421,57 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         SekisyoHaikeiButton.SetActive(false);
     }
+
+
+    public TextMeshProUGUI name1;
+    public TextMeshProUGUI name2;
+    public TextMeshProUGUI name3;
+    public TextMeshProUGUI name4;
+    public TextMeshProUGUI sugakusyacomment;
+    public Button SugakusyaCommentButton;
+    string[] sugakusya = {"ニュートン", "アルキメデス", "ノイマン", "ピタゴラス", "チューリング"};
+    List<List<string>> sugakusya_comment_list = new List<List<string>>() {
+                new List<string> {"私はニュートン", "よろしく"},
+                new List<string> {"私はアルキメデス", "よろしく"},
+                new List<string> {"私はノイマン", "ですよ"},
+                new List<string> {"私はピタゴラス"},
+                new List<string> {"私はチューリング"},
+            };
+
+
+    private void EventMasu(){
+        SugakusyaCommentButton.interactable = false;
+        while(nameid1==nameid2 || nameid2==nameid3 || nameid3==nameid4 || nameid4==nameid1){
+            nameid1 = saikoro.Next(0, 5);
+            nameid2 = saikoro.Next(0, 5);
+            nameid3 = saikoro.Next(0, 5);
+            nameid4 = saikoro.Next(0, 5);
+        }
+        name1.text = sugakusya[nameid1];
+        name2.text = sugakusya[nameid2];
+        name3.text = sugakusya[nameid3];
+        name4.text = sugakusya[nameid4];
+        moveName = true;
+    }
+    int selected_sugakusya_id;
+    int sugakusyacommentid;
+    public void StopNameRoulette(){
+        moveName = false;
+        int [] selected_list = {nameid1, nameid2, nameid3, nameid4};
+        Debug.Log(nameID);
+        selected_sugakusya_id = selected_list[nameID];
+        sugakusyacomment.text = sugakusya_comment_list[selected_sugakusya_id][sugakusyacommentid];
+        SugakusyaCommentButton.interactable = true;
+    }
+
+    public void SugakusyaCommentFunc(){//ボタンを押すと反応
+        sugakusyacommentid += 1;
+        if(sugakusyacommentid < sugakusya_comment_list[selected_sugakusya_id].Count){
+            sugakusyacomment.text = sugakusya_comment_list[selected_sugakusya_id][sugakusyacommentid];
+        }else{
+            SugakusyaCommentButton.interactable = false;
+        }
+    }
+
+
 }   
