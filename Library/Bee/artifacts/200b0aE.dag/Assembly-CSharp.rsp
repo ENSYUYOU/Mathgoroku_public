@@ -376,6 +376,7 @@
 "Assets/CameraControl.cs"
 "Assets/CameraControl2.cs"
 "Assets/GameController.cs"
+"Assets/ItemController.cs"
 "Assets/MasuController.cs"
 "Assets/ProblemController.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"

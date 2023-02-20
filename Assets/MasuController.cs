@@ -239,4 +239,8 @@ public class MasuController : MonoBehaviour
             SugakusyaCommentButton.interactable = false;
         }
     }
+
+    public static void F(){
+        Debug.Log("hello");
+    }
 }

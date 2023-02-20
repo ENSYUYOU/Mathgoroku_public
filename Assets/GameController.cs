@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 
 
     void Start(){
+        Debug.Log("hello1");
         var builder = new StringBuilder();//タイルマップ表示用プログラム
         var bound = tilemap.cellBounds;
         for (int y = bound.max.y-1; y >= bound.min.y; --y)
@@ -154,7 +155,7 @@ public class GameController : MonoBehaviour
     }
 
     
-    private void Walk(int ans, int flg=0, int nexts_index=0){
+    void Walk(int ans, int flg=0, int nexts_index=0){
         if(ans==0){
             StartCoroutine(Change(players_position[players_turn, 0], players_position[players_turn, 1], 0, 0.3f));
             return;
