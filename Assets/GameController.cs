@@ -12,19 +12,17 @@ public class GameController : MonoBehaviour
 {   
     const int PLAYERS_NUM = 3;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
-    public TextMeshProUGUI turntext;
     public TextMeshProUGUI endingtext;
-   
     
+
     public static GameObject player1;
     public static GameObject player2;
     public static GameObject player3;
     public Button turn;
     List<GameObject> players = new List<GameObject>();
 
-
-    static int[,] players_position;
     public static int players_turn = 0;//今誰のターンか
+    static int[,] players_position;
     static int[,,] used;
     public static int[] players_coin = new int[]{10, 10, 10};//追加2/8(伊藤)
     public static int[] players_medal = new int[PLAYERS_NUM];//それぞれのプレイヤーのメダルの数
@@ -83,7 +81,6 @@ public class GameController : MonoBehaviour
         if(ProblemController.isWalk){
             turn.interactable = false;
             if(ProblemController.ans >= 0){
-                Debug.Log("junkyuu");
                 Walk(ProblemController.ans);
             }else if(ProblemController.ans < 0){
                 WalkRev(Math.Abs(ProblemController.ans));
@@ -101,14 +98,11 @@ public class GameController : MonoBehaviour
     public Sprite[] turnImages;
     public AudioClip walkSound;//歩く音
     private IEnumerator Change(int x, int y, int nokori, float waitTime){
-         Debug.Log("1111");
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
         audioSource.PlayOneShot(walkSound);
-        Debug.Log("bbbb");
         if(nokori==0){
             yield return new WaitForSeconds(waitTime);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
-            Debug.Log("aaaaaaaa");
             players_turn += 1;
             players_turn %= PLAYERS_NUM;
             turn.interactable = true;
@@ -116,8 +110,8 @@ public class GameController : MonoBehaviour
         }
     }
     
-    float speed = 0.5f;
     void Update(){
+        float speed = 0.5f;
         Vector3 delta = new Vector3(0,0.5f,0);//パネルの上に立ってるように見える補正
         Vector3 dist = player_destination[players_turn] + delta;
         players[players_turn].transform.position = Vector3.MoveTowards(players[players_turn].transform.position,  dist, speed);//player_destination[players_turn], speed);
@@ -128,7 +122,6 @@ public class GameController : MonoBehaviour
                 //EventMasu();
         }
     }
-
 
 
     public TileBase m_tileGray;
@@ -163,7 +156,6 @@ public class GameController : MonoBehaviour
     
     private void Walk(int ans, int flg=0, int nexts_index=0){
         if(ans==0){
-            Debug.Log("Walk");
             StartCoroutine(Change(players_position[players_turn, 0], players_position[players_turn, 1], 0, 0.3f));
             return;
         }
@@ -215,7 +207,6 @@ public class GameController : MonoBehaviour
     }
 
     private void WalkRev(int ans, int flg=0, int nexts_index=0){
-        Debug.Log("walkrev");
         int[,] delta = new int[,] {{0,-1}, {1,0}, {0,1}, {-1,0},};//下右上左の方向、jが変わるとアクセスされるデルタが変わる
         var bound = tilemap.cellBounds;
         for(int i=0; i<ans; i++){//ansが負のときでないと動かない
@@ -231,11 +222,9 @@ public class GameController : MonoBehaviour
                 Nexts.Add(next);
             } 
             if(Nexts.Count==0){//行き止まりはスタートとして判定
-                Debug.Log("ikidomari");
                 StartCoroutine(Change(players_position[players_turn, 0], players_position[players_turn, 1], 0, 0.3f));
                 return;
             }
-            Debug.Log("owari");
             int nx, ny;
             nx = Nexts[0][0];
             ny = Nexts[0][1];
