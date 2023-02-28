@@ -12,10 +12,11 @@ public class ItemController : MonoBehaviour
     public TextMeshProUGUI item3;
     public TextMeshProUGUI item4;
     public TextMeshProUGUI item5;
-    public int reverse;
+    public static int reverse = -1;//リバースフラグ。-1の時逆順になる
+    public static int[] skip = new int[] {0, 0, 0, 0};//それぞれの人のスキップフラグ
 
     string[] itemlist = new string[] {"SKIPカード", "リバースカード", "保険証", "更地カード", "指定マスカード"};
-    static int[] used = new int[] {1, 1, 1, 1, 1};
+    static int[] used = new int[] {1, 1, 1, 1, 1};//使ったアイテムは???から実際の名前にする
 
     public GameController gameobject;
     // Start is called before the first frame update
@@ -49,7 +50,7 @@ public class ItemController : MonoBehaviour
     }
 
     public void Reverse(){//リバースカード
-        reverse ^= 1;
+        reverse *= -1;
     }
 
     public void Sarachi(){//更地カード

@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour
         audioSource.PlayOneShot(walkSound);
         if(nokori==0){
             yield return new WaitForSeconds(waitTime);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
-            players_turn += 1;
+            players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
             players_turn %= PLAYERS_NUM;
             turn.interactable = true;
             turnImage.sprite = turnImages[players_turn];
