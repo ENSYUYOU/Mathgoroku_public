@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {   
-    const int PLAYERS_NUM = 3;
+    public const int PLAYERS_NUM = 3;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
     public TextMeshProUGUI endingtext;
     
@@ -41,7 +41,6 @@ public class GameController : MonoBehaviour
 
 
     void Start(){
-        Debug.Log("hello1");
         var builder = new StringBuilder();//タイルマップ表示用プログラム
         var bound = tilemap.cellBounds;
         for (int y = bound.max.y-1; y >= bound.min.y; --y)
@@ -92,6 +91,7 @@ public class GameController : MonoBehaviour
         audioSource.clip = BGM;
         audioSource.time = bgmTime;
         audioSource.Play();
+        Debug.Log(players_position);
     }
 
 
@@ -126,11 +126,12 @@ public class GameController : MonoBehaviour
 
 
     public TileBase m_tileGray;
-    public TileBase m_tileRed;
+    public TileBase m_tileYellow;
     IEnumerator WaitInput (int nokori, List<List<int>> Nexts) {
         int nexts_index = 0;
         Vector3Int before;
         Vector3Int selectCellPos = new Vector3Int(Nexts[0][0],Nexts[0][1],0);
+        Debug.Log("hello");
         tilemap.SetTile(selectCellPos,m_tileGray);
         before = selectCellPos;
         bool canMove=false;
@@ -143,19 +144,19 @@ public class GameController : MonoBehaviour
                         if(before==selectCellPos)canMove=true;
                         nexts_index = i;
                         tilemap.SetTile(selectCellPos,m_tileGray);
-                        tilemap.SetTile(before,m_tileRed);
+                        tilemap.SetTile(before,m_tileYellow);
                         before = selectCellPos;
                     }
                 }
             }
             yield return null;
         }
-        tilemap.SetTile(selectCellPos,m_tileRed);
+        tilemap.SetTile(selectCellPos,m_tileYellow);
         Walk(nokori, 1, nexts_index);//無限ループ防止用フラグ(分岐で移動しなくなる)
     }
 
     
-    void Walk(int ans, int flg=0, int nexts_index=0){
+    public void Walk(int ans, int flg=0, int nexts_index=0){
         if(ans==0){
             StartCoroutine(Change(players_position[players_turn, 0], players_position[players_turn, 1], 0, 0.3f));
             return;
