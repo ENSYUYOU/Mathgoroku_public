@@ -5,7 +5,5 @@ using UnityEngine;
 public class MapController : MonoBehaviour
 {
 
-    static int[] map = new int[] {
-        
-    }
+
 }
