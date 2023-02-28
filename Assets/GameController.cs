@@ -131,8 +131,7 @@ public class GameController : MonoBehaviour
         int nexts_index = 0;
         Vector3Int before;
         Vector3Int selectCellPos = new Vector3Int(Nexts[0][0],Nexts[0][1],0);
-        Debug.Log("hello");
-        tilemap.SetTile(selectCellPos,m_tileGray);
+        tilemap.SetTile(selectCellPos,m_tileYellow);
         before = selectCellPos;
         bool canMove=false;
         while(!canMove) {
@@ -143,15 +142,16 @@ public class GameController : MonoBehaviour
                     if(selectCellPos.x == Nexts[i][0] && selectCellPos.y == Nexts[i][1]){
                         if(before==selectCellPos)canMove=true;
                         nexts_index = i;
-                        tilemap.SetTile(selectCellPos,m_tileGray);
-                        tilemap.SetTile(before,m_tileYellow);
+                        tilemap.SetTile(selectCellPos,m_tileYellow);
+                        tilemap.SetTile(before,m_tileGray);
+                        Debug.Log(m_tileGray);
                         before = selectCellPos;
                     }
                 }
             }
             yield return null;
         }
-        tilemap.SetTile(selectCellPos,m_tileYellow);
+        tilemap.SetTile(selectCellPos,m_tileGray);
         Walk(nokori, 1, nexts_index);//無限ループ防止用フラグ(分岐で移動しなくなる)
     }
 
