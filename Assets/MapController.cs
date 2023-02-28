@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
-
+    //String [,] map = new string []
 
 }
