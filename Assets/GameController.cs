@@ -121,7 +121,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-
     public TileBase m_tileGray;
     public TileBase m_tileYellow;
     IEnumerator WaitInput (int nokori, List<List<int>> Nexts) {

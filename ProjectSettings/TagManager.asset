@@ -41,6 +41,21 @@ TagManager:
   - name: BG
     uniqueID: 869927255
     locked: 0
+  - name: Path1
+    uniqueID: 2629788413
+    locked: 0
+  - name: Path2
+    uniqueID: 1322564977
+    locked: 0
+  - name: Path3
+    uniqueID: 2695739289
+    locked: 0
+  - name: Path4
+    uniqueID: 1753331387
+    locked: 0
+  - name: Path5
+    uniqueID: 637931709
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
