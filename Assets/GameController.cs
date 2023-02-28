@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {   
-    const int PLAYERS_NUM = 3;
+    public const int PLAYERS_NUM = 4;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
     public TextMeshProUGUI endingtext;
     
@@ -18,13 +18,14 @@ public class GameController : MonoBehaviour
     public static GameObject player1;
     public static GameObject player2;
     public static GameObject player3;
+    public static GameObject player4;
     public Button turn;
     List<GameObject> players = new List<GameObject>();
 
     public static int players_turn = 0;//今誰のターンか
     static int[,] players_position;
     static int[,,] used;
-    public static int[] players_coin = new int[]{10, 10, 10};//追加2/8(伊藤)
+    public static int[] players_coin = new int[]{10, 10, 10, 10};//追加2/8(伊藤)
     public static int[] players_medal = new int[PLAYERS_NUM];//それぞれのプレイヤーのメダルの数
     public static int[,] players_item = new int[PLAYERS_NUM, 5];//それぞれのプレイヤーのアイテムの数
 
@@ -51,30 +52,28 @@ public class GameController : MonoBehaviour
             }
             builder.Append("\n");
         }
-    
         Debug.Log(builder);
         player1 = GameObject.Find("fox");
         player2 = GameObject.Find("fox_red");
         player3 = GameObject.Find("fox_yellow");
-        players = new List<GameObject>() {player1, player2, player3};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
-        //var bound = tilemap.cellBounds;
+        player4 = GameObject.Find("fox_blue");
+        players = new List<GameObject>() {player1, player2, player3, player4};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
+
         if (syokika){
             bgmTime = 0f;//BGMを初めから
             int sx = -5;//スタート地点の座標。
             int sy = -1;
-            players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
-            player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
-            
+            players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
+            player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
+                                                      tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
+                                                      tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)),
+                                                      tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
             used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
-            used[0, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする
-            used[1, sx-bound.min.x, sy-bound.min.y] = 1;//幅優先探索用に訪れた頂点を初期化している
-            used[2, sx-bound.min.x, sy-bound.min.y] = 1;
+            for(int i=0; i<PLAYERS_NUM; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする
             syokika = false;
         }else{
             Vector3 delta = new Vector3(0,0.5f,0);
-            player1.transform.position = delta + player_destination[0];//プレイヤーをワープさせる。
-            player2.transform.position = delta + player_destination[1];
-            player3.transform.position = delta+player_destination[2];
+            for(int i=0; i<PLAYERS_NUM; i++)players[i].transform.position = delta + player_destination[i];
         }
        
         CameraControl2.MoveCamera();
@@ -103,7 +102,7 @@ public class GameController : MonoBehaviour
         audioSource.PlayOneShot(walkSound);
         if(nokori==0){
             yield return new WaitForSeconds(waitTime);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
-            players_turn += 1;
+            players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
             players_turn %= PLAYERS_NUM;
             turn.interactable = true;
             turnImage.sprite = turnImages[players_turn];
@@ -118,19 +117,18 @@ public class GameController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)){
                 Vector3 pos = Input.mousePosition;   
-                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
-                //EventMasu();
+                Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
         }
     }
 
 
     public TileBase m_tileGray;
-    public TileBase m_tileRed;
+    public TileBase m_tileYellow;
     IEnumerator WaitInput (int nokori, List<List<int>> Nexts) {
         int nexts_index = 0;
         Vector3Int before;
         Vector3Int selectCellPos = new Vector3Int(Nexts[0][0],Nexts[0][1],0);
-        tilemap.SetTile(selectCellPos,m_tileGray);
+        tilemap.SetTile(selectCellPos,m_tileYellow);
         before = selectCellPos;
         bool canMove=false;
         while(!canMove) {
@@ -141,20 +139,20 @@ public class GameController : MonoBehaviour
                     if(selectCellPos.x == Nexts[i][0] && selectCellPos.y == Nexts[i][1]){
                         if(before==selectCellPos)canMove=true;
                         nexts_index = i;
-                        tilemap.SetTile(selectCellPos,m_tileGray);
-                        tilemap.SetTile(before,m_tileRed);
+                        tilemap.SetTile(selectCellPos,m_tileYellow);
+                        tilemap.SetTile(before,m_tileGray);
                         before = selectCellPos;
                     }
                 }
             }
             yield return null;
         }
-        tilemap.SetTile(selectCellPos,m_tileRed);
+        tilemap.SetTile(selectCellPos,m_tileGray);
         Walk(nokori, 1, nexts_index);//無限ループ防止用フラグ(分岐で移動しなくなる)
     }
 
     
-    private void Walk(int ans, int flg=0, int nexts_index=0){
+    public void Walk(int ans, int flg=0, int nexts_index=0){
         if(ans==0){
             StartCoroutine(Change(players_position[players_turn, 0], players_position[players_turn, 1], 0, 0.3f));
             return;
