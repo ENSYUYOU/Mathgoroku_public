@@ -8,9 +8,8 @@ using UnityEngine.UI;
 
 public class ProblemController : MonoBehaviour
 {
-    const int PLAYERS_NUM = 3;
     string[] problem_list = new string [] {"", "log<sub>2</sub>4=", "1+2=", "sin<sup>2</sup><i>Θ</i>+cos<sup>2</sup><i>Θ</i>=", "<i>a</i><sub>1</sub>=2, <i>a<sub>n</i>+1</sub>=2<i>a<sub>n</sub></i>+1, <i>a</i><sub>3</sub>=</i>", "(2+<i>i</i>)(2-<i>i</i>)=", "2sin(<i>π</i>/4)cos(<i>π</i>/4)=", "log<sub>3</sub>9=", "2<sup>2</sup>=", "-6cos<i>π</i>="};
-    //string[] ans_list = new string [] {"", "10", "-2", "-2", "-2", "-2", "-2", "10", "-2", "-2"};
+    //string[] ans_list = new string [] {"", "90", "90", "90", "90", "90", "90", "90", "90", "90"};
     string[] ans_list = new string [] {"", "2", "3", "1", "11", "5", "1", "2", "4", "6"};
     public TextMeshProUGUI Problem;
     public TextMeshProUGUI Timer;
@@ -92,7 +91,7 @@ public class ProblemController : MonoBehaviour
             isTimeUp = true;
             GameController.players_coin[GameController.players_turn]+=3;
             GameController.players_turn += 1;//時間切れのときはこのタイミングでターン変更
-            GameController.players_turn %= PLAYERS_NUM;
+            GameController.players_turn %= GameController.PLAYERS_NUM;
             StartCoroutine(Erase(3));//時間切れ
         }
     }
@@ -130,7 +129,6 @@ public class ProblemController : MonoBehaviour
         Timer.text = "";
         time =- 1;//タイマーが減らないようにする
         StartCoroutine(Erase(3f));
-        Debug.Log(ans);
     }
 
     

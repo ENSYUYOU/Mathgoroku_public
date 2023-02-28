@@ -21,7 +21,6 @@ public class ItemController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log("hello2");
         gameobject = GameObject.Find("GameMaster").GetComponent<GameController>();
         int players_turn = GameController.players_turn;
         if(used[0]!=0)item1.text = itemlist[0] + "×" + GameController.players_item[players_turn, 0].ToString();
@@ -58,6 +57,6 @@ public class ItemController : MonoBehaviour
     }
 
     public void HokenSyo(){
-        
+
     }
 }
