@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
     void Start(){
         var builder = new StringBuilder();//タイルマップ表示用プログラム
         var bound = tilemap.cellBounds;
+        /*
         for (int y = bound.max.y-1; y >= bound.min.y; --y)
         {
             for (int x = bound.min.x; x < bound.max.x; ++x)
@@ -53,6 +54,7 @@ public class GameController : MonoBehaviour
             builder.Append("\n");
         }
         Debug.Log(builder);
+        */
         player1 = GameObject.Find("fox");
         player2 = GameObject.Find("fox_red");
         player3 = GameObject.Find("fox_yellow");
@@ -116,8 +118,11 @@ public class GameController : MonoBehaviour
         players[players_turn].transform.position = Vector3.MoveTowards(players[players_turn].transform.position,  dist, speed);//player_destination[players_turn], speed);
 
         if (Input.GetMouseButtonDown(0)){
-                Vector3 pos = Input.mousePosition;   
-                Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+            Vector3 pos = Input.mousePosition;   
+            Vector3Int posI = tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos));
+            Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+            var tile = tilemap.GetTile<Tile>(posI);
+            Debug.Log(tile.name.GetType());
         }
     }
 
