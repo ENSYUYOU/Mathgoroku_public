@@ -52,8 +52,7 @@ public class GameController : MonoBehaviour
             }
             builder.Append("\n");
         }
-        
-        // Debug.Log(builder);
+        Debug.Log(builder);
         player1 = GameObject.Find("fox");
         player2 = GameObject.Find("fox_red");
         player3 = GameObject.Find("fox_yellow");
@@ -69,20 +68,12 @@ public class GameController : MonoBehaviour
                                                       tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
                                                       tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)),
                                                       tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
-            
-            used = new int[PLAYERS_NUM, bound.max.x-bound.min.x + 1, bound.max.y-bound.min.y + 1];//プレイヤー数、縦、横
+            used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
             for(int i=0; i<PLAYERS_NUM; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする
-            //used[1, sx-bound.min.x, sy-bound.min.y] = 1;//幅優先探索用に訪れた頂点を初期化している
-            //used[2, sx-bound.min.x, sy-bound.min.y] = 1;
             syokika = false;
         }else{
             Vector3 delta = new Vector3(0,0.5f,0);
             for(int i=0; i<PLAYERS_NUM; i++)players[i].transform.position = delta + player_destination[i];
-            /*
-            player1.transform.position = delta + player_destination[0];//プレイヤーをワープさせる。
-            player2.transform.position = delta + player_destination[1];
-            player3.transform.position = delta + player_destination[2];
-            */
         }
        
         CameraControl2.MoveCamera();
@@ -126,8 +117,7 @@ public class GameController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)){
                 Vector3 pos = Input.mousePosition;   
-                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
-                //EventMasu();
+                Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
         }
     }
 
