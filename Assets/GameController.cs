@@ -10,9 +10,11 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {   
+    public MasuController masucontroller;
     public const int PLAYERS_NUM = 4;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
     public TextMeshProUGUI endingtext;
+    public TextMeshProUGUI syojikin;
     
 
     public static GameObject player1;
@@ -96,12 +98,25 @@ public class GameController : MonoBehaviour
     public Image turnImage;
     public Sprite[] turnImages;
     public AudioClip walkSound;//歩く音
+    public AudioClip coinSound;//歩く音
     private IEnumerator Change(int x, int y, int nokori, float waitTime){
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
         audioSource.PlayOneShot(walkSound);
         if(nokori==0){
-            yield return new WaitForSeconds(waitTime);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
+            var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(player_destination[players_turn]));
+            if(tile.sprite.name.Contains("blue")) {//プラスます
+                masucontroller.CoinPlus();
+                audioSource.PlayOneShot(coinSound);
+            }else if(tile.sprite.name.Contains("red")){//マイナスます
+                masucontroller.CoinMinus();
+                audioSource.PlayOneShot(coinSound);
+            }else if(tile.sprite.name.Contains("green")){//ショップます
+                masucontroller.EventMasu();
+            }else if(tile.sprite.name.Contains("yellow")){
+                masucontroller.ShopMasu();
+            }
+            yield return new WaitForSeconds(waitTime+2f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
             players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
             players_turn %= PLAYERS_NUM;
             turn.interactable = true;
@@ -110,24 +125,26 @@ public class GameController : MonoBehaviour
     }
     
     void Update(){
+        syojikin.text = "×" + players_coin[players_turn].ToString();
         float speed = 0.5f;
         Vector3 delta = new Vector3(0,0.5f,0);//パネルの上に立ってるように見える補正
         Vector3 dist = player_destination[players_turn] + delta;
         players[players_turn].transform.position = Vector3.MoveTowards(players[players_turn].transform.position,  dist, speed);//player_destination[players_turn], speed);
-
+        
         if (Input.GetMouseButtonDown(0)){
                 Vector3 pos = Input.mousePosition;   
-                Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                //var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
         }
     }
 
-    public TileBase m_tileGray;
-    public TileBase m_tileYellow;
+    public TileBase m_tileYellow;//選択しているタイル
     IEnumerator WaitInput (int nokori, List<List<int>> Nexts) {
         int nexts_index = 0;
         Vector3Int before;
         Vector3Int selectCellPos = new Vector3Int(Nexts[0][0],Nexts[0][1],0);
-        tilemap.SetTile(selectCellPos,m_tileYellow);
+        TileBase beforeTile = tilemap.GetTile<Tile>(selectCellPos);
+        tilemap.SetTile(selectCellPos, m_tileYellow);
         before = selectCellPos;
         bool canMove=false;
         while(!canMove) {
@@ -138,15 +155,16 @@ public class GameController : MonoBehaviour
                     if(selectCellPos.x == Nexts[i][0] && selectCellPos.y == Nexts[i][1]){
                         if(before==selectCellPos)canMove=true;
                         nexts_index = i;
-                        tilemap.SetTile(selectCellPos,m_tileYellow);
-                        tilemap.SetTile(before,m_tileGray);
+                        tilemap.SetTile(before, beforeTile);
                         before = selectCellPos;
+                        beforeTile =  tilemap.GetTile<Tile>(selectCellPos);
+                        tilemap.SetTile(selectCellPos, m_tileYellow);
                     }
                 }
             }
             yield return null;
         }
-        tilemap.SetTile(selectCellPos,m_tileGray);
+        tilemap.SetTile(selectCellPos, beforeTile);
         Walk(nokori, 1, nexts_index);//無限ループ防止用フラグ(分岐で移動しなくなる)
     }
 

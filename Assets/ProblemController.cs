@@ -118,7 +118,6 @@ public class ProblemController : MonoBehaviour
         if(Answer.text == ans_list[last_problem] && isAnswered==false){
             audioSource.PlayOneShot(maru);
             maru_image.SetActive(true);
-            GameController.players_coin[GameController.players_turn]+=5;
             ans = int.Parse(ans_list[last_problem]);
         }else if (isTimeUp==false && isAnswered==false){
             audioSource.PlayOneShot(batu);
