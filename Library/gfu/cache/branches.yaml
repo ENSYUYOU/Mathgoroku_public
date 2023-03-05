@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2023-03-05T17:12:22.166+09:00
-  initializedAtString: 2023-03-05T16:14:21.984+09:00
+  lastUpdatedAtString: 2023-03-05T20:01:09.772+09:00
+  initializedAtString: 2023-03-05T17:55:36.240+09:00
   localBranches:
   - name: Ch1
     tracking: origin/Ch1
   - name: CohnosK
     tracking: origin/CohnosK
+  - name: CohnosK2
+    tracking: 
   - name: Home
     tracking: origin/Home
   - name: main
@@ -49,6 +51,7 @@ MonoBehaviour:
     keys:
     - Ch1
     - CohnosK
+    - CohnosK2
     - Home
     - main
     - "\u30A2\u30A4\u30C6\u30E0\u5C0E\u5165\u524D"
@@ -63,6 +66,11 @@ MonoBehaviour:
         name: origin
         url: https://github.com/ENSYUYOU/mathgoroku_public.git
       trackingBranch: CohnosK
+    - name: CohnosK2
+      remote:
+        name: 
+        url: 
+      trackingBranch: 
     - name: Home
       remote:
         name: origin
