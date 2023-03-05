@@ -54,21 +54,13 @@ public class MasuController : MonoBehaviour
     public TextMeshProUGUI DirichleSyojikin;
 
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //EventMasu();
-        ShopMasu(0,1,2);
-    }
-
     // Update is called once per frame
     void Update()
     {
         currentTime += Time.deltaTime;
         if(currentTime>0.1f && moveName){
             nameID+=1;
-            nameID%=4;//4人選択
+            nameID%=4;//4アイテム選択
             currentTime = 0f;
             name1.color = new Color(0, 0, 0, 1f);
             name2.color = new Color(0, 0, 0, 1f);
@@ -82,14 +74,12 @@ public class MasuController : MonoBehaviour
     }
 
 
-
-
-    private void CoinPlus(){
-        GameController.players_coin[GameController.players_turn] += 1;
+    public void CoinPlus(){
+        GameController.players_coin[GameController.players_turn] += 5;
     }
 
-    private void CoinMinus(){
-        GameController.players_coin[GameController.players_turn] -= 1;
+    public void CoinMinus(){
+        GameController.players_coin[GameController.players_turn] -= 5;
         GameController.players_coin[GameController.players_turn] = Math.Max(GameController.players_coin[GameController.players_turn], 0);
     }
 
@@ -98,10 +88,14 @@ public class MasuController : MonoBehaviour
     ・アイテムの値段を決めて、購入後に所持金を減らす
     ・購入後の画面の切り替えとか色々
     */
-    private void ShopMasu(int newitem1, int newitem2, int newitem3){//入荷アイテム3種類。今選択したアイテム。
-        item1 = newitem1;
-        item2 = newitem2;
-        item3 = newitem3;
+    public GameObject ShopHaikei;
+    public void ShopMasu(){//入荷アイテム3種類。今選択したアイテム。
+        ShopHaikei.SetActive(true);
+        while(item1==item2 || item2==item3 || item3==item1){
+            item1 = saikoro.Next(0, 5);
+            item2 = saikoro.Next(0, 5);
+            item3 = saikoro.Next(0, 5);
+        }
         selected_item = -1;//はじめは存在しないアイテムで初期化
         shopitem1.text = ITEMS[item1];
         shopitem2.text = ITEMS[item2];
@@ -116,11 +110,12 @@ public class MasuController : MonoBehaviour
         shopitem2.color = new Color(0, 0, 0, 1f);
         shopitem3.color = new Color(0, 0, 0, 1f);
         shopitem1.color = new Color(1f, 0.92f, 0.016f, 1f);
-        if(selected_item==0){
+        if(selected_item==item1){
             GameController.players_item[GameController.players_turn, item1] += 1;
             nekoserihu.text = "お買い上げありがとうございます！";
             nekoImage.sprite = nekoImages[5];
             syojikin.text = "×"+ GameController.players_coin[GameController.players_turn].ToString();
+            StartCoroutine(ReturnToSugoroku());
         }else{
             nekoserihu.text = ITEMS[item1] + "にしますか?";
             selected_item = item1;
@@ -134,11 +129,12 @@ public class MasuController : MonoBehaviour
         shopitem2.color = new Color(0, 0, 0, 1f);
         shopitem3.color = new Color(0, 0, 0, 1f);
         shopitem2.color = new Color(1f, 0.92f, 0.016f, 1f);
-        if(selected_item==1){
+        if(selected_item==item2){
                 GameController.players_item[GameController.players_turn, item2] += 1;
                 nekoserihu.text = "お買い上げありがとうございます！";
                 nekoImage.sprite = nekoImages[5];
                 syojikin.text = "×"+ GameController.players_coin[GameController.players_turn].ToString();
+                StartCoroutine(ReturnToSugoroku());
         }else{
             nekoserihu.text = ITEMS[item2] + "にしますか?";
             selected_item = item2;
@@ -151,11 +147,12 @@ public class MasuController : MonoBehaviour
         shopitem2.color = new Color(0, 0, 0, 1f);
         shopitem3.color = new Color(0, 0, 0, 1f);
         shopitem3.color = new Color(1f, 0.92f, 0.016f, 1f);
-        if(selected_item==2){
+        if(selected_item==item3){
             GameController.players_item[GameController.players_turn, item3] += 1;
             nekoserihu.text = "お買い上げありがとうございます！";
             nekoImage.sprite = nekoImages[5];
             syojikin.text = "×"+ GameController.players_coin[GameController.players_turn].ToString();
+            StartCoroutine(ReturnToSugoroku());
         }else{
             nekoserihu.text = ITEMS[item3] + "にしますか?";
             selected_item = item3;
@@ -186,7 +183,7 @@ public class MasuController : MonoBehaviour
             no.SetActive(false);
             Dirichletcomment.text = "まいどありがとうございます";
             DirichleSyojikin.text = "×" + GameController.players_coin[GameController.players_turn].ToString();
-            StartCoroutine(ReturnFromSekisyo());
+            StartCoroutine(ReturnToSugoroku());
         }
     }
 
@@ -195,17 +192,15 @@ public class MasuController : MonoBehaviour
         Dirichletcomment.text = "さようなら";
         yes.SetActive(false);
         no.SetActive(false);
-        StartCoroutine(ReturnFromSekisyo());
+        StartCoroutine(ReturnToSugoroku());
     }
 
 
-    IEnumerator ReturnFromSekisyo(){
-        yield return new WaitForSeconds(3f);
-        SekisyoHaikeiButton.SetActive(false);
-    }
 
 
-    private void EventMasu(){
+    public GameObject EventHaikeiButton;
+    public void EventMasu(){
+        EventHaikeiButton.SetActive(true);
         SugakusyaCommentButton.interactable = false;
         while(nameid1==nameid2 || nameid2==nameid3 || nameid3==nameid4 || nameid4==nameid1){
             nameid1 = saikoro.Next(0, 5);
@@ -221,7 +216,8 @@ public class MasuController : MonoBehaviour
     }
     
 
-    public void StopNameRoulette(){
+    public void StopNameRoulette(){//数学者のルーレットを止めた時の関数
+        if (sugakusyacommentid!=0)return;
         moveName = false;
         int [] selected_list = {nameid1, nameid2, nameid3, nameid4};
         Debug.Log(nameID);
@@ -231,16 +227,20 @@ public class MasuController : MonoBehaviour
     }
 
 
-    public void SugakusyaCommentFunc(){//ボタンを押すと反応
+    public void SugakusyaCommentFunc(){//ボタンを押すと反応。数学者のコメント
         sugakusyacommentid += 1;
         if(sugakusyacommentid < sugakusya_comment_list[selected_sugakusya_id].Count){
             sugakusyacomment.text = sugakusya_comment_list[selected_sugakusya_id][sugakusyacommentid];
         }else{
             SugakusyaCommentButton.interactable = false;
+            StartCoroutine(ReturnToSugoroku());
         }
     }
 
-    public static void F(){
-        Debug.Log("hello");
+    private IEnumerator ReturnToSugoroku(){
+        yield return new WaitForSeconds(2f);
+        ShopHaikei.SetActive(false);
+        EventHaikeiButton.SetActive(false);
+        SekisyoHaikeiButton.SetActive(false);
     }
 }
