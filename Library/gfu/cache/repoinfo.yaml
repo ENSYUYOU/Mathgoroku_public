@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2023-03-05T17:03:24.289+09:00
-  initializedAtString: 2023-03-05T17:03:24.289+09:00
+  lastUpdatedAtString: 2023-03-05T17:18:27.350+09:00
+  initializedAtString: 2023-03-05T17:18:27.350+09:00
   currentGitRemote:
     name: origin
     url: https://github.com/ENSYUYOU/mathgoroku_public.git

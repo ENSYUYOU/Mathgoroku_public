@@ -102,8 +102,8 @@ public class ProblemController : MonoBehaviour
         blackboard.SetActive(false);
         maru_image.SetActive(false);
         batu_image.SetActive(false);
-        SceneManager.LoadScene("SampleScene");
         if(isAnswered)isWalk = true;
+        SceneManager.LoadScene("SampleScene");
     }
 
     //InputFieldの文字が変更されたらコールバックされる。

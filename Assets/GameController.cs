@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public const int PLAYERS_NUM = 4;
+    public const int PLAYERS_NUM = 1;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
     public TextMeshProUGUI endingtext;
     public TextMeshProUGUI syojikin;
@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     public static int players_turn = 0;//今誰のターンか
     static int[,] players_position;
     static int[,,] used;
-    public static int[] players_coin = new int[]{10, 10, 10, 10};//追加2/8(伊藤)
+    public static int[] players_coin = new int[]{0, 10, 10, 10};//追加2/8(伊藤)
     public static int[] players_medal = new int[PLAYERS_NUM];//それぞれのプレイヤーのメダルの数
     public static int[,] players_item = new int[PLAYERS_NUM, 5];//それぞれのプレイヤーのアイテムの数
 
@@ -99,10 +99,12 @@ public class GameController : MonoBehaviour
     public Sprite[] turnImages;
     public AudioClip walkSound;//歩く音
     public AudioClip coinSound;//歩く音
+    public static bool canChange;
     private IEnumerator Change(int x, int y, int nokori, float waitTime){
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
         audioSource.PlayOneShot(walkSound);
+        canChange = true;
         if(nokori==0){
             var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(player_destination[players_turn]));
             if(tile.sprite.name.Contains("blue")) {//プラスます
@@ -112,11 +114,16 @@ public class GameController : MonoBehaviour
                 masucontroller.CoinMinus();
                 audioSource.PlayOneShot(coinSound);
             }else if(tile.sprite.name.Contains("green")){//ショップます
+                yield return new WaitForSeconds(waitTime+1f);
+                canChange = false;
                 masucontroller.EventMasu();
             }else if(tile.sprite.name.Contains("yellow")){
+                yield return new WaitForSeconds(waitTime+1f);
+                canChange = false;
                 masucontroller.ShopMasu();
             }
             yield return new WaitForSeconds(waitTime+2f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
+            while(!canChange)yield return null;
             players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
             players_turn %= PLAYERS_NUM;
             turn.interactable = true;
@@ -178,10 +185,13 @@ public class GameController : MonoBehaviour
         var bound = tilemap.cellBounds;
         for(int i=0; i<ans; i++){//ansが正のときでないと動かない
             List<List<int>> Nexts = new List<List<int>>();
+            int x, y;
+            x = players_position[players_turn, 0];
+            y = players_position[players_turn, 1];
             for(int j=0; j<4; j++){//上下左右の探索
                 List<int> next = new List<int>();
-                int nx_kouho = players_position[players_turn, 0] + delta[j, 0];
-                int ny_kouho = players_position[players_turn, 1] + delta[j, 1];
+                int nx_kouho = x + delta[j, 0];
+                int ny_kouho = y + delta[j, 1];
                 if (!tilemap.HasTile(new Vector3Int(nx_kouho, ny_kouho, 0)))continue;//タイルマップ上にタイルがあるか調べる
                 if (used[players_turn, nx_kouho-bound.min.x, ny_kouho-bound.min.y] >= 1)continue;//n番目のプレイヤーの通った道の記録を呼び出して、
                 next.Add(nx_kouho);
@@ -224,12 +234,15 @@ public class GameController : MonoBehaviour
     private void WalkRev(int ans, int flg=0, int nexts_index=0){
         int[,] delta = new int[,] {{0,-1}, {1,0}, {0,1}, {-1,0},};//下右上左の方向、jが変わるとアクセスされるデルタが変わる
         var bound = tilemap.cellBounds;
-        for(int i=0; i<ans; i++){//ansが負のときでないと動かない
+        for(int i=0; i<ans; i++){
+            int x, y;
+            x = players_position[players_turn, 0];
+            y = players_position[players_turn, 1];
             List<List<int>> Nexts = new List<List<int>>();
             for(int j=0; j<4; j++){//上下左右の探索
                 List<int> next = new List<int>();
-                int nx_kouho = players_position[players_turn, 0] + delta[j, 0];
-                int ny_kouho = players_position[players_turn, 1] + delta[j, 1];
+                int nx_kouho = x + delta[j, 0];
+                int ny_kouho = y + delta[j, 1];
                 if (!tilemap.HasTile(new Vector3Int(nx_kouho, ny_kouho, 0)))continue;
                 if (used[players_turn, nx_kouho-bound.min.x, ny_kouho-bound.min.y] == 0)continue;
                 next.Add(nx_kouho);
@@ -243,10 +256,9 @@ public class GameController : MonoBehaviour
             int nx, ny;
             nx = Nexts[0][0];
             ny = Nexts[0][1];
-            
+            used[players_turn, x-bound.min.x, y-bound.min.y] = 0;//通った道を記録
             players_position[players_turn, 0] = nx;
             players_position[players_turn, 1] = ny;
-            used[players_turn, nx-bound.min.x, ny-bound.min.y] = 0;//通った道を記録
             StartCoroutine(Change(nx, ny, ans-i-1, 0.3f*i));
             player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(nx, ny, 0));//タイル換算の位置にしている
         }
