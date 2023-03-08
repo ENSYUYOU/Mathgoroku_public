@@ -13,9 +13,9 @@ public class GameController : MonoBehaviour
     public MasuController masucontroller;
     public const int PLAYERS_NUM = 2;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
-    public TextMeshProUGUI endingtext;
+    public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
+
     public TextMeshProUGUI syojikin;
-    public TextMeshProUGUI skiptext;
 
     public static GameObject player1;
     public static GameObject player2;
@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
     public AudioClip BGM;//BGM用のpublic変数
     static float bgmTime;//シーンに映るときにBGMが初めに戻らないようにする変数。
 
-
+    public Button ItemPanelButton;
     void Start(){
         var builder = new StringBuilder();//タイルマップ表示用プログラム
         var bound = tilemap.cellBounds;
@@ -81,6 +81,7 @@ public class GameController : MonoBehaviour
         CameraControl2.MoveCamera();
         if(ProblemController.isWalk){
             turn.interactable = false;
+            ItemPanelButton.interactable = false;
             if(ProblemController.ans >= 0){
                 Walk(ProblemController.ans);
             }else if(ProblemController.ans < 0){
@@ -129,17 +130,19 @@ public class GameController : MonoBehaviour
             if(ItemController.skip_flg[players_turn]==1){//スキップフラグ
                 turnImage.sprite = turnImages[players_turn];
                 yield return new WaitForSeconds(1f);
-                skiptext.text = "スキップ！";
+                message.text = "スキップ！";
                 yield return new WaitForSeconds(2f);
                 players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
                 players_turn %= PLAYERS_NUM;
-                skiptext.text = "";
+                message.text = "";
             }
             turnImage.sprite = turnImages[players_turn];
             turn.interactable = true;
+            ItemPanelButton.interactable = true;
         }
     }
     
+
     void Update(){
         syojikin.text = "×" + players_coin[players_turn].ToString();
         float speed = 0.5f;
@@ -275,7 +278,7 @@ public class GameController : MonoBehaviour
     
 
     void Ending(){
-        endingtext.text = "Player" + players_turn.ToString() + " Wins!";
+        message.text = "Player" + players_turn.ToString() + " Wins!";
     }
     
     public void Turn(){
