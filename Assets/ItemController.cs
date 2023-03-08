@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;//ランダム変数用
 using TMPro;
+using UnityEngine.Tilemaps;//マス目を記録したタイルマップ
 using UnityEngine.UI;
 using System.Linq;//Containsメソッド用
 
@@ -21,10 +22,16 @@ public class ItemController : MonoBehaviour
 
     public GameController gamecontroller;
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
-  
-
+    public Tilemap tilemap;
+    static List<Vector3Int> SarachiPos = new List<Vector3Int>();
+    void Start(){
+        for(int i=0; i<SarachiPos.Count; i++){
+            tilemap.SetTile(SarachiPos[i], Gray);
+        }
+    }
     // Update is called once per frame
 
+    public TileBase Gray;//選択しているタイル
     void Update()
     {   
         int players_turn = GameController.players_turn;
@@ -33,6 +40,20 @@ public class ItemController : MonoBehaviour
         if(used[2]!=0)item3.text = itemlist[2] + "×" + GameController.players_item[players_turn, 2].ToString();
         if(used[3]!=0)item4.text = itemlist[3] + "×" + GameController.players_item[players_turn, 3].ToString();
         if(used[4]!=0)item5.text = itemlist[4] + "×" + GameController.players_item[players_turn, 4].ToString();
+
+        if (Input.GetMouseButtonDown(0) && sarachicount>=1 ){//更地カード関係
+            Vector3 pos = Input.mousePosition;   
+            Vector3Int selectCellPos = tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos));
+            var tile = tilemap.GetTile<Tile>(selectCellPos);
+            if(tilemap.HasTile(selectCellPos) && tile.sprite.name!="castleCenter_rounded_naname"){
+                tilemap.SetTile(selectCellPos, Gray);
+                SarachiPos.Add(selectCellPos);
+                sarachicount -= 1;
+                if(sarachicount==0)StartCoroutine(Message("更地完了！"));
+                else StartCoroutine(Message("残り" + sarachicount.ToString() + "マス！"));
+
+            }
+        }
     }
 
 
@@ -49,10 +70,9 @@ public class ItemController : MonoBehaviour
     }
 
     public void Reverse(){//リバースカード
-        reverse *= -1;
         if(GameController.players_item[GameController.players_turn, 1] >= 1){
             GameController.players_item[GameController.players_turn, 1] -= 1;
-             reverse *= -1;
+            reverse *= -1;
             StartCoroutine(Message("リバースカード！"));
         }
     }
@@ -63,15 +83,18 @@ public class ItemController : MonoBehaviour
 
     }
 
+    int sarachicount;
     public void Sarachi(){//更地カード
-
+        if(GameController.players_item[GameController.players_turn, 2] >= 1){
+            StartCoroutine(Message("更地カード！", 2));
+        }
     }
 
 
     public void ShiteiMasu(){//指定マスカード
-        if(GameController.players_item[GameController.players_turn, 4] >= 0){
+        if(GameController.players_item[GameController.players_turn, 4] >= 1){
             GameController.players_item[GameController.players_turn,4] -= 1;
-            StartCoroutine(Message("指定マスカード！", true));
+            StartCoroutine(Message("指定マスカード！", 4));
         }
     }
 
@@ -88,13 +111,18 @@ public class ItemController : MonoBehaviour
 
     public Button ItemPanelButton;
     public GameObject ItemPanel;
-    IEnumerator Message(string newmessage, bool isShiteiMasuCard=false){//メッセージ, 指定マスパネルのときはパネルを出すアクティブにする
+    IEnumerator Message(string newmessage, int cardid=-1){//メッセージ, 指定マスパネルのときはパネルを出すアクティブにする
         ItemPanelButton.interactable = false;
         ItemPanel.SetActive(false);
         message.text = newmessage;
         yield return new WaitForSeconds(1f);
         message.text = "";
-        if (isShiteiMasuCard){
+        if(cardid==2){//更地カード
+            message.text = "残り3マス!";
+            yield return new WaitForSeconds(1f);
+            message.text = "";
+            sarachicount = 3;
+        }else if(cardid==4){
             ShiteiMasuPanel.SetActive(true);
         }
     }

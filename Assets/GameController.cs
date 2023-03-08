@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public MasuController masucontroller;
     public const int PLAYERS_NUM = 2;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
+
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
 
     public TextMeshProUGUI syojikin;
@@ -115,15 +116,15 @@ public class GameController : MonoBehaviour
                 masucontroller.CoinMinus();
                 audioSource.PlayOneShot(coinSound);
             }else if(tile.sprite.name.Contains("green")){//ショップます
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1f);
                 canChange = false;
                 masucontroller.EventMasu();
             }else if(tile.sprite.name.Contains("yellow")){
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1f);
                 canChange = false;
                 masucontroller.ShopMasu();
             }
-            yield return new WaitForSeconds(2f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
+            yield return new WaitForSeconds(1f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
             while(!canChange)yield return null;//店にいる間は動かない
             players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
             players_turn %= PLAYERS_NUM;
