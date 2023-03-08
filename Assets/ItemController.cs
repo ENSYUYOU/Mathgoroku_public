@@ -12,22 +12,17 @@ public class ItemController : MonoBehaviour
     public TextMeshProUGUI item3;
     public TextMeshProUGUI item4;
     public TextMeshProUGUI item5;
-    public static int reverse = -1;//リバースフラグ。-1の時逆順になる
+    public static int reverse = 1;//リバースフラグ。-1の時逆順になる
     public static int[] skip = new int[] {0, 0, 0, 0};//それぞれの人のスキップフラグ
 
     string[] itemlist = new string[] {"SKIPカード", "リバースカード", "保険証", "更地カード", "指定マスカード"};
     static int[] used = new int[] {1, 1, 1, 1, 1};//使ったアイテムは???から実際の名前にする
 
-    public GameController gameobject;
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-
-    }
+    public GameController gamecontroller;
+  
 
     // Update is called once per frame
-    float currentTime = 0f;
+
     void Update()
     {   
         int players_turn = GameController.players_turn;
@@ -39,12 +34,16 @@ public class ItemController : MonoBehaviour
     }
     
     public void ShiteiMasu(){//指定マスカード
-        gameobject.Walk(3,0,0);
+        gamecontroller.Walk(3,0,0);
     }
 
+
+    public static int[] skip_flg = new int[] {0, 1, 0, 0};
     public void Skip(){//Skipカード
-        GameController.players_turn += 1;
-        GameController.players_turn %= GameController.PLAYERS_NUM;
+        int next_player = GameController.players_turn;
+        next_player += reverse;
+        next_player %= GameController.PLAYERS_NUM;
+        skip_flg[next_player] = 1;//スキップフラグを1に
     }
 
     public void Reverse(){//リバースカード
@@ -57,5 +56,11 @@ public class ItemController : MonoBehaviour
 
     public void HokenSyo(){
 
+    }
+
+    public GameObject ItemPanel;
+    public void ItemPanelActive(){
+        if(ItemPanel.activeSelf) ItemPanel.SetActive(false);
+        else ItemPanel.SetActive(true);
     }
 }

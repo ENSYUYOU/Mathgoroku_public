@@ -11,11 +11,11 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public const int PLAYERS_NUM = 1;
+    public const int PLAYERS_NUM = 2;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
     public TextMeshProUGUI endingtext;
     public TextMeshProUGUI syojikin;
-    
+    public TextMeshProUGUI skiptext;
 
     public static GameObject player1;
     public static GameObject player2;
@@ -114,20 +114,29 @@ public class GameController : MonoBehaviour
                 masucontroller.CoinMinus();
                 audioSource.PlayOneShot(coinSound);
             }else if(tile.sprite.name.Contains("green")){//ショップます
-                yield return new WaitForSeconds(waitTime+1f);
+                yield return new WaitForSeconds(0.5f);
                 canChange = false;
                 masucontroller.EventMasu();
             }else if(tile.sprite.name.Contains("yellow")){
-                yield return new WaitForSeconds(waitTime+1f);
+                yield return new WaitForSeconds(0.5f);
                 canChange = false;
                 masucontroller.ShopMasu();
             }
-            yield return new WaitForSeconds(waitTime+2f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
-            while(!canChange)yield return null;
+            yield return new WaitForSeconds(2f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
+            while(!canChange)yield return null;//店にいる間は動かない
             players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
             players_turn %= PLAYERS_NUM;
-            turn.interactable = true;
+            if(ItemController.skip_flg[players_turn]==1){//スキップフラグ
+                turnImage.sprite = turnImages[players_turn];
+                yield return new WaitForSeconds(1f);
+                skiptext.text = "スキップ！";
+                yield return new WaitForSeconds(2f);
+                players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
+                players_turn %= PLAYERS_NUM;
+                skiptext.text = "";
+            }
             turnImage.sprite = turnImages[players_turn];
+            turn.interactable = true;
         }
     }
     
