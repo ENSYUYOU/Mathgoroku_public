@@ -1,13 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<<< HEAD:Assets/Images/naname/sekisho.png.meta
-guid: 3f449d4020a247046bc32442a93ce311
-========
 guid: aa21a4e054114ae4098fb3d243e4a7fb
->>>>>>>> 1fbe775bf7b018d27f21d4b732b8ee72e233958c:Assets/Images/naname/IsometricTileSet_38.png.meta
-=======
-guid: aa21a4e054114ae4098fb3d243e4a7fb
->>>>>>> 1fbe775bf7b018d27f21d4b732b8ee72e233958c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
