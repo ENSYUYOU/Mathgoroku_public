@@ -56,9 +56,9 @@ TagManager:
   - name: Path5
     uniqueID: 637931709
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Sekisho
     uniqueID: 2129697839
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
