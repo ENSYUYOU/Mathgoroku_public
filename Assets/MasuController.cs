@@ -222,9 +222,9 @@ public class MasuController : MonoBehaviour
 
 
 
-    public GameObject EventHaikeiButton;
+    public GameObject EventHaikei;
     public void EventMasu(){
-        EventHaikeiButton.SetActive(true);
+        EventHaikei.SetActive(true);
         SugakusyaCommentButton.interactable = false;
         while(nameid1==nameid2 || nameid2==nameid3 || nameid3==nameid4 || nameid4==nameid1){
             nameid1 = saikoro.Next(0, 5);
@@ -264,7 +264,7 @@ public class MasuController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         GameController.canChange = true;
         ShopHaikei.SetActive(false);
-        EventHaikeiButton.SetActive(false);
+        EventHaikei.SetActive(false);
         SekisyoHaikeiButton.SetActive(false);
     }
 }
