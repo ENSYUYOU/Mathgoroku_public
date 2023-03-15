@@ -188,8 +188,8 @@ public class GameController : MonoBehaviour
                 var bound = tilemap.cellBounds;
                 var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
                 //Debug.Log(tile.sprite.name);
-                Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
-                                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);
+                /*Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
+                                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);*/
                 //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x);
         }
     }
