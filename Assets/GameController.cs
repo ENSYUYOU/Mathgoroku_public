@@ -72,8 +72,10 @@ public class GameController : MonoBehaviour
 
         if (syokika){
             bgmTime = 0f;//BGMを初めから
-            int sx = -5;//スタート地点の座標。
-            int sy = -1;
+            //int sx = -5;//スタート地点の座標。
+            //int sy = -1;
+            int sx = 47;//スタート地点の座標。
+            int sy = 3;
             players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
             player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
                                                       tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
@@ -110,6 +112,7 @@ public class GameController : MonoBehaviour
     public AudioClip walkSound;//歩く音
     public AudioClip coinSound;//歩く音
     public static bool canChange;
+     public TileBase tileBunkiBlue;//普通の青タイル
     private IEnumerator Change(int x, int y, int nokori, float waitTime, bool rev=false){
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
@@ -140,22 +143,27 @@ public class GameController : MonoBehaviour
             
                 yield return new WaitForSeconds(1f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
                 while(!canChange)yield return null;//店にいる間は動かない
-
-                if(tile.sprite.name.Contains("kakushi1")){//ショップ優先でその後隠します解除
+                Debug.Log("hello");
+                if(tile.sprite.name.Contains("kakushi1")){//ショップ優先でその後隠します解除。以後普通の分岐ますに
                     yield return new WaitForSeconds(1f);
                     path1.SetActive(false);
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tileBunkiBlue);
                 }else if(tile.sprite.name.Contains("kakushi2")){
                     yield return new WaitForSeconds(1f);
                     path2.SetActive(false);
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tileBunkiBlue);
                 }else if(tile.sprite.name.Contains("kakushi3")){
                     yield return new WaitForSeconds(1f);
                     path3.SetActive(false);
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tileBunkiBlue);
                 }else if(tile.sprite.name.Contains("kakushi4")){
                     yield return new WaitForSeconds(1f);
                     path4.SetActive(false);
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tileBunkiBlue);
                 }else if(tile.sprite.name.Contains("kakushi5")){
                     yield return new WaitForSeconds(1f);
                     path5.SetActive(false);
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tileBunkiBlue);
                 }
             }
             players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
@@ -187,10 +195,10 @@ public class GameController : MonoBehaviour
                 Vector3 pos = Input.mousePosition;   
                 var bound = tilemap.cellBounds;
                 var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
-                //Debug.Log(tile.sprite.name);
-                /*Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
-                                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);*/
-                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x);
+                Debug.Log(tile.sprite.name);
+                //Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
+                //                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);
+                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
         }
     }
 
@@ -224,7 +232,7 @@ public class GameController : MonoBehaviour
         Walk(nokori, 1, nexts_index);//無限ループ防止用フラグ(分岐で移動しなくなる)
     }
 
-    
+    int[,] kakushi_next = new int[,]{{0, 1}, {1, 0}, {0, 1}, {1, 0}, {0, -1}};//隠しますが見えていない時に進むます
     public void Walk(int ans, int flg=0, int nexts_index=0){//答え、歩き初めに1にするフラグ、分岐の時の次のマス
         if(ans==0){//残りゼロマスだとそのまま
             StartCoroutine(Change(players_position[players_turn, 0], players_position[players_turn, 1], 0, 0.3f));
@@ -248,7 +256,14 @@ public class GameController : MonoBehaviour
                 next.Add(ny_kouho);
                 Nexts.Add(next);
             }else{*/
-                for(int j=0; j<4; j++){//上下左右の探索
+            if (tilename.Contains("kakushi")){//まだ隠しますが見えていない
+                List<int> next = new List<int>();
+                nx_kouho = x + kakushi_next[tilename[7]-'1', 0];
+                ny_kouho = y + kakushi_next[tilename[7]-'1', 1];
+                next.Add(nx_kouho);
+                next.Add(ny_kouho);
+                Nexts.Add(next);
+            }else{for(int j=0; j<4; j++){//上下左右の探索
                     List<int> next = new List<int>();
                     nx_kouho = x + delta[j, 0];
                     ny_kouho = y + delta[j, 1];
@@ -259,9 +274,10 @@ public class GameController : MonoBehaviour
                     Nexts.Add(next);
                 } 
                 if(Nexts.Count==0){//行き止まりはゴールとして判定
-                    Ending();
+                    StartCoroutine(Ending(0.3f*i));
                     return;
                 }
+            }
             //}
 
             int nx, ny;
@@ -283,7 +299,7 @@ public class GameController : MonoBehaviour
 
             if(tilename.Contains("sekisho")&&flg==1)used[players_turn, x-bound.min.x, y-bound.min.y]=0;//Walkrevで関所より前に戻らないように
 
-            flg=0;
+            flg=0;//歩き始め以外はフラグは0
             players_position[players_turn, 0] = nx;
             players_position[players_turn, 1] = ny;
             used[players_turn, nx-bound.min.x, ny-bound.min.y] = 1;//通った道を記録
@@ -326,7 +342,8 @@ public class GameController : MonoBehaviour
     }
     
 
-    void Ending(){
+    IEnumerator Ending(float t){
+        yield return new WaitForSeconds(t);
         message.text = "Player" + players_turn.ToString() + " Wins!";
     }
     

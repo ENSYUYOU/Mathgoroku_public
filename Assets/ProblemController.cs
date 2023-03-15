@@ -8,9 +8,10 @@ using UnityEngine.UI;
 
 public class ProblemController : MonoBehaviour
 {
-    string[] problem_list = new string [] {"2+2=", "log<sub>2</sub>4=", "1+2=", "sin<sup>2</sup><i>Θ</i>+cos<sup>2</sup><i>Θ</i>=", "<i>a</i><sub>1</sub>=2, <i>a<sub>n</i>+1</sub>=2<i>a<sub>n</sub></i>+1, <i>a</i><sub>3</sub>=</i>", "(2+<i>i</i>)(2-<i>i</i>)=", "2sin(<i>π</i>/4)cos(<i>π</i>/4)=", "log<sub>3</sub>9=", "2<sup>2</sup>=", "-6cos<i>π</i>="};
+    string[] problem_list = new string [] {"", "log<sub>2</sub>4=", "1+2=", "sin<sup>2</sup><i>Θ</i>+cos<sup>2</sup><i>Θ</i>=", "<i>a</i><sub>1</sub>=2, <i>a<sub>n</i>+1</sub>=2<i>a<sub>n</sub></i>+1, <i>a</i><sub>3</sub>=</i>", "(2+<i>i</i>)(2-<i>i</i>)=", "2sin(<i>π</i>/4)cos(<i>π</i>/4)=", "log<sub>3</sub>9=", "2<sup>2</sup>=", "-6cos<i>π</i>="};
     //string[] ans_list = new string [] {"", "90", "90", "90", "90", "90", "90", "90", "90", "90"};
-    string[] ans_list = new string [] {"4", "2", "3", "1", "11", "5", "1", "2", "4", "6"};
+    string[] ans_list = new string [] {"", "15", "15", "15", "15", "15", "15", "15", "15", "15"};
+    //string[] ans_list = new string [] {"", "2", "3", "1", "11", "5", "1", "2", "4", "6"};
     public TextMeshProUGUI Problem;
     public TextMeshProUGUI Timer;
     public TMP_InputField Answer;
