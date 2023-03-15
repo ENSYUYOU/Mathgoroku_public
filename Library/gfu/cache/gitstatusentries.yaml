@@ -13,732 +13,522 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2023-03-15T14:54:37.435+09:00
+  lastUpdatedAtString: 2023-03-15T15:32:49.686+09:00
   initializedAtString: 2023-03-15T14:37:32.380+09:00
   entries:
+  - path: Assets\Images\bg.png
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\Images\\bg.png"
+    projectPath: Assets\Images\bg.png
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Assets\Images\bg.png.meta
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\Images\\bg.png.meta"
+    projectPath: Assets\Images\bg.png.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Assets\Images\eventhaikei.jpg
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\Images\\eventhaikei.jpg"
+    projectPath: Assets\Images\eventhaikei.jpg
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Assets\Images\eventhaikei.jpg.meta
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\Images\\eventhaikei.jpg.meta"
+    projectPath: Assets\Images\eventhaikei.jpg.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Assets\MasuController.cs
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\MasuController.cs"
+    projectPath: Assets\MasuController.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: Assets\Scenes\SampleScene.unity
     fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\Scenes\\SampleScene.unity"
     projectPath: Assets\Scenes\SampleScene.unity
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: "Assets\\Sounds\\\u3042\u308B\u5C11\u5973\u306E\u5192\u967A\u8B5A\u7684\u306ABGM.mp3"
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\Sounds\\\u3042\u308B\u5C11\u5973\u306E\u5192\u967A\u8B5A\u7684\u306ABGM.mp3"
-    projectPath: "Assets\\Sounds\\\u3042\u308B\u5C11\u5973\u306E\u5192\u967A\u8B5A\u7684\u306ABGM.mp3"
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: "Assets\\Sounds\\\u3042\u308B\u5C11\u5973\u306E\u5192\u967A\u8B5A\u7684\u306ABGM.mp3.meta"
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\Sounds\\\u3042\u308B\u5C11\u5973\u306E\u5192\u967A\u8B5A\u7684\u306ABGM.mp3.meta"
-    projectPath: "Assets\\Sounds\\\u3042\u308B\u5C11\u5973\u306E\u5192\u967A\u8B5A\u7684\u306ABGM.mp3.meta"
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: "Assets\\Sounds\\\u5C71\u306E\u9E93\u306B\u3042\u308B\u8857\u7684\u306ABGM.mp3"
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\Sounds\\\u5C71\u306E\u9E93\u306B\u3042\u308B\u8857\u7684\u306ABGM.mp3"
-    projectPath: "Assets\\Sounds\\\u5C71\u306E\u9E93\u306B\u3042\u308B\u8857\u7684\u306ABGM.mp3"
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: "Assets\\Sounds\\\u5C71\u306E\u9E93\u306B\u3042\u308B\u8857\u7684\u306ABGM.mp3.meta"
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Assets\\Sounds\\\u5C71\u306E\u9E93\u306B\u3042\u308B\u8857\u7684\u306ABGM.mp3.meta"
-    projectPath: "Assets\\Sounds\\\u5C71\u306E\u9E93\u306B\u3042\u308B\u8857\u7684\u306ABGM.mp3.meta"
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
   - path: Library\ArtifactDB
     fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\ArtifactDB"
     projectPath: Library\ArtifactDB
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Library\Artifacts\04\04795f7e7a4f773ce703b6b9ad91d3d0
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\04\\04795f7e7a4f773ce703b6b9ad91d3d0"
-    projectPath: Library\Artifacts\04\04795f7e7a4f773ce703b6b9ad91d3d0
+  - path: Library\Artifacts\05\058551f7d6f4b5fdff4dfefc910b0d7e
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\05\\058551f7d6f4b5fdff4dfefc910b0d7e"
+    projectPath: Library\Artifacts\05\058551f7d6f4b5fdff4dfefc910b0d7e
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\05\05783f8a8b3d127e469ec3de7fe4afbc
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\05\\05783f8a8b3d127e469ec3de7fe4afbc"
-    projectPath: Library\Artifacts\05\05783f8a8b3d127e469ec3de7fe4afbc
+  - path: Library\Artifacts\09\09bc86a72600a3364b4fb475870dab81
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\09\\09bc86a72600a3364b4fb475870dab81"
+    projectPath: Library\Artifacts\09\09bc86a72600a3364b4fb475870dab81
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\05\05f058227dfb747649a5ed8b41447e56
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\05\\05f058227dfb747649a5ed8b41447e56"
-    projectPath: Library\Artifacts\05\05f058227dfb747649a5ed8b41447e56
+  - path: Library\Artifacts\15\1512840755c3792daa3d0118b9063c30
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\15\\1512840755c3792daa3d0118b9063c30"
+    projectPath: Library\Artifacts\15\1512840755c3792daa3d0118b9063c30
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\06\06cfc155168666013dbf3814fbf42e97
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\06\\06cfc155168666013dbf3814fbf42e97"
-    projectPath: Library\Artifacts\06\06cfc155168666013dbf3814fbf42e97
+  - path: Library\Artifacts\15\15e0d673237a4a2e02bc9aaac5eac4ad
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\15\\15e0d673237a4a2e02bc9aaac5eac4ad"
+    projectPath: Library\Artifacts\15\15e0d673237a4a2e02bc9aaac5eac4ad
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\08\0881b560be992e9f31cf31954b37502f
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\08\\0881b560be992e9f31cf31954b37502f"
-    projectPath: Library\Artifacts\08\0881b560be992e9f31cf31954b37502f
+  - path: Library\Artifacts\1d\1df409da33638ce0a685d2155e46e69c
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\1d\\1df409da33638ce0a685d2155e46e69c"
+    projectPath: Library\Artifacts\1d\1df409da33638ce0a685d2155e46e69c
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\08\08c9b0261331bbb40c40d5ccba61e765
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\08\\08c9b0261331bbb40c40d5ccba61e765"
-    projectPath: Library\Artifacts\08\08c9b0261331bbb40c40d5ccba61e765
+  - path: Library\Artifacts\20\2090953b03e13ade585d99a6d996b94e
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\20\\2090953b03e13ade585d99a6d996b94e"
+    projectPath: Library\Artifacts\20\2090953b03e13ade585d99a6d996b94e
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\0a\0a292e422c07b4919a0470828d941402
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\0a\\0a292e422c07b4919a0470828d941402"
-    projectPath: Library\Artifacts\0a\0a292e422c07b4919a0470828d941402
+  - path: Library\Artifacts\25\25a29b4afdc59501da0bb1f2258b6fb7
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\25\\25a29b4afdc59501da0bb1f2258b6fb7"
+    projectPath: Library\Artifacts\25\25a29b4afdc59501da0bb1f2258b6fb7
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\0d\0d6c67e816da518f747206d590891480
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\0d\\0d6c67e816da518f747206d590891480"
-    projectPath: Library\Artifacts\0d\0d6c67e816da518f747206d590891480
+  - path: Library\Artifacts\26\26e323c8ab70144884d427ec027605ef
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\26\\26e323c8ab70144884d427ec027605ef"
+    projectPath: Library\Artifacts\26\26e323c8ab70144884d427ec027605ef
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\0f\0f8547f3ee124ac1b4f48938e83bd8ed
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\0f\\0f8547f3ee124ac1b4f48938e83bd8ed"
-    projectPath: Library\Artifacts\0f\0f8547f3ee124ac1b4f48938e83bd8ed
+  - path: Library\Artifacts\28\2875b2c6c635afeb32b2a4834c73f43b
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\28\\2875b2c6c635afeb32b2a4834c73f43b"
+    projectPath: Library\Artifacts\28\2875b2c6c635afeb32b2a4834c73f43b
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\10\10c3a0b23330dc233c5e134bb6f875b1
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\10\\10c3a0b23330dc233c5e134bb6f875b1"
-    projectPath: Library\Artifacts\10\10c3a0b23330dc233c5e134bb6f875b1
+  - path: Library\Artifacts\29\29b406bf018056aa32a7ae18025b3709
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\29\\29b406bf018056aa32a7ae18025b3709"
+    projectPath: Library\Artifacts\29\29b406bf018056aa32a7ae18025b3709
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\13\13a876b89d68d20097ff7e66dadf58b2
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\13\\13a876b89d68d20097ff7e66dadf58b2"
-    projectPath: Library\Artifacts\13\13a876b89d68d20097ff7e66dadf58b2
+  - path: Library\Artifacts\2d\2d5b87d64fbba53f26a785ea9929a6fc
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\2d\\2d5b87d64fbba53f26a785ea9929a6fc"
+    projectPath: Library\Artifacts\2d\2d5b87d64fbba53f26a785ea9929a6fc
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\1e\1e84259574db68a919568b0329f3c0cd
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\1e\\1e84259574db68a919568b0329f3c0cd"
-    projectPath: Library\Artifacts\1e\1e84259574db68a919568b0329f3c0cd
+  - path: Library\Artifacts\3b\3bbca5a714eccc2896e38c10f4bfb7e8
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\3b\\3bbca5a714eccc2896e38c10f4bfb7e8"
+    projectPath: Library\Artifacts\3b\3bbca5a714eccc2896e38c10f4bfb7e8
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\1f\1f01cacd5e115c9e980b093c35fa09de
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\1f\\1f01cacd5e115c9e980b093c35fa09de"
-    projectPath: Library\Artifacts\1f\1f01cacd5e115c9e980b093c35fa09de
+  - path: Library\Artifacts\3b\3bc57d93024dd02d8e3ea635a426c7b7
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\3b\\3bc57d93024dd02d8e3ea635a426c7b7"
+    projectPath: Library\Artifacts\3b\3bc57d93024dd02d8e3ea635a426c7b7
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\27\27bc3ba6d45df52976b0a1b3e0fee9fd
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\27\\27bc3ba6d45df52976b0a1b3e0fee9fd"
-    projectPath: Library\Artifacts\27\27bc3ba6d45df52976b0a1b3e0fee9fd
+  - path: Library\Artifacts\3b\3bfd9049060d97cbe8f412240a9ae0f2
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\3b\\3bfd9049060d97cbe8f412240a9ae0f2"
+    projectPath: Library\Artifacts\3b\3bfd9049060d97cbe8f412240a9ae0f2
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\27\27fa42064347dd131eaab2c9b2d444e6
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\27\\27fa42064347dd131eaab2c9b2d444e6"
-    projectPath: Library\Artifacts\27\27fa42064347dd131eaab2c9b2d444e6
+  - path: Library\Artifacts\45\4504d39fc6bbece6f5d531658984ae2f
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\45\\4504d39fc6bbece6f5d531658984ae2f"
+    projectPath: Library\Artifacts\45\4504d39fc6bbece6f5d531658984ae2f
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\2f\2f7bb8c70155579c472a787528d25e39
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\2f\\2f7bb8c70155579c472a787528d25e39"
-    projectPath: Library\Artifacts\2f\2f7bb8c70155579c472a787528d25e39
+  - path: Library\Artifacts\46\4654e38d807b778c8739d1fa18e5739c
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\46\\4654e38d807b778c8739d1fa18e5739c"
+    projectPath: Library\Artifacts\46\4654e38d807b778c8739d1fa18e5739c
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\36\3633341577ef71d7ff0cf31cb3a32b44
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\36\\3633341577ef71d7ff0cf31cb3a32b44"
-    projectPath: Library\Artifacts\36\3633341577ef71d7ff0cf31cb3a32b44
+  - path: Library\Artifacts\49\495a8dac9816a098226f168ae612b5c5
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\49\\495a8dac9816a098226f168ae612b5c5"
+    projectPath: Library\Artifacts\49\495a8dac9816a098226f168ae612b5c5
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\36\36eac21a88cbf608e9eaa2778e1522c1
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\36\\36eac21a88cbf608e9eaa2778e1522c1"
-    projectPath: Library\Artifacts\36\36eac21a88cbf608e9eaa2778e1522c1
+  - path: Library\Artifacts\4a\4ab4c4272320d27a2ba9e202bcdd6514
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\4a\\4ab4c4272320d27a2ba9e202bcdd6514"
+    projectPath: Library\Artifacts\4a\4ab4c4272320d27a2ba9e202bcdd6514
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\37\37a24adcfd8ae0538d12994ad006ffa6
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\37\\37a24adcfd8ae0538d12994ad006ffa6"
-    projectPath: Library\Artifacts\37\37a24adcfd8ae0538d12994ad006ffa6
+  - path: Library\Artifacts\4a\4ae3a039ab3af41f9001753ec4e41ae1
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\4a\\4ae3a039ab3af41f9001753ec4e41ae1"
+    projectPath: Library\Artifacts\4a\4ae3a039ab3af41f9001753ec4e41ae1
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\38\3877f5c2aa0d3cafa5f3286699d13d93
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\38\\3877f5c2aa0d3cafa5f3286699d13d93"
-    projectPath: Library\Artifacts\38\3877f5c2aa0d3cafa5f3286699d13d93
+  - path: Library\Artifacts\50\50b25341cfc59f7acfecbd802a3ff20e
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\50\\50b25341cfc59f7acfecbd802a3ff20e"
+    projectPath: Library\Artifacts\50\50b25341cfc59f7acfecbd802a3ff20e
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\3a\3a0dd1dbd50f5374aba343af61bffa62
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\3a\\3a0dd1dbd50f5374aba343af61bffa62"
-    projectPath: Library\Artifacts\3a\3a0dd1dbd50f5374aba343af61bffa62
+  - path: Library\Artifacts\54\540190bc36144087c59b666bb64a8353
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\54\\540190bc36144087c59b666bb64a8353"
+    projectPath: Library\Artifacts\54\540190bc36144087c59b666bb64a8353
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\3c\3c5af0dcdddb7ee1c062918c79954b19
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\3c\\3c5af0dcdddb7ee1c062918c79954b19"
-    projectPath: Library\Artifacts\3c\3c5af0dcdddb7ee1c062918c79954b19
+  - path: Library\Artifacts\55\55304e6f13b1d05a5e04ff2efae2bf8b
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\55\\55304e6f13b1d05a5e04ff2efae2bf8b"
+    projectPath: Library\Artifacts\55\55304e6f13b1d05a5e04ff2efae2bf8b
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\3d\3d05998bdfeb0297b76ebacef56f4336
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\3d\\3d05998bdfeb0297b76ebacef56f4336"
-    projectPath: Library\Artifacts\3d\3d05998bdfeb0297b76ebacef56f4336
+  - path: Library\Artifacts\55\55c607812e9763d1f45ba18f5d17a574
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\55\\55c607812e9763d1f45ba18f5d17a574"
+    projectPath: Library\Artifacts\55\55c607812e9763d1f45ba18f5d17a574
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\3d\3d99d4fdb6653aa8ea20faa32e337e6d
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\3d\\3d99d4fdb6653aa8ea20faa32e337e6d"
-    projectPath: Library\Artifacts\3d\3d99d4fdb6653aa8ea20faa32e337e6d
+  - path: Library\Artifacts\57\573911718dd2cc729bbd47d77bff86af
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\57\\573911718dd2cc729bbd47d77bff86af"
+    projectPath: Library\Artifacts\57\573911718dd2cc729bbd47d77bff86af
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\3f\3fd03432a9596c78f7293b1b187c797f
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\3f\\3fd03432a9596c78f7293b1b187c797f"
-    projectPath: Library\Artifacts\3f\3fd03432a9596c78f7293b1b187c797f
+  - path: Library\Artifacts\58\5873f834e457fbe7f5f460b78d969825
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\58\\5873f834e457fbe7f5f460b78d969825"
+    projectPath: Library\Artifacts\58\5873f834e457fbe7f5f460b78d969825
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\3f\3fffcd809bd201189f41384c35d16e62
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\3f\\3fffcd809bd201189f41384c35d16e62"
-    projectPath: Library\Artifacts\3f\3fffcd809bd201189f41384c35d16e62
+  - path: Library\Artifacts\59\592db71d82207f02a030a77c635c564d
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\59\\592db71d82207f02a030a77c635c564d"
+    projectPath: Library\Artifacts\59\592db71d82207f02a030a77c635c564d
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\44\44032c5b375f4e9a30f7f187afc49f3f
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\44\\44032c5b375f4e9a30f7f187afc49f3f"
-    projectPath: Library\Artifacts\44\44032c5b375f4e9a30f7f187afc49f3f
+  - path: Library\Artifacts\5b\5bfa0d76fcf2625cd1ab4cb418738b7b
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\5b\\5bfa0d76fcf2625cd1ab4cb418738b7b"
+    projectPath: Library\Artifacts\5b\5bfa0d76fcf2625cd1ab4cb418738b7b
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\45\45f59e9364d78a76810a0d25708b5038
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\45\\45f59e9364d78a76810a0d25708b5038"
-    projectPath: Library\Artifacts\45\45f59e9364d78a76810a0d25708b5038
+  - path: Library\Artifacts\5e\5e0f1c025c0f9a110bbf4a8d891eaaf5
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\5e\\5e0f1c025c0f9a110bbf4a8d891eaaf5"
+    projectPath: Library\Artifacts\5e\5e0f1c025c0f9a110bbf4a8d891eaaf5
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\49\49580a54801c5d3cc19dd769a5e94eb9
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\49\\49580a54801c5d3cc19dd769a5e94eb9"
-    projectPath: Library\Artifacts\49\49580a54801c5d3cc19dd769a5e94eb9
+  - path: Library\Artifacts\5e\5e7f0ab10f68220c408dbfb00aefb876
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\5e\\5e7f0ab10f68220c408dbfb00aefb876"
+    projectPath: Library\Artifacts\5e\5e7f0ab10f68220c408dbfb00aefb876
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\4c\4c2faa048d11db2a33880062204348a1
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\4c\\4c2faa048d11db2a33880062204348a1"
-    projectPath: Library\Artifacts\4c\4c2faa048d11db2a33880062204348a1
+  - path: Library\Artifacts\6a\6a21e107e7d065998e21e3ea6e255201
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\6a\\6a21e107e7d065998e21e3ea6e255201"
+    projectPath: Library\Artifacts\6a\6a21e107e7d065998e21e3ea6e255201
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\4c\4cb6c043c0c699f3d6176a326a468b5c
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\4c\\4cb6c043c0c699f3d6176a326a468b5c"
-    projectPath: Library\Artifacts\4c\4cb6c043c0c699f3d6176a326a468b5c
+  - path: Library\Artifacts\6d\6d5e3e642ec66f46bf623e060acee8dc
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\6d\\6d5e3e642ec66f46bf623e060acee8dc"
+    projectPath: Library\Artifacts\6d\6d5e3e642ec66f46bf623e060acee8dc
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\4f\4f976c72997eac8061faaaaef1c73d8e
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\4f\\4f976c72997eac8061faaaaef1c73d8e"
-    projectPath: Library\Artifacts\4f\4f976c72997eac8061faaaaef1c73d8e
+  - path: Library\Artifacts\6e\6e3347fe1b4fe5566ebf5e8058db5407
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\6e\\6e3347fe1b4fe5566ebf5e8058db5407"
+    projectPath: Library\Artifacts\6e\6e3347fe1b4fe5566ebf5e8058db5407
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\51\5153b2baf2196a33b1c217fa75430c1f
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\51\\5153b2baf2196a33b1c217fa75430c1f"
-    projectPath: Library\Artifacts\51\5153b2baf2196a33b1c217fa75430c1f
+  - path: Library\Artifacts\6e\6e81b09afe6a14c7c3a37737f1ad4511
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\6e\\6e81b09afe6a14c7c3a37737f1ad4511"
+    projectPath: Library\Artifacts\6e\6e81b09afe6a14c7c3a37737f1ad4511
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\53\5360f92a7bc11fe59b1eeb7ec14c0388
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\53\\5360f92a7bc11fe59b1eeb7ec14c0388"
-    projectPath: Library\Artifacts\53\5360f92a7bc11fe59b1eeb7ec14c0388
+  - path: Library\Artifacts\6f\6f469a5a99ab22e5b7fc9bfcea9f2d2e
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\6f\\6f469a5a99ab22e5b7fc9bfcea9f2d2e"
+    projectPath: Library\Artifacts\6f\6f469a5a99ab22e5b7fc9bfcea9f2d2e
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\54\548af60fb0a8c5e61f8138fcaa7b8619
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\54\\548af60fb0a8c5e61f8138fcaa7b8619"
-    projectPath: Library\Artifacts\54\548af60fb0a8c5e61f8138fcaa7b8619
+  - path: Library\Artifacts\71\7174ae04c58bf8bf39424e87fca15b6b
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\71\\7174ae04c58bf8bf39424e87fca15b6b"
+    projectPath: Library\Artifacts\71\7174ae04c58bf8bf39424e87fca15b6b
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\57\57d4f74e609d482bf105f82076624b9c
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\57\\57d4f74e609d482bf105f82076624b9c"
-    projectPath: Library\Artifacts\57\57d4f74e609d482bf105f82076624b9c
+  - path: Library\Artifacts\76\7617f71c7065d908c076a67e79cbeb3d
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\76\\7617f71c7065d908c076a67e79cbeb3d"
+    projectPath: Library\Artifacts\76\7617f71c7065d908c076a67e79cbeb3d
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\5c\5cd6dde9b91f94d751fe5f3127b67189
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\5c\\5cd6dde9b91f94d751fe5f3127b67189"
-    projectPath: Library\Artifacts\5c\5cd6dde9b91f94d751fe5f3127b67189
+  - path: Library\Artifacts\7b\7bf7a9a75544b59a203568218d76d1e6
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\7b\\7bf7a9a75544b59a203568218d76d1e6"
+    projectPath: Library\Artifacts\7b\7bf7a9a75544b59a203568218d76d1e6
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\5d\5daaf29a33664aa98461368c4c3220a3
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\5d\\5daaf29a33664aa98461368c4c3220a3"
-    projectPath: Library\Artifacts\5d\5daaf29a33664aa98461368c4c3220a3
+  - path: Library\Artifacts\7c\7c6f4008a88ec8ae5c9f274058ef7d2b
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\7c\\7c6f4008a88ec8ae5c9f274058ef7d2b"
+    projectPath: Library\Artifacts\7c\7c6f4008a88ec8ae5c9f274058ef7d2b
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\5e\5eb595a1b645d78cb77202f0af30f260
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\5e\\5eb595a1b645d78cb77202f0af30f260"
-    projectPath: Library\Artifacts\5e\5eb595a1b645d78cb77202f0af30f260
+  - path: Library\Artifacts\7d\7d74202929bd3ad4070d117d9538220f
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\7d\\7d74202929bd3ad4070d117d9538220f"
+    projectPath: Library\Artifacts\7d\7d74202929bd3ad4070d117d9538220f
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\60\60bc5c3380440fbf965d0d55ec5219ce
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\60\\60bc5c3380440fbf965d0d55ec5219ce"
-    projectPath: Library\Artifacts\60\60bc5c3380440fbf965d0d55ec5219ce
+  - path: Library\Artifacts\7d\7d89212bb15c45fee1565c4ce7f73ca8
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\7d\\7d89212bb15c45fee1565c4ce7f73ca8"
+    projectPath: Library\Artifacts\7d\7d89212bb15c45fee1565c4ce7f73ca8
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\61\61267aa527dd09317d2f35300e9abf41
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\61\\61267aa527dd09317d2f35300e9abf41"
-    projectPath: Library\Artifacts\61\61267aa527dd09317d2f35300e9abf41
+  - path: Library\Artifacts\7f\7f6ae5ca459ace19b85cfd19bccce04f
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\7f\\7f6ae5ca459ace19b85cfd19bccce04f"
+    projectPath: Library\Artifacts\7f\7f6ae5ca459ace19b85cfd19bccce04f
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\63\63f4716e8d94b50e889a04950626ed18
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\63\\63f4716e8d94b50e889a04950626ed18"
-    projectPath: Library\Artifacts\63\63f4716e8d94b50e889a04950626ed18
+  - path: Library\Artifacts\84\8438fb8021b59d23229ec16af3365580
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\84\\8438fb8021b59d23229ec16af3365580"
+    projectPath: Library\Artifacts\84\8438fb8021b59d23229ec16af3365580
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\67\6717bb9e26c5d45663c782cef611bee5
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\67\\6717bb9e26c5d45663c782cef611bee5"
-    projectPath: Library\Artifacts\67\6717bb9e26c5d45663c782cef611bee5
+  - path: Library\Artifacts\8b\8bbde68005d97c496c3a4e26aad883df
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\8b\\8bbde68005d97c496c3a4e26aad883df"
+    projectPath: Library\Artifacts\8b\8bbde68005d97c496c3a4e26aad883df
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\68\68ab5fa11b7f59800145e1566bce670f
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\68\\68ab5fa11b7f59800145e1566bce670f"
-    projectPath: Library\Artifacts\68\68ab5fa11b7f59800145e1566bce670f
+  - path: Library\Artifacts\98\98512ee5c7fbe3b10eff06b617e3222c
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\98\\98512ee5c7fbe3b10eff06b617e3222c"
+    projectPath: Library\Artifacts\98\98512ee5c7fbe3b10eff06b617e3222c
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\69\699ac01393253d64d4dbd2f720a061a3
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\69\\699ac01393253d64d4dbd2f720a061a3"
-    projectPath: Library\Artifacts\69\699ac01393253d64d4dbd2f720a061a3
+  - path: Library\Artifacts\98\98c5f6a89b285f3c99f833300e655b98
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\98\\98c5f6a89b285f3c99f833300e655b98"
+    projectPath: Library\Artifacts\98\98c5f6a89b285f3c99f833300e655b98
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\6a\6ad71e0d80dbb2574f929e1f5a365a5e
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\6a\\6ad71e0d80dbb2574f929e1f5a365a5e"
-    projectPath: Library\Artifacts\6a\6ad71e0d80dbb2574f929e1f5a365a5e
+  - path: Library\Artifacts\99\99342fe37a5dfb15ab07b530b70d4caa
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\99\\99342fe37a5dfb15ab07b530b70d4caa"
+    projectPath: Library\Artifacts\99\99342fe37a5dfb15ab07b530b70d4caa
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\6d\6d80965a4e7abe282d7bd49780daa7f7
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\6d\\6d80965a4e7abe282d7bd49780daa7f7"
-    projectPath: Library\Artifacts\6d\6d80965a4e7abe282d7bd49780daa7f7
+  - path: Library\Artifacts\99\9950bc35d57b0af99c0d48ad64076f6e
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\99\\9950bc35d57b0af99c0d48ad64076f6e"
+    projectPath: Library\Artifacts\99\9950bc35d57b0af99c0d48ad64076f6e
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\70\70f66dc7d1f188e0ab79b5d425fb0b43
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\70\\70f66dc7d1f188e0ab79b5d425fb0b43"
-    projectPath: Library\Artifacts\70\70f66dc7d1f188e0ab79b5d425fb0b43
+  - path: Library\Artifacts\99\99da9dd3eca2baedd42e0d1d3689a426
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\99\\99da9dd3eca2baedd42e0d1d3689a426"
+    projectPath: Library\Artifacts\99\99da9dd3eca2baedd42e0d1d3689a426
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\72\72e3d4b6064ba81ee4854f3c3805f468
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\72\\72e3d4b6064ba81ee4854f3c3805f468"
-    projectPath: Library\Artifacts\72\72e3d4b6064ba81ee4854f3c3805f468
+  - path: Library\Artifacts\9b\9bcd1e12abe0c51683986cfb158f8c4c
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\9b\\9bcd1e12abe0c51683986cfb158f8c4c"
+    projectPath: Library\Artifacts\9b\9bcd1e12abe0c51683986cfb158f8c4c
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\75\75506ff7ad5025a024409b6b905b606e
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\75\\75506ff7ad5025a024409b6b905b606e"
-    projectPath: Library\Artifacts\75\75506ff7ad5025a024409b6b905b606e
+  - path: Library\Artifacts\a0\a06706f9b82da772acc3f3973ac36a47
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\a0\\a06706f9b82da772acc3f3973ac36a47"
+    projectPath: Library\Artifacts\a0\a06706f9b82da772acc3f3973ac36a47
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\75\75ca51e23fe02c51088f8edb2b63f557
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\75\\75ca51e23fe02c51088f8edb2b63f557"
-    projectPath: Library\Artifacts\75\75ca51e23fe02c51088f8edb2b63f557
+  - path: Library\Artifacts\a5\a57dbdc7a8a9ac2288593beb4754a6f7
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\a5\\a57dbdc7a8a9ac2288593beb4754a6f7"
+    projectPath: Library\Artifacts\a5\a57dbdc7a8a9ac2288593beb4754a6f7
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\75\75d5e04f2688ba2a349259ab3e4403bb
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\75\\75d5e04f2688ba2a349259ab3e4403bb"
-    projectPath: Library\Artifacts\75\75d5e04f2688ba2a349259ab3e4403bb
+  - path: Library\Artifacts\ab\ab63ebcaf39444b8f45cd6525961c274
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ab\\ab63ebcaf39444b8f45cd6525961c274"
+    projectPath: Library\Artifacts\ab\ab63ebcaf39444b8f45cd6525961c274
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\79\794e3f0f09a77f1abf1ca90778880e9c
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\79\\794e3f0f09a77f1abf1ca90778880e9c"
-    projectPath: Library\Artifacts\79\794e3f0f09a77f1abf1ca90778880e9c
+  - path: Library\Artifacts\b0\b000842cd2cd73c2651bd480028eccab
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\b0\\b000842cd2cd73c2651bd480028eccab"
+    projectPath: Library\Artifacts\b0\b000842cd2cd73c2651bd480028eccab
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\7a\7adfd5b8daaf83efa6f7e1d38ce27505
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\7a\\7adfd5b8daaf83efa6f7e1d38ce27505"
-    projectPath: Library\Artifacts\7a\7adfd5b8daaf83efa6f7e1d38ce27505
+  - path: Library\Artifacts\b0\b0e5670c676a95afecda29222343a6b5
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\b0\\b0e5670c676a95afecda29222343a6b5"
+    projectPath: Library\Artifacts\b0\b0e5670c676a95afecda29222343a6b5
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\7b\7be0e4117b17426a92a56c1c40e20b50
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\7b\\7be0e4117b17426a92a56c1c40e20b50"
-    projectPath: Library\Artifacts\7b\7be0e4117b17426a92a56c1c40e20b50
+  - path: Library\Artifacts\b4\b49afbcccd207a31ca530a7ba1c99ed3
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\b4\\b49afbcccd207a31ca530a7ba1c99ed3"
+    projectPath: Library\Artifacts\b4\b49afbcccd207a31ca530a7ba1c99ed3
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\7e\7edeaaf9ed7346de9a861558360ef42d
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\7e\\7edeaaf9ed7346de9a861558360ef42d"
-    projectPath: Library\Artifacts\7e\7edeaaf9ed7346de9a861558360ef42d
+  - path: Library\Artifacts\b7\b711e5861d07a24c2b9b0c356240d651
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\b7\\b711e5861d07a24c2b9b0c356240d651"
+    projectPath: Library\Artifacts\b7\b711e5861d07a24c2b9b0c356240d651
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\80\802a2defe847a42e4f66cecd786c68fa
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\80\\802a2defe847a42e4f66cecd786c68fa"
-    projectPath: Library\Artifacts\80\802a2defe847a42e4f66cecd786c68fa
+  - path: Library\Artifacts\ba\ba04a74fecf9410a6856dd63ca7e5add
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ba\\ba04a74fecf9410a6856dd63ca7e5add"
+    projectPath: Library\Artifacts\ba\ba04a74fecf9410a6856dd63ca7e5add
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\80\8068c6685e9c8e968b914960535018f5
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\80\\8068c6685e9c8e968b914960535018f5"
-    projectPath: Library\Artifacts\80\8068c6685e9c8e968b914960535018f5
+  - path: Library\Artifacts\c8\c823a86513d37eb096c6d1f13b0d2fc5
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\c8\\c823a86513d37eb096c6d1f13b0d2fc5"
+    projectPath: Library\Artifacts\c8\c823a86513d37eb096c6d1f13b0d2fc5
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\81\818557430635a8a887c2455ee7ffdf41
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\81\\818557430635a8a887c2455ee7ffdf41"
-    projectPath: Library\Artifacts\81\818557430635a8a887c2455ee7ffdf41
+  - path: Library\Artifacts\dd\ddd9c18fdd08ce6a732113a428c52229
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\dd\\ddd9c18fdd08ce6a732113a428c52229"
+    projectPath: Library\Artifacts\dd\ddd9c18fdd08ce6a732113a428c52229
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\81\81a1fb451187580d573f40bd851f9c03
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\81\\81a1fb451187580d573f40bd851f9c03"
-    projectPath: Library\Artifacts\81\81a1fb451187580d573f40bd851f9c03
+  - path: Library\Artifacts\e1\e1e0951031218dd2e0bbaed5d6dfda80
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\e1\\e1e0951031218dd2e0bbaed5d6dfda80"
+    projectPath: Library\Artifacts\e1\e1e0951031218dd2e0bbaed5d6dfda80
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\82\822e697c4c994420f3d317ccd5c5a588
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\82\\822e697c4c994420f3d317ccd5c5a588"
-    projectPath: Library\Artifacts\82\822e697c4c994420f3d317ccd5c5a588
+  - path: Library\Artifacts\e5\e5f99f545b03b08777e994a6dd25db94
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\e5\\e5f99f545b03b08777e994a6dd25db94"
+    projectPath: Library\Artifacts\e5\e5f99f545b03b08777e994a6dd25db94
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\87\877353c666eeb60b8a67c1b7549b3b95
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\87\\877353c666eeb60b8a67c1b7549b3b95"
-    projectPath: Library\Artifacts\87\877353c666eeb60b8a67c1b7549b3b95
+  - path: Library\Artifacts\e6\e698a38feca9422b844bcfb77999c8d3
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\e6\\e698a38feca9422b844bcfb77999c8d3"
+    projectPath: Library\Artifacts\e6\e698a38feca9422b844bcfb77999c8d3
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\88\88b26c9817f5e962f8f5d6bbab9a4229
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\88\\88b26c9817f5e962f8f5d6bbab9a4229"
-    projectPath: Library\Artifacts\88\88b26c9817f5e962f8f5d6bbab9a4229
+  - path: Library\Artifacts\e7\e7db72c793d8d3befa2d245a3bc22357
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\e7\\e7db72c793d8d3befa2d245a3bc22357"
+    projectPath: Library\Artifacts\e7\e7db72c793d8d3befa2d245a3bc22357
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\89\8935a6bbdb137f10613bf09146e09a8a
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\89\\8935a6bbdb137f10613bf09146e09a8a"
-    projectPath: Library\Artifacts\89\8935a6bbdb137f10613bf09146e09a8a
+  - path: Library\Artifacts\ee\eed241578c30a9afdd4e76e490a3ef67
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ee\\eed241578c30a9afdd4e76e490a3ef67"
+    projectPath: Library\Artifacts\ee\eed241578c30a9afdd4e76e490a3ef67
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\8e\8e809a7363d9a7db9a9ce13ab562e821
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\8e\\8e809a7363d9a7db9a9ce13ab562e821"
-    projectPath: Library\Artifacts\8e\8e809a7363d9a7db9a9ce13ab562e821
+  - path: Library\Artifacts\f3\f3fa89250151276df0f074da4e608d31
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f3\\f3fa89250151276df0f074da4e608d31"
+    projectPath: Library\Artifacts\f3\f3fa89250151276df0f074da4e608d31
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\8f\8f81af7223f7b4b8f17b08317550e31e
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\8f\\8f81af7223f7b4b8f17b08317550e31e"
-    projectPath: Library\Artifacts\8f\8f81af7223f7b4b8f17b08317550e31e
+  - path: Library\Artifacts\f7\f7544758ccc103cabbc612d343803df6
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f7\\f7544758ccc103cabbc612d343803df6"
+    projectPath: Library\Artifacts\f7\f7544758ccc103cabbc612d343803df6
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\93\937b4fc06ea7c84896ec95bfddfc21f6
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\93\\937b4fc06ea7c84896ec95bfddfc21f6"
-    projectPath: Library\Artifacts\93\937b4fc06ea7c84896ec95bfddfc21f6
+  - path: Library\Artifacts\fa\fa940037a51b0184acf3491647c2e528
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\fa\\fa940037a51b0184acf3491647c2e528"
+    projectPath: Library\Artifacts\fa\fa940037a51b0184acf3491647c2e528
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\95\9563767a88e9d0c2e1a4bbdaa700644b
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\95\\9563767a88e9d0c2e1a4bbdaa700644b"
-    projectPath: Library\Artifacts\95\9563767a88e9d0c2e1a4bbdaa700644b
+  - path: Library\Artifacts\fc\fc22959e019042c20b51daf4df81095a
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\fc\\fc22959e019042c20b51daf4df81095a"
+    projectPath: Library\Artifacts\fc\fc22959e019042c20b51daf4df81095a
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\96\968bb0ba3f7b8c37d78d5ae260326489
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\96\\968bb0ba3f7b8c37d78d5ae260326489"
-    projectPath: Library\Artifacts\96\968bb0ba3f7b8c37d78d5ae260326489
+  - path: Library\Artifacts\fd\fd8232ef9e91501c55266ab82361f715
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\fd\\fd8232ef9e91501c55266ab82361f715"
+    projectPath: Library\Artifacts\fd\fd8232ef9e91501c55266ab82361f715
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\97\9746a090df061ffbc4b7e89dbac9a713
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\97\\9746a090df061ffbc4b7e89dbac9a713"
-    projectPath: Library\Artifacts\97\9746a090df061ffbc4b7e89dbac9a713
+  - path: Library\Artifacts\ff\ffb6081c1c8ded2845f5f761ce2ba574
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ff\\ffb6081c1c8ded2845f5f761ce2ba574"
+    projectPath: Library\Artifacts\ff\ffb6081c1c8ded2845f5f761ce2ba574
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\99\993ac50c417d54e0baedd5f6c60ac6d4
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\99\\993ac50c417d54e0baedd5f6c60ac6d4"
-    projectPath: Library\Artifacts\99\993ac50c417d54e0baedd5f6c60ac6d4
+  - path: Library\Bee\1900b0aE.dag_fsmtime
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Bee\\1900b0aE.dag_fsmtime"
+    projectPath: Library\Bee\1900b0aE.dag_fsmtime
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\9b\9b6a67ae6ac069ccb900ad467102f5c1
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\9b\\9b6a67ae6ac069ccb900ad467102f5c1"
-    projectPath: Library\Artifacts\9b\9b6a67ae6ac069ccb900ad467102f5c1
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\9d\9db795a0276dd16eaf49689d14db1244
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\9d\\9db795a0276dd16eaf49689d14db1244"
-    projectPath: Library\Artifacts\9d\9db795a0276dd16eaf49689d14db1244
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\9e\9e883c16b2c064388723d3cf2ed64136
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\9e\\9e883c16b2c064388723d3cf2ed64136"
-    projectPath: Library\Artifacts\9e\9e883c16b2c064388723d3cf2ed64136
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\9f\9f9e24d61e795b66e979a8ada9445936
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\9f\\9f9e24d61e795b66e979a8ada9445936"
-    projectPath: Library\Artifacts\9f\9f9e24d61e795b66e979a8ada9445936
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\a0\a0f498f815d35936cf8ba79902117494
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\a0\\a0f498f815d35936cf8ba79902117494"
-    projectPath: Library\Artifacts\a0\a0f498f815d35936cf8ba79902117494
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\a8\a8e681e76073f62f617979f875b0ce8b
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\a8\\a8e681e76073f62f617979f875b0ce8b"
-    projectPath: Library\Artifacts\a8\a8e681e76073f62f617979f875b0ce8b
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\a9\a953ba3f9ec788466a7a8171c98540be
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\a9\\a953ba3f9ec788466a7a8171c98540be"
-    projectPath: Library\Artifacts\a9\a953ba3f9ec788466a7a8171c98540be
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\ab\ab002e5dfb5d94a3dedf6101987b4b9f
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ab\\ab002e5dfb5d94a3dedf6101987b4b9f"
-    projectPath: Library\Artifacts\ab\ab002e5dfb5d94a3dedf6101987b4b9f
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\ab\ab76f208ce7bae1f4876e00a598468bc
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ab\\ab76f208ce7bae1f4876e00a598468bc"
-    projectPath: Library\Artifacts\ab\ab76f208ce7bae1f4876e00a598468bc
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\ad\ad1aeeec031224160231f853f8e42dcd
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ad\\ad1aeeec031224160231f853f8e42dcd"
-    projectPath: Library\Artifacts\ad\ad1aeeec031224160231f853f8e42dcd
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\ae\ae70d0075d07836023c1fbc24ab14e0b
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ae\\ae70d0075d07836023c1fbc24ab14e0b"
-    projectPath: Library\Artifacts\ae\ae70d0075d07836023c1fbc24ab14e0b
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\b1\b149e708bc732d5ed02c6fcac19883c9
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\b1\\b149e708bc732d5ed02c6fcac19883c9"
-    projectPath: Library\Artifacts\b1\b149e708bc732d5ed02c6fcac19883c9
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\b2\b21db4eca30ecf9e0bc43d71acf51822
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\b2\\b21db4eca30ecf9e0bc43d71acf51822"
-    projectPath: Library\Artifacts\b2\b21db4eca30ecf9e0bc43d71acf51822
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\b4\b43af878c4bb1be3881c5b78d643ab81
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\b4\\b43af878c4bb1be3881c5b78d643ab81"
-    projectPath: Library\Artifacts\b4\b43af878c4bb1be3881c5b78d643ab81
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\b4\b46c43b4052490aa5d1785615b0fb91f
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\b4\\b46c43b4052490aa5d1785615b0fb91f"
-    projectPath: Library\Artifacts\b4\b46c43b4052490aa5d1785615b0fb91f
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\b7\b72969dc86337ac2988da823aba67da3
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\b7\\b72969dc86337ac2988da823aba67da3"
-    projectPath: Library\Artifacts\b7\b72969dc86337ac2988da823aba67da3
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\bd\bd867c03a46fd11f37d86051624ce32e
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\bd\\bd867c03a46fd11f37d86051624ce32e"
-    projectPath: Library\Artifacts\bd\bd867c03a46fd11f37d86051624ce32e
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\c4\c47eab785dcd9392580947ac2ea17e00
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\c4\\c47eab785dcd9392580947ac2ea17e00"
-    projectPath: Library\Artifacts\c4\c47eab785dcd9392580947ac2ea17e00
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\c6\c685958973c923a931fa2fe213383989
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\c6\\c685958973c923a931fa2fe213383989"
-    projectPath: Library\Artifacts\c6\c685958973c923a931fa2fe213383989
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\cb\cbfaa071858298fa0aa6c4c6605609a1
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\cb\\cbfaa071858298fa0aa6c4c6605609a1"
-    projectPath: Library\Artifacts\cb\cbfaa071858298fa0aa6c4c6605609a1
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\cc\cc8602d63f73cbdcb277af247c39cfc1
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\cc\\cc8602d63f73cbdcb277af247c39cfc1"
-    projectPath: Library\Artifacts\cc\cc8602d63f73cbdcb277af247c39cfc1
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\d1\d14db576f3bc0ca4025775592ec338b2
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\d1\\d14db576f3bc0ca4025775592ec338b2"
-    projectPath: Library\Artifacts\d1\d14db576f3bc0ca4025775592ec338b2
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\d4\d4accbf3e09b432a0a32b4d4c342f9ed
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\d4\\d4accbf3e09b432a0a32b4d4c342f9ed"
-    projectPath: Library\Artifacts\d4\d4accbf3e09b432a0a32b4d4c342f9ed
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\d4\d4de820d38b25404887be30dc1d3d4dd
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\d4\\d4de820d38b25404887be30dc1d3d4dd"
-    projectPath: Library\Artifacts\d4\d4de820d38b25404887be30dc1d3d4dd
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\d5\d5059c39e0eb592b90aec811506d6234
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\d5\\d5059c39e0eb592b90aec811506d6234"
-    projectPath: Library\Artifacts\d5\d5059c39e0eb592b90aec811506d6234
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\d9\d941a6fe2cfa54c9b588dd5430ec3f8a
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\d9\\d941a6fe2cfa54c9b588dd5430ec3f8a"
-    projectPath: Library\Artifacts\d9\d941a6fe2cfa54c9b588dd5430ec3f8a
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\df\df264725eb8ef985262537210ebeab97
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\df\\df264725eb8ef985262537210ebeab97"
-    projectPath: Library\Artifacts\df\df264725eb8ef985262537210ebeab97
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\ec\ec395c26a019863860ea15cc60895b0e
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ec\\ec395c26a019863860ea15cc60895b0e"
-    projectPath: Library\Artifacts\ec\ec395c26a019863860ea15cc60895b0e
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\ec\ecc5280a367bc6f9e1c60ff003d97895
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ec\\ecc5280a367bc6f9e1c60ff003d97895"
-    projectPath: Library\Artifacts\ec\ecc5280a367bc6f9e1c60ff003d97895
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\ed\ed2a25e658519234bbc6e46a6adb9872
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ed\\ed2a25e658519234bbc6e46a6adb9872"
-    projectPath: Library\Artifacts\ed\ed2a25e658519234bbc6e46a6adb9872
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\ee\ee2d607e4c37bda676f9fe637377d0fb
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ee\\ee2d607e4c37bda676f9fe637377d0fb"
-    projectPath: Library\Artifacts\ee\ee2d607e4c37bda676f9fe637377d0fb
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\f0\f0ed6e283af0d38d3ced2f77d07709fc
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f0\\f0ed6e283af0d38d3ced2f77d07709fc"
-    projectPath: Library\Artifacts\f0\f0ed6e283af0d38d3ced2f77d07709fc
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\f0\f0f74727c6d1a0d14e919d09cd5a8eb8
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f0\\f0f74727c6d1a0d14e919d09cd5a8eb8"
-    projectPath: Library\Artifacts\f0\f0f74727c6d1a0d14e919d09cd5a8eb8
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\f3\f3e3fdf6825e656d8f79a287331a47c7
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f3\\f3e3fdf6825e656d8f79a287331a47c7"
-    projectPath: Library\Artifacts\f3\f3e3fdf6825e656d8f79a287331a47c7
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\f3\f3ffc11149c29a2f957590fe084411cd
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f3\\f3ffc11149c29a2f957590fe084411cd"
-    projectPath: Library\Artifacts\f3\f3ffc11149c29a2f957590fe084411cd
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\f4\f46e26bb0b702e536aff4f59613807c6
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f4\\f46e26bb0b702e536aff4f59613807c6"
-    projectPath: Library\Artifacts\f4\f46e26bb0b702e536aff4f59613807c6
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\f5\f5f5757f7b7a782c6e0c3f3d31050073
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f5\\f5f5757f7b7a782c6e0c3f3d31050073"
-    projectPath: Library\Artifacts\f5\f5f5757f7b7a782c6e0c3f3d31050073
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Library\Bee\artifacts\1900b0aE.dag\Assembly-CSharp.dll
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Bee\\artifacts\\1900b0aE.dag\\Assembly-CSharp.dll"
+    projectPath: Library\Bee\artifacts\1900b0aE.dag\Assembly-CSharp.dll
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\f7\f7d8f42860cf7c09a67d27deaa6ffe44
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f7\\f7d8f42860cf7c09a67d27deaa6ffe44"
-    projectPath: Library\Artifacts\f7\f7d8f42860cf7c09a67d27deaa6ffe44
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Library\Bee\artifacts\1900b0aE.dag\post-processed\Assembly-CSharp.dll
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Bee\\artifacts\\1900b0aE.dag\\post-processed\\Assembly-CSharp.dll"
+    projectPath: Library\Bee\artifacts\1900b0aE.dag\post-processed\Assembly-CSharp.dll
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\f7\f7fdfd7fa1b587d76ab1e5d00b7499aa
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f7\\f7fdfd7fa1b587d76ab1e5d00b7499aa"
-    projectPath: Library\Artifacts\f7\f7fdfd7fa1b587d76ab1e5d00b7499aa
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Library\Bee\backend_profiler0.traceevents
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Bee\\backend_profiler0.traceevents"
+    projectPath: Library\Bee\backend_profiler0.traceevents
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Library\Artifacts\f9\f9b78a44a86c740a726d5848506019e4
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\f9\\f9b78a44a86c740a726d5848506019e4"
-    projectPath: Library\Artifacts\f9\f9b78a44a86c740a726d5848506019e4
+  - path: Library\Bee\fullprofile.json
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Bee\\fullprofile.json"
+    projectPath: Library\Bee\fullprofile.json
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\fa\fa58d6c1a0219793118e24d3b7c65556
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\fa\\fa58d6c1a0219793118e24d3b7c65556"
-    projectPath: Library\Artifacts\fa\fa58d6c1a0219793118e24d3b7c65556
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Library\Bee\tundra.digestcache
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Bee\\tundra.digestcache"
+    projectPath: Library\Bee\tundra.digestcache
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\fb\fb39ddb57df530e5e381993dddae4129
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\fb\\fb39ddb57df530e5e381993dddae4129"
-    projectPath: Library\Artifacts\fb\fb39ddb57df530e5e381993dddae4129
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Library\Bee\tundra.log.json
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Bee\\tundra.log.json"
+    projectPath: Library\Bee\tundra.log.json
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\fc\fc7cc8703fd56c1bc03c04ea6ccf04a9
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\fc\\fc7cc8703fd56c1bc03c04ea6ccf04a9"
-    projectPath: Library\Artifacts\fc\fc7cc8703fd56c1bc03c04ea6ccf04a9
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Library\Bee\TundraBuildState.state
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Bee\\TundraBuildState.state"
+    projectPath: Library\Bee\TundraBuildState.state
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\Artifacts\ff\ff1f15bfe4ed3df34d179b68579624ac
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Artifacts\\ff\\ff1f15bfe4ed3df34d179b68579624ac"
-    projectPath: Library\Artifacts\ff\ff1f15bfe4ed3df34d179b68579624ac
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Library\Bee\TundraBuildState.state.map
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\Bee\\TundraBuildState.state.map"
+    projectPath: Library\Bee\TundraBuildState.state.map
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -772,9 +562,27 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: Library\gfu\cache\repoinfo.yaml
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\gfu\\cache\\repoinfo.yaml"
+    projectPath: Library\gfu\cache\repoinfo.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Library\InspectorExpandedItems.asset
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\InspectorExpandedItems.asset"
+    projectPath: Library\InspectorExpandedItems.asset
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: Library\SceneVisibilityState.asset
     fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\SceneVisibilityState.asset"
     projectPath: Library\SceneVisibilityState.asset
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: Library\ScriptAssemblies\Assembly-CSharp.dll
+    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\ScriptAssemblies\\Assembly-CSharp.dll"
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -784,36 +592,6 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Library\ShaderCache\EditorEncounteredVariants
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\ShaderCache\\EditorEncounteredVariants"
-    projectPath: Library\ShaderCache\EditorEncounteredVariants
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\ShaderCache\shader\TMP_SDF-Mobilefe39\00\1c0712767260de9fa87cc976f84ba5d3.bin
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\ShaderCache\\shader\\TMP_SDF-Mobilefe39\\00\\1c0712767260de9fa87cc976f84ba5d3.bin"
-    projectPath: Library\ShaderCache\shader\TMP_SDF-Mobilefe39\00\1c0712767260de9fa87cc976f84ba5d3.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\ShaderCache\shader\TMP_SDF-Mobilefe39\00\626e54108237872b83a66efa416f61dc.bin
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\ShaderCache\\shader\\TMP_SDF-Mobilefe39\\00\\626e54108237872b83a66efa416f61dc.bin"
-    projectPath: Library\ShaderCache\shader\TMP_SDF-Mobilefe39\00\626e54108237872b83a66efa416f61dc.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Library\ShaderCache\shader\TMP_SDF-Mobilefe39\01\1c0712767260de9fa87cc976f84ba5d3.bin
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\ShaderCache\\shader\\TMP_SDF-Mobilefe39\\01\\1c0712767260de9fa87cc976f84ba5d3.bin"
-    projectPath: Library\ShaderCache\shader\TMP_SDF-Mobilefe39\01\1c0712767260de9fa87cc976f84ba5d3.bin
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\ShaderCache\shader\TMP_SDF-Mobilefe39\01\626e54108237872b83a66efa416f61dc.bin
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\ShaderCache\\shader\\TMP_SDF-Mobilefe39\\01\\626e54108237872b83a66efa416f61dc.bin"
-    projectPath: Library\ShaderCache\shader\TMP_SDF-Mobilefe39\01\626e54108237872b83a66efa416f61dc.bin
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
   - path: Library\SourceAssetDB
     fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\SourceAssetDB"
     projectPath: Library\SourceAssetDB
@@ -829,12 +607,6 @@ MonoBehaviour:
   - path: Library\StateCache\SceneView\8c\8cd7c613bf844de3b80696e27a479d5e.json
     fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\Library\\StateCache\\SceneView\\8c\\8cd7c613bf844de3b80696e27a479d5e.json"
     projectPath: Library\StateCache\SceneView\8c\8cd7c613bf844de3b80696e27a479d5e.json
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: ProjectSettings\TagManager.asset
-    fullPath: "C:\\Users\\yukom\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\mathgoroku_public_ver2\\mathgoroku_public\\ProjectSettings\\TagManager.asset"
-    projectPath: ProjectSettings\TagManager.asset
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3

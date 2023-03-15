@@ -45,7 +45,7 @@ public class MasuController : MonoBehaviour
     public TextMeshProUGUI shopitem2;
     public TextMeshProUGUI shopitem3;
 
-    //関所ます関係
+    //関所マス関係
     string[] comment = new string[] {"こんにちは", "ここは関所です", "コイン50枚でメダルに交換できます。", "交換しますか?"};
     int commentid=0;
     public TextMeshProUGUI Dirichletcomment;
