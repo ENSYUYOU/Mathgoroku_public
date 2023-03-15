@@ -219,8 +219,20 @@ public class MasuController : MonoBehaviour
 
 
     public GameObject EventHaikei;
+    public GameObject EventStartRouletteButton;
+    public GameObject EventHukidashi;
+    public GameObject EventNeko;
+    public GameObject EventTextBox;
+    public GameObject EventHaikeiButton;
     public void EventMasu(){
         EventHaikei.SetActive(true);
+    }
+    
+    public void StartRoulette(){
+        EventTextBox.SetActive(true);
+        EventStartRouletteButton.SetActive(false);
+        EventHukidashi.SetActive(false);
+        EventNeko.SetActive(false);
         SugakusyaCommentButton.interactable = false;
         while(nameid1==nameid2 || nameid2==nameid3 || nameid3==nameid4 || nameid4==nameid1){
             nameid1 = saikoro.Next(0, 5);
@@ -242,6 +254,13 @@ public class MasuController : MonoBehaviour
         selected_sugakusya_id = selected_list[nameID];
         sugakusyacomment.text = sugakusya_comment_list[selected_sugakusya_id][sugakusyacommentid];
         SugakusyaCommentButton.interactable = true;
+        Invoke("EventSwitch", 2f);
+    }
+
+    public void EventSwitch(){
+        EventTextBox.SetActive(false);
+        EventHukidashi.SetActive(true);
+        EventHaikeiButton.SetActive(true);
     }
 
     public void SugakusyaCommentFunc(){//ボタンを押すと反応。数学者のコメント
