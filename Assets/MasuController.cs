@@ -194,7 +194,6 @@ public class MasuController : MonoBehaviour
         }
     }
 
-
     public void yesfunction(){
         if(GameController.players_coin[GameController.players_turn] < 50){
             Dirichletcomment.text = "お金が足りません";
@@ -208,7 +207,6 @@ public class MasuController : MonoBehaviour
             StartCoroutine(ReturnToSugoroku());
         }
     }
-
 
     public void nofunction(){
         Dirichletcomment.text = "さようなら";
@@ -236,7 +234,6 @@ public class MasuController : MonoBehaviour
         name4.text = sugakusya[nameid4];
         moveName = true;
     }
-    
 
     public void StopNameRoulette(){//数学者のルーレットを止めた時の関数
         if (sugakusyacommentid!=0)return;
@@ -246,7 +243,6 @@ public class MasuController : MonoBehaviour
         sugakusyacomment.text = sugakusya_comment_list[selected_sugakusya_id][sugakusyacommentid];
         SugakusyaCommentButton.interactable = true;
     }
-
 
     public void SugakusyaCommentFunc(){//ボタンを押すと反応。数学者のコメント
         sugakusyacommentid += 1;
