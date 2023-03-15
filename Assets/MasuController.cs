@@ -184,11 +184,13 @@ public class MasuController : MonoBehaviour
     }
     
     public void SekisyoMasu(){//とりあえずクリックしたときに呼ばれる
+        SekisyoHaikeiButton.SetActive(true);
         DirichleSyojikin.text = "×" + GameController.players_coin[GameController.players_turn].ToString();
         if (commentid < 3){
             commentid += 1;
             Dirichletcomment.text = comment[commentid];
-        }else{
+        }else if(commentid==3){
+            commentid += 1;
             yes.SetActive(true);
             no.SetActive(true);
         }

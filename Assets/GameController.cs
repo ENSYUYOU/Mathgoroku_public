@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public const int PLAYERS_NUM = 2;
+    public const int PLAYERS_NUM = 4;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
@@ -44,7 +44,14 @@ public class GameController : MonoBehaviour
     static float bgmTime;//シーンに映るときにBGMが初めに戻らないようにする変数。
 
     public Button ItemPanelButton;
+    public GameObject path1;
+    public GameObject path2;
+    public GameObject path3;
+    public GameObject path4;
+    public GameObject path5;
     void Start(){
+        var bound = tilemap.cellBounds;
+        /*
         var builder = new StringBuilder();//タイルマップ表示用プログラム
         var bound = tilemap.cellBounds;
         for (int y = bound.max.y-1; y >= bound.min.y; --y)
@@ -56,6 +63,7 @@ public class GameController : MonoBehaviour
             builder.Append("\n");
         }
         Debug.Log(builder);
+        */
         player1 = GameObject.Find("fox");
         player2 = GameObject.Find("fox_red");
         player3 = GameObject.Find("fox_yellow");
@@ -123,9 +131,32 @@ public class GameController : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 canChange = false;
                 masucontroller.ShopMasu();
+            }else if(tile.sprite.name.Contains("sekisyo")){//関所ます
+                yield return new WaitForSeconds(1f);
+                canChange = false;
+                masucontroller.SekisyoMasu();
             }
+        
             yield return new WaitForSeconds(1f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
             while(!canChange)yield return null;//店にいる間は動かない
+
+            if(tile.sprite.name.Contains("kakushi1")){//ショップ優先でその後隠します解除
+                yield return new WaitForSeconds(1f);
+                path1.SetActive(false);
+            }else if(tile.sprite.name.Contains("kakushi2")){
+                yield return new WaitForSeconds(1f);
+                path2.SetActive(false);
+            }else if(tile.sprite.name.Contains("kakushi3")){
+                yield return new WaitForSeconds(1f);
+                path3.SetActive(false);
+            }else if(tile.sprite.name.Contains("kakushi4")){
+                yield return new WaitForSeconds(1f);
+                path4.SetActive(false);
+            }else if(tile.sprite.name.Contains("kakushi5")){
+                yield return new WaitForSeconds(1f);
+                path5.SetActive(false);
+            }
+
             players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
             players_turn %= PLAYERS_NUM;
             if(ItemController.skip_flg[players_turn]==1){//スキップフラグ
@@ -154,6 +185,7 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
                 Vector3 pos = Input.mousePosition;   
                 //var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                //Debug.Log(tile.sprite.name);
                 //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
         }
     }
@@ -197,33 +229,39 @@ public class GameController : MonoBehaviour
         int[,] delta = new int[,] {{0,-1}, {1,0}, {0,1}, {-1,0},};//下右上左の方向、jが変わるとアクセスされるデルタが変わる
         var bound = tilemap.cellBounds;
         for(int i=0; i<ans; i++){//ansが正のときでないと動かない
+            var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(player_destination[players_turn]));
+            string tilename = tile.sprite.name;
             List<List<int>> Nexts = new List<List<int>>();
-            int x, y;
+            int x, y, nx_kouho, ny_kouho;
             x = players_position[players_turn, 0];
             y = players_position[players_turn, 1];
-            for(int j=0; j<4; j++){//上下左右の探索
+        
+            if(tilename.Contains("gouryu")){
                 List<int> next = new List<int>();
-                int nx_kouho = x + delta[j, 0];
-                int ny_kouho = y + delta[j, 1];
-                if (!tilemap.HasTile(new Vector3Int(nx_kouho, ny_kouho, 0)))continue;//タイルマップ上にタイルがあるか調べる
-                if (used[players_turn, nx_kouho-bound.min.x, ny_kouho-bound.min.y] >= 1)continue;//n番目のプレイヤーの通った道の記録を呼び出して、
+                nx_kouho = x + delta[tilename[6]-'0', 0];
+                ny_kouho = y + delta[tilename[6]-'0', 1];
                 next.Add(nx_kouho);
                 next.Add(ny_kouho);
                 Nexts.Add(next);
-            } 
-            if(Nexts.Count==0){//行き止まりはゴールとして判定
-                Ending();
-                return;
-            }
-            int nx, ny;
-            int[,] bunki = {{-2, -1}};//分岐の座標を設定
-            bool isBunki = false;//分岐の初期化
-           
-            for(int j=0; j<bunki.GetLength(0); j++){
-                if((players_position[players_turn, 0]==bunki[j,0]&&players_position[players_turn, 1]==bunki[j,1]))isBunki = true;//プレイヤーの座標が分岐点の座標かどうか判定
+            }else{
+                for(int j=0; j<4; j++){//上下左右の探索
+                    List<int> next = new List<int>();
+                    nx_kouho = x + delta[j, 0];
+                    ny_kouho = y + delta[j, 1];
+                    if (!tilemap.HasTile(new Vector3Int(nx_kouho, ny_kouho, 0)))continue;//タイルマップ上にタイルがあるか調べる
+                    if (used[players_turn, nx_kouho-bound.min.x, ny_kouho-bound.min.y] >= 1)continue;//n番目のプレイヤーの通った道の記録を呼び出して、
+                    next.Add(nx_kouho);
+                    next.Add(ny_kouho);
+                    Nexts.Add(next);
+                } 
+                if(Nexts.Count==0){//行き止まりはゴールとして判定
+                    Ending();
+                    return;
+                }
             }
 
-            if(isBunki){
+            int nx, ny;
+            if(tilename.Contains("bunki")){//分岐ます
                 if(flg==0){//フラグを1にしないとnx, nyを変更できない
                     StartCoroutine(WaitInput(ans-i, Nexts));//黄色のポインタを出す
                 return;
