@@ -24,11 +24,11 @@ public class MasuController : MonoBehaviour
     public Button SugakusyaCommentButton;
     string[] sugakusya = {"ニュートン", "アルキメデス", "ノイマン", "ピタゴラス", "チューリング"};
     List<List<string>> sugakusya_comment_list = new List<List<string>>() {
-        new List<string> {"私はニュートン", "よろしく"},
-        new List<string> {"私はアルキメデス", "よろしく"},
-        new List<string> {"私はノイマン", "ですよ"},
-        new List<string> {"私はピタゴラス"},
-        new List<string> {"私はチューリング"},};
+        new List<string> {"「私はニュートンである」","ニュートンは万有引力の法則を発見した人としてよく知られていますが、数学的にも多大な功績があります。","「君の顔は昔、私のことをいじめた人間によく似ているような気がするのだ」","「私は今、当時を思い出して無性に腹が立ってきたのだ」","「君を1発殴らせてくれないか。もしくはその代わりにそのメダルを1枚よこしたまえ」","ニュートンはメダルを奪って去って行った。"},
+        new List<string> {"「我はアルキメデスと申す」","あああ","よろしく"},
+        new List<string> {"「私の名前はフォン・ノイマンだ」","フォン・ノイマンは戦前から戦後にかけて活躍したハンガリー出身の数学者です。","驚異的な計算能力をもち、独特な思考方法をしていたと言われ、「悪魔の頭脳」とも評されました。","ゲーム理論の成立やコンピュータの開発に貢献するなど、マルチな活躍を見せました。","「私のことを『悪魔の頭脳』と呼ぶ輩もいるそうじゃないか」","「悪魔と言われるのはあまり気分の良いことではないな」","「どうだ、君にこのアイテムをやるから、私の『悪魔』というのを変えてきてくれないか」","フォン・ノイマンから無効化カードをもらった！"},
+        new List<string> {"「我の名はピタゴラスと申します」", "あああ"},
+        new List<string> {"「私はチューリングです」"},};
     int selected_sugakusya_id;
     int sugakusyacommentid;
 
@@ -130,7 +130,6 @@ public class MasuController : MonoBehaviour
         }
     }
 
-
     public void ItemButton2(){
         shopitem1.color = new Color(0, 0, 0, 1f);
         shopitem2.color = new Color(0, 0, 0, 1f);
@@ -177,7 +176,6 @@ public class MasuController : MonoBehaviour
         }
     }
 
-   
     public void ReturnFromShop(){//戻るボタンを押すと作動
         nekoserihu.text = "お気をつけてお帰りください";
         StartCoroutine(ReturnToSugoroku());
