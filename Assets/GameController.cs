@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public const int PLAYERS_NUM = 4;
+    public const int PLAYERS_NUM = 1;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     public static int players_turn = 0;//今誰のターンか
     static int[,] players_position;
     static int[,,] used;
-    public static int[] players_coin = new int[]{0, 10, 10, 10};//追加2/8(伊藤)
+    public static int[] players_coin = new int[]{10, 10, 10, 10};//追加2/8(伊藤)
     public static int[] players_medal = new int[PLAYERS_NUM];//それぞれのプレイヤーのメダルの数
     public static int[,] players_item = new int[PLAYERS_NUM, 5];//それぞれのプレイヤーのアイテムの数
 
@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
             turn.interactable = false;
             ItemPanelButton.interactable = false;
             if(ProblemController.ans >= 0){
-                Walk(ProblemController.ans);
+                Walk(ProblemController.ans, 1);//歩き始めにフラグを1にする
             }else if(ProblemController.ans < 0){
                 WalkRev(Math.Abs(ProblemController.ans));
             }
@@ -110,53 +110,54 @@ public class GameController : MonoBehaviour
     public AudioClip walkSound;//歩く音
     public AudioClip coinSound;//歩く音
     public static bool canChange;
-    private IEnumerator Change(int x, int y, int nokori, float waitTime){
+    private IEnumerator Change(int x, int y, int nokori, float waitTime, bool rev=false){
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
         audioSource.PlayOneShot(walkSound);
         canChange = true;
         if(nokori==0){
-            var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(player_destination[players_turn]));
-            if(tile.sprite.name.Contains("blue")) {//プラスます
-                masucontroller.CoinPlus();
-                audioSource.PlayOneShot(coinSound);
-            }else if(tile.sprite.name.Contains("red")){//マイナスます
-                masucontroller.CoinMinus();
-                audioSource.PlayOneShot(coinSound);
-            }else if(tile.sprite.name.Contains("green")){//ショップます
-                yield return new WaitForSeconds(1f);
-                canChange = false;
-                masucontroller.EventMasu();
-            }else if(tile.sprite.name.Contains("yellow")){
-                yield return new WaitForSeconds(1f);
-                canChange = false;
-                masucontroller.ShopMasu();
-            }else if(tile.sprite.name.Contains("sekisyo")){//関所ます
-                yield return new WaitForSeconds(1f);
-                canChange = false;
-                masucontroller.SekisyoMasu();
-            }
-        
-            yield return new WaitForSeconds(1f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
-            while(!canChange)yield return null;//店にいる間は動かない
+            if(rev==false){
+                var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(player_destination[players_turn]));
+                if(tile.sprite.name.Contains("blue")) {//プラスます
+                    masucontroller.CoinPlus();
+                    audioSource.PlayOneShot(coinSound);
+                }else if(tile.sprite.name.Contains("red")){//マイナスます
+                    masucontroller.CoinMinus();
+                    audioSource.PlayOneShot(coinSound);
+                }else if(tile.sprite.name.Contains("green")){//ショップます
+                    yield return new WaitForSeconds(1f);
+                    canChange = false;
+                    masucontroller.EventMasu();
+                }else if(tile.sprite.name.Contains("yellow")){
+                    yield return new WaitForSeconds(1f);
+                    canChange = false;
+                    masucontroller.ShopMasu();
+                }else if(tile.sprite.name.Contains("sekisho")){//関所ます
+                    yield return new WaitForSeconds(1f);
+                    canChange = false;
+                    masucontroller.SekisyoMasu();
+                }
+            
+                yield return new WaitForSeconds(1f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
+                while(!canChange)yield return null;//店にいる間は動かない
 
-            if(tile.sprite.name.Contains("kakushi1")){//ショップ優先でその後隠します解除
-                yield return new WaitForSeconds(1f);
-                path1.SetActive(false);
-            }else if(tile.sprite.name.Contains("kakushi2")){
-                yield return new WaitForSeconds(1f);
-                path2.SetActive(false);
-            }else if(tile.sprite.name.Contains("kakushi3")){
-                yield return new WaitForSeconds(1f);
-                path3.SetActive(false);
-            }else if(tile.sprite.name.Contains("kakushi4")){
-                yield return new WaitForSeconds(1f);
-                path4.SetActive(false);
-            }else if(tile.sprite.name.Contains("kakushi5")){
-                yield return new WaitForSeconds(1f);
-                path5.SetActive(false);
+                if(tile.sprite.name.Contains("kakushi1")){//ショップ優先でその後隠します解除
+                    yield return new WaitForSeconds(1f);
+                    path1.SetActive(false);
+                }else if(tile.sprite.name.Contains("kakushi2")){
+                    yield return new WaitForSeconds(1f);
+                    path2.SetActive(false);
+                }else if(tile.sprite.name.Contains("kakushi3")){
+                    yield return new WaitForSeconds(1f);
+                    path3.SetActive(false);
+                }else if(tile.sprite.name.Contains("kakushi4")){
+                    yield return new WaitForSeconds(1f);
+                    path4.SetActive(false);
+                }else if(tile.sprite.name.Contains("kakushi5")){
+                    yield return new WaitForSeconds(1f);
+                    path5.SetActive(false);
+                }
             }
-
             players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
             players_turn %= PLAYERS_NUM;
             if(ItemController.skip_flg[players_turn]==1){//スキップフラグ
@@ -184,9 +185,12 @@ public class GameController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0)){
                 Vector3 pos = Input.mousePosition;   
-                //var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                var bound = tilemap.cellBounds;
+                var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
                 //Debug.Log(tile.sprite.name);
-                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
+                                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);
+                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x);
         }
     }
 
@@ -221,8 +225,8 @@ public class GameController : MonoBehaviour
     }
 
     
-    public void Walk(int ans, int flg=0, int nexts_index=0){
-        if(ans==0){
+    public void Walk(int ans, int flg=0, int nexts_index=0){//答え、歩き初めに1にするフラグ、分岐の時の次のマス
+        if(ans==0){//残りゼロマスだとそのまま
             StartCoroutine(Change(players_position[players_turn, 0], players_position[players_turn, 1], 0, 0.3f));
             return;
         }
@@ -236,14 +240,14 @@ public class GameController : MonoBehaviour
             x = players_position[players_turn, 0];
             y = players_position[players_turn, 1];
         
-            if(tilename.Contains("gouryu")){
+            /*if(tilename.Contains("gouryu")){
                 List<int> next = new List<int>();
                 nx_kouho = x + delta[tilename[6]-'0', 0];
                 ny_kouho = y + delta[tilename[6]-'0', 1];
                 next.Add(nx_kouho);
                 next.Add(ny_kouho);
                 Nexts.Add(next);
-            }else{
+            }else{*/
                 for(int j=0; j<4; j++){//上下左右の探索
                     List<int> next = new List<int>();
                     nx_kouho = x + delta[j, 0];
@@ -258,10 +262,10 @@ public class GameController : MonoBehaviour
                     Ending();
                     return;
                 }
-            }
+            //}
 
             int nx, ny;
-            if(tilename.Contains("bunki")){//分岐ます
+            if(tilename.Contains("bunki")){//現在分岐ます
                 if(flg==0){//フラグを1にしないとnx, nyを変更できない
                     StartCoroutine(WaitInput(ans-i, Nexts));//黄色のポインタを出す
                 return;
@@ -269,11 +273,17 @@ public class GameController : MonoBehaviour
                     nx = Nexts[nexts_index][0];
                     ny = Nexts[nexts_index][1];
                 }
+            }else if(tilename.Contains("sekisho")&&flg==0){
+                StartCoroutine(Change(x, y, 0, 0.3f*i));//関所かつ歩き始めではない時にとまる
+                return;
             }else{
                 nx = Nexts[0][0];
                 ny = Nexts[0][1];
             }
-            
+
+            if(tilename.Contains("sekisho")&&flg==1)used[players_turn, x-bound.min.x, y-bound.min.y]=0;//Walkrevで関所より前に戻らないように
+
+            flg=0;
             players_position[players_turn, 0] = nx;
             players_position[players_turn, 1] = ny;
             used[players_turn, nx-bound.min.x, ny-bound.min.y] = 1;//通った道を記録
@@ -310,7 +320,7 @@ public class GameController : MonoBehaviour
             used[players_turn, x-bound.min.x, y-bound.min.y] = 0;//通った道を記録
             players_position[players_turn, 0] = nx;
             players_position[players_turn, 1] = ny;
-            StartCoroutine(Change(nx, ny, ans-i-1, 0.3f*i));
+            StartCoroutine(Change(nx, ny, ans-i-1, 0.3f*i, true));
             player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(nx, ny, 0));//タイル換算の位置にしている
         }
     }
