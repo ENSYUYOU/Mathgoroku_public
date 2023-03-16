@@ -109,10 +109,13 @@ public class ItemController : MonoBehaviour
     }
     
 
-    public Button ItemPanelButton;
+    public Button ItemPanelOpenButton;
+    public GameObject ItemPanelOpen;
+    public Button ItemPanelCloseButton;
+    public GameObject ItemPanelClose;
     public GameObject ItemPanel;
     IEnumerator Message(string newmessage, int cardid=-1){//メッセージ, 指定マスパネルのときはパネルを出すアクティブにする
-        ItemPanelButton.interactable = false;
+        ItemPanelOpenButton.interactable = false;
         ItemPanel.SetActive(false);
         message.text = newmessage;
         yield return new WaitForSeconds(1f);
@@ -126,8 +129,16 @@ public class ItemController : MonoBehaviour
             ShiteiMasuPanel.SetActive(true);
         }
     }
+
     public void ItemPanelActive(){//アイテムボタンを押すとアイテムパネルが表示される
-        if(ItemPanel.activeSelf) ItemPanel.SetActive(false);
-        else ItemPanel.SetActive(true);
+        ItemPanelOpen.SetActive(false);
+        ItemPanelClose.SetActive(true);
+        ItemPanel.SetActive(true);
+    }
+    
+    public void ItemPanelActiveFalse(){//戻るボタンを押すとアイテムパネルが消える
+        ItemPanelClose.SetActive(false);
+        ItemPanel.SetActive(false);
+        ItemPanelOpen.SetActive(true);
     }
 }

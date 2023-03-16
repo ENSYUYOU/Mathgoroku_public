@@ -22,13 +22,18 @@ public class MasuController : MonoBehaviour
     public TextMeshProUGUI name4;
     public TextMeshProUGUI sugakusyacomment;
     public Button SugakusyaCommentButton;
-    string[] sugakusya = {"ニュートン", "アルキメデス", "フォン・ノイマン", "ピタゴラス", "チューリング"};
+    string[] sugakusya = {"ニュートン", "アリストテレス", "フォン・ノイマン", "ピタゴラス", "チューリング","エラトステネス","アルキメデス","アポロニウス","アーベル","岡潔"};
     List<List<string>> sugakusya_comment_list = new List<List<string>>() {
         new List<string> {"「私はニュートンである」","ニュートンは万有引力の法則を発見した人としてよく語られますが、数学にも多大な功績を残しています。","自らが発見した運動の法則や万有引力の法則、ケプラーが発見した惑星の法則を定式化して証明するために、ニュートンは微分法、積分法の考え方を生み出しました","そんなニュートンですが、学生時代には成績不振を馬鹿にされ、いじめにあっていたこともあったそうです。","「君の顔は昔、私のことをいじめた人間によく似ているような気がするのだ」","「私は今、当時を思い出して無性に腹が立ってきたのだ」","「君を1発殴らせてくれないか。もしくはその代わりにそのメダルを1枚よこしたまえ」","ニュートンはメダルを奪って去って行った。"},
-        new List<string> {"「我はアルキメデスと申す」","あああ","よろしく"},
+        new List<string> {"いいい"},
         new List<string> {"「私の名前はフォン・ノイマンだ」","フォン・ノイマンは戦前から戦後にかけて活躍したハンガリー出身の数学者です。","驚異的な計算能力をもち、独特な思考方法をしていたと言われ、「悪魔の頭脳」とも評されました。","ゲーム理論の成立やコンピュータの開発に貢献するなど、マルチな活躍を見せました。","「私のことを『悪魔の頭脳』と呼ぶ輩もいるそうじゃないか」","「悪魔というのは誉め言葉なのだろうが、悪魔と言われるのは個人的にはあまり好きではないな」","「どうだ、君にこのアイテムをやるから、私の『悪魔』というのを変えてきてくれないか」","フォン・ノイマンから無効化カードをもらった！"},
         new List<string> {"「ワシの名はピタゴラスじゃ」","ピタゴラスの定理（三平方の定理）で知られるピタゴラスですが、実際には相当な秘密主義者であったと言われています。","ピタゴラスは自ら教団を組織し、教団内の情報を外部に持ち出すことは固く禁じました。","「このワシに逆らって秘密を外に漏らした者に容赦はしない」","「今から貴様を船から海に突き落としてやる！」","しまった！　ピタゴラスは秘密が漏れたことを知って、たいそうお怒りのようです！","ここはメダルを差し出して何とかやりすごしましょう！","「メダルをよこすのなら今回だけだ、命まではとらぬ、さっさと行け！」","ピタゴラスはメダルを奪って去っていった。"},
-        new List<string> {"「私はチューリングです」","チューリングはコンピュータの原理を発明した人物として知られており、「AIの父」とも呼ばれています。","計算可能性に関する研究の他、第2次世界大戦ではナチスドイツが用いていた世界最先端の暗号・エニグマを解くのに大きく貢献しました。"},};
+        new List<string> {"「私はチューリングです」","チューリングはコンピュータの原理を発明した人物として知られており、「AIの父」とも呼ばれています。","計算可能性に関する研究の他、第2次世界大戦ではナチスドイツが用いていた世界最先端の暗号・エニグマを解くのに大きく貢献しました。"},
+        new List<string> {"あああ"},
+        new List<string> {"「我はアルキメデスと申す」","あああ","よろしく"},
+        new List<string> {"ううう"},
+        new List<string> {"えええ"},
+        new List<string> {"おおお"},};
     int selected_sugakusya_id;
     int sugakusyacommentid;
 
@@ -85,7 +90,7 @@ public class MasuController : MonoBehaviour
     }
 
     /*
-    Syop画面の残りの作業
+    Shop画面の残りの作業
     ・アイテムの値段を決めて、購入後に所持金を減らす
     ・購入後の画面の切り替えとか色々
     */
@@ -227,6 +232,7 @@ public class MasuController : MonoBehaviour
     public GameObject EventHaikeiButton;
     public Image sugakusyaImage;
     public Sprite[] sugakusyaImages;
+
     public void EventMasu(){
         EventHaikei.SetActive(true);
     }
@@ -237,11 +243,20 @@ public class MasuController : MonoBehaviour
         EventHukidashi.SetActive(false);
         EventNeko.SetActive(false);
         SugakusyaCommentButton.interactable = false;
-        while(nameid1==nameid2 || nameid2==nameid3 || nameid3==nameid4 || nameid4==nameid1){
-            nameid1 = saikoro.Next(0, 5);
-            nameid2 = saikoro.Next(0, 5);
-            nameid3 = saikoro.Next(0, 5);
-            nameid4 = saikoro.Next(0, 5);
+        if (GameController.players_medal[GameController.players_turn]==0){
+            while((nameid1==nameid2 || nameid1==nameid3 || nameid1==nameid4 || nameid2==nameid3 || nameid2==nameid4 || nameid3==nameid4) || (nameid1%3==0 || nameid2%3==0 || nameid3%3==0 || nameid4%3==0)){
+                nameid1 = saikoro.Next(0, 10);
+                nameid2 = saikoro.Next(0, 10);
+                nameid3 = saikoro.Next(0, 10);
+                nameid4 = saikoro.Next(0, 10);
+            }
+        }else{
+            while(nameid1==nameid2 || nameid1==nameid3 || nameid1==nameid4 || nameid2==nameid3 || nameid2==nameid4 || nameid3==nameid4){
+                nameid1 = saikoro.Next(0, 10);
+                nameid2 = saikoro.Next(0, 10);
+                nameid3 = saikoro.Next(0, 10);
+                nameid4 = saikoro.Next(0, 10);
+            }
         }
         name1.text = sugakusya[nameid1];
         name2.text = sugakusya[nameid2];
@@ -277,6 +292,13 @@ public class MasuController : MonoBehaviour
         if(sugakusyacommentid < sugakusya_comment_list[selected_sugakusya_id].Count){
             sugakusyacomment.text = sugakusya_comment_list[selected_sugakusya_id][sugakusyacommentid];
         }else{
+            if(selected_sugakusya_id%3==0){
+                GameController.players_medal[GameController.players_turn] -= 1;
+            }
+            if(selected_sugakusya_id%3==1){
+                GameController.players_medal[GameController.players_turn] += 1;
+            }
+            Debug.Log(GameController.players_medal[GameController.players_turn]);
             SugakusyaCommentButton.interactable = false;
             StartCoroutine(ReturnToSugoroku());
         }
