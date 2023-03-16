@@ -61,6 +61,8 @@ public class ItemController : MonoBehaviour
     public void Skip(){//Skipカード
         if(GameController.players_item[GameController.players_turn, 0] >= 1){
             GameController.players_item[GameController.players_turn, 0] -= 1;
+            ItemPanelClose.SetActive(false);
+            ItemPanelOpen.SetActive(true);
             int next_player = GameController.players_turn;
             next_player += reverse;
             next_player %= GameController.PLAYERS_NUM;
@@ -72,21 +74,31 @@ public class ItemController : MonoBehaviour
     public void Reverse(){//リバースカード
         if(GameController.players_item[GameController.players_turn, 1] >= 1){
             GameController.players_item[GameController.players_turn, 1] -= 1;
+            ItemPanelClose.SetActive(false);
+            ItemPanelOpen.SetActive(true);
             reverse *= -1;
             StartCoroutine(Message("リバースカード！"));
         }
     }
 
-   
 
     public void HokenSyo(){
-
+       if(GameController.players_item[GameController.players_turn, 2] >= 1){
+            GameController.players_item[GameController.players_turn, 2] -= 1;
+            ItemPanelClose.SetActive(false);
+            ItemPanelOpen.SetActive(true);
+            StartCoroutine(Message("保険証！", 2));
+        }
     }
+
 
     int sarachicount;
     public void Sarachi(){//更地カード
-        if(GameController.players_item[GameController.players_turn, 2] >= 1){
-            StartCoroutine(Message("更地カード！", 2));
+        if(GameController.players_item[GameController.players_turn, 3] >= 1){
+            GameController.players_item[GameController.players_turn, 3] -= 1;
+            ItemPanelClose.SetActive(false);
+            ItemPanelOpen.SetActive(true);
+            StartCoroutine(Message("更地カード！", 3));
         }
     }
 
@@ -94,6 +106,8 @@ public class ItemController : MonoBehaviour
     public void ShiteiMasu(){//指定マスカード
         if(GameController.players_item[GameController.players_turn, 4] >= 1){
             GameController.players_item[GameController.players_turn,4] -= 1;
+            ItemPanelClose.SetActive(false);
+            ItemPanelOpen.SetActive(true);
             StartCoroutine(Message("指定マスカード！", 4));
         }
     }
@@ -135,7 +149,7 @@ public class ItemController : MonoBehaviour
         ItemPanelClose.SetActive(true);
         ItemPanel.SetActive(true);
     }
-    
+
     public void ItemPanelActiveFalse(){//戻るボタンを押すとアイテムパネルが消える
         ItemPanelClose.SetActive(false);
         ItemPanel.SetActive(false);
