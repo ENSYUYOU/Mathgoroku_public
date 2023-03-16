@@ -74,8 +74,8 @@ public class GameController : MonoBehaviour
             bgmTime = 0f;//BGMを初めから
             //int sx = -5;//スタート地点の座標。
             //int sy = -1;
-            int sx = 47;//スタート地点の座標。
-            int sy = 3;
+            int sx = -5;//スタート地点の座標。
+            int sy = -1;
             players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
             player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
                                                       tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
@@ -112,7 +112,7 @@ public class GameController : MonoBehaviour
     public AudioClip walkSound;//歩く音
     public AudioClip coinSound;//歩く音
     public static bool canChange;
-     public TileBase tileBunkiBlue;//普通の青タイル
+    public TileBase tileBunkiBlue;//普通の青タイル
     private IEnumerator Change(int x, int y, int nokori, float waitTime, bool rev=false){
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
@@ -195,7 +195,7 @@ public class GameController : MonoBehaviour
                 Vector3 pos = Input.mousePosition;   
                 var bound = tilemap.cellBounds;
                 var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
-                Debug.Log(tile.sprite.name);
+                //Debug.Log(tile.sprite.name);
                 //Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
                 //                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);
                 //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
