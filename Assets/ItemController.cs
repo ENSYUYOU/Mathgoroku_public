@@ -123,11 +123,19 @@ public class ItemController : MonoBehaviour
     }
     
 
+    public Button ItemPanelPreOpenButton;
+    public GameObject ItemPanelPreOpen;
     public Button ItemPanelOpenButton;
     public GameObject ItemPanelOpen;
+    public Button ItemPanelPreCloseButton;
+    public GameObject ItemPanelPreClose;
     public Button ItemPanelCloseButton;
     public GameObject ItemPanelClose;
     public GameObject ItemPanel;
+    
+    public AudioSource audioSource;//オーディオソースは透明なゲームオブジェクトについてる。
+    public AudioClip selectSound;//ボタン選択時の音
+
     IEnumerator Message(string newmessage, int cardid=-1){//メッセージ, 指定マスパネルのときはパネルを出すアクティブにする
         ItemPanelOpenButton.interactable = false;
         ItemPanel.SetActive(false);
@@ -144,15 +152,29 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    public void ItemPanelActive(){//アイテムボタンを押すとアイテムパネルが表示される
+    public void ItemPanelPreActive(){//アイテムボタンを押すとボタンが赤くなる
+        audioSource.PlayOneShot(selectSound);
+        ItemPanelPreOpen.SetActive(false);
+        ItemPanelOpen.SetActive(true);
+        Invoke("ItemPanelActive",0.5f);
+    }
+
+    public void ItemPanelActive(){//赤いアイテムボタンを押すとアイテムパネルが表示される
         ItemPanelOpen.SetActive(false);
-        ItemPanelClose.SetActive(true);
+        ItemPanelPreClose.SetActive(true);
         ItemPanel.SetActive(true);
     }
 
-    public void ItemPanelActiveFalse(){//戻るボタンを押すとアイテムパネルが消える
+    public void ItemPanelPreActiveFalse(){//戻るボタンを押すとボタンが赤くなる
+        audioSource.PlayOneShot(selectSound);
+        ItemPanelPreClose.SetActive(false);
+        ItemPanelClose.SetActive(true);
+        Invoke("ItemPanelActiveFalse",0.5f);
+    }
+
+    public void ItemPanelActiveFalse(){//赤い戻るボタンを押すとアイテムパネルが消える
         ItemPanelClose.SetActive(false);
         ItemPanel.SetActive(false);
-        ItemPanelOpen.SetActive(true);
+        ItemPanelPreOpen.SetActive(true);
     }
 }

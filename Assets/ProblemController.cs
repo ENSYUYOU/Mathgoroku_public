@@ -150,5 +150,20 @@ public class ProblemController : MonoBehaviour
         time = 10f;
         audioSource.PlayOneShot(tokeiSound);
     }
+
+    public GameObject PreSceneBack;
+    public Button PreSceneBackButton;
+    public GameObject SceneBack;
+    public Button SceneBackButton;
+    public AudioClip selectSound;//ボタン選択時の音
+    public void PreBack(){
+        audioSource.PlayOneShot(selectSound);
+        PreSceneBack.SetActive(false);
+        SceneBack.SetActive(true);
+        Invoke("Back",0.25f);
+    }
+    public void Back(){
+        SceneManager.LoadScene("SampleScene");
+    }
     
 }

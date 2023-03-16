@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour
     public static GameObject player2;
     public static GameObject player3;
     public static GameObject player4;
+    public GameObject preTurnButton;
+    public Button preTurn;
+    public GameObject turnButton;
     public Button turn;
     List<GameObject> players = new List<GameObject>();
 
@@ -347,6 +350,14 @@ public class GameController : MonoBehaviour
         message.text = "Player" + players_turn.ToString() + " Wins!";
     }
     
+    public AudioClip selectSound;//ボタン選択時の音
+    public void PreTurn(){
+        audioSource.PlayOneShot(selectSound);
+        preTurnButton.SetActive(false);
+        turnButton.SetActive(true);
+        Invoke("Turn",0.25f);
+    }
+
     public void Turn(){
         bgmTime = audioSource.time;
         turn.interactable = false;
