@@ -99,8 +99,9 @@ public class ProblemController : MonoBehaviour
             SoundEffect.PlayOneShot(batu);
             isTimeUp = true;
             GameController.players_coin[GameController.players_turn]+=3;
-            GameController.players_turn += ItemController.reverse + GameController.PLAYERS_NUM;//時間切れのときはこのタイミングでターン変更
-            GameController.players_turn %= GameController.PLAYERS_NUM;
+            gamecontroller.ChangeTurn();
+            //GameController.players_turn += ItemController.reverse + GameController.PLAYERS_NUM;//時間切れのときはこのタイミングでターン変更
+            //GameController.players_turn %= GameController.PLAYERS_NUM;
             StartCoroutine(Erase(3));//時間切れ
         }
     }

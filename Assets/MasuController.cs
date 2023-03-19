@@ -126,7 +126,6 @@ public class MasuController : MonoBehaviour
         shopitem2.color = new Color(0, 0, 0, 1f);
         shopitem3.color = new Color(0, 0, 0, 1f);
         shopitem1.color = new Color(1f, 0.92f, 0.016f, 1f);
-        Debug.Log("hello");
         if(selected_item==item1){
             if(GameController.players_coin[GameController.players_turn] >= ITEMPRICE[item1]){
                 StartCoroutine(CoinMinus( ITEMPRICE[item1]));
@@ -244,13 +243,18 @@ public class MasuController : MonoBehaviour
     public GameObject EventHukidashi;
     public GameObject EventNeko;
     public GameObject EventSugakusyaImage;
-    public GameObject EventTextBox;
+    public GameObject EventTextBox;//数学者4人の名前
     public GameObject EventHaikeiButton;
     public Image sugakusyaImage;
     public Sprite[] sugakusyaImages;
 
     public void EventMasu(){
+        sugakusyacomment.text = "イベントマスです！<br>ルーレットを回して、イベントを決めます。<br>Stopを押してルーレットを止めよう！";
         EventHaikei.SetActive(true);
+        EventHukidashi.SetActive(true);
+        EventNeko.SetActive(true);
+         EventStartRouletteButton.SetActive(true);
+
     }
     
     public void StartRoulette(){
@@ -319,6 +323,10 @@ public class MasuController : MonoBehaviour
             }
             Debug.Log(GameController.players_medal[GameController.players_turn]);
             SugakusyaCommentButton.interactable = false;
+            sugakusyacommentid = 0;
+            EventHukidashi.SetActive(false);
+            EventHaikeiButton.SetActive(false);
+            EventSugakusyaImage.SetActive(false);
             StartCoroutine(ReturnToSugoroku());
         }
     }

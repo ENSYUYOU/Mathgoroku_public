@@ -74,10 +74,12 @@ public class GameController : MonoBehaviour
         players = new List<GameObject>() {player1, player2, player3, player4};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
 
         bgmTime = 0f;//BGMを初めから
-        int sx = -5;//スタート地点の座標。
-        int sy = -1;
+        //int sx = -5;//スタート地点の座標。
+        //int sy = -1;
         //int sx = 46;//スタート地点の座標。
-        // int sy = 3;
+        //int sy = 3;
+        int sx = 60;//スタート地点の座標。
+        int sy = -1;
         players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
         player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
                                                     tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
@@ -92,7 +94,7 @@ public class GameController : MonoBehaviour
         BGM.Play();
     }
     public void ReturnFromProblem(){
-         preTurnButton.SetActive(true);
+        preTurnButton.SetActive(true);
         turnButton.SetActive(false);
         CameraControl2.MoveCamera();
         if(ProblemController.isWalk){
@@ -119,6 +121,10 @@ public class GameController : MonoBehaviour
         canChange = true;
         if(nokori==0){
             if(rev==false){
+                Debug.Log(x);
+                Debug.Log(y);
+                if(x==58 && y==-6)StartCoroutine(Ending(1f));
+                
                 var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(player_destination[players_turn]));
                 if(tile.sprite.name.Contains("blue")) {//プラスます
                     StartCoroutine(masucontroller.CoinPlus(5));
@@ -162,14 +168,12 @@ public class GameController : MonoBehaviour
                     tilemap.SetTile(new Vector3Int(x, y, 0), tileBunkiBlue);
                 }
             }
-            players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
-            players_turn %= PLAYERS_NUM;
+            ChangeTurn();
             if(ItemController.skip_flg[players_turn]==1){//スキップフラグ
                 yield return new WaitForSeconds(1f);
                 message.text = "スキップ！";
                 yield return new WaitForSeconds(2f);
-                players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
-                players_turn %= PLAYERS_NUM;
+                ChangeTurn();
                 message.text = "";
             }
             turn.interactable = true;
@@ -195,7 +199,7 @@ public Image turnImage;
                 //Debug.Log(tile.sprite.name);
                 //Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
                 //                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);
-                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
         }
     }
 
@@ -341,7 +345,13 @@ public Image turnImage;
 
     IEnumerator Ending(float t){
         yield return new WaitForSeconds(t);
-        message.text = "Player" + players_turn.ToString() + " Wins!";
+        message.text = "Player" + players_turn.ToString() + " Goal!";
+        yield return new WaitForSeconds(t+2f);
+        message.text = "";
+        Goaled[players_turn] = true;
+
+        if(Goaled[0] && Goaled[1] && Goaled[2] && Goaled[3])message.text = "GameClear";
+        else ChangeTurn();
     }
     
     public AudioClip selectSound;//ボタン選択時の音
@@ -358,6 +368,13 @@ public Image turnImage;
         problemcontroller.StartProblem();
         //SceneManager.LoadScene("problem");
     }
-    
-
+    static bool[] Goaled = new bool[]{false, false, false, false};
+    public void ChangeTurn(){
+        players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
+        players_turn %= PLAYERS_NUM;
+        while (Goaled[players_turn]){//ゴールした人を飛ばす
+            players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
+            players_turn %= PLAYERS_NUM;
+        }//一つ進める
+    }
 }   
