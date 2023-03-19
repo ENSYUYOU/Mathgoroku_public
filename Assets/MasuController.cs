@@ -56,10 +56,10 @@ public class MasuController : MonoBehaviour
     public TextMeshProUGUI Dirichletcomment;
     public GameObject yes;
     public GameObject no;
-    public GameObject SekisyoHaikeiButton;
+    public GameObject SekisyoHaikei;
     public TextMeshProUGUI DirichleSyojikin;
 
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -78,15 +78,24 @@ public class MasuController : MonoBehaviour
             if(nameID==3)name4.color = new Color(1f, 0.92f, 0.016f, 1f);
         }
     }
-
-
-    public void CoinPlus(){
-        GameController.players_coin[GameController.players_turn] += 5;
+    public AudioSource audioSource;//オーディオソースは透明なゲームオブジェクトについてる。
+    public AudioClip coinSound;//歩く音
+    public IEnumerator CoinPlus(int num){
+        for(int i=0; i<num; i++){
+            yield return new WaitForSeconds(0.1f);
+            audioSource.PlayOneShot(coinSound);
+            GameController.players_coin[GameController.players_turn] += 1;
+        }
     }
-
-    public void CoinMinus(){
-        GameController.players_coin[GameController.players_turn] -= 5;
-        GameController.players_coin[GameController.players_turn] = Math.Max(GameController.players_coin[GameController.players_turn], 0);
+    
+   
+    public IEnumerator CoinMinus(int num){
+        for(int i=0; i<num; i++){
+            yield return new WaitForSeconds(0.1f);
+            audioSource.PlayOneShot(coinSound);
+            GameController.players_coin[GameController.players_turn] -= 1;
+            GameController.players_coin[GameController.players_turn] = Math.Max(GameController.players_coin[GameController.players_turn], 0);
+        }
     }
 
     /*
@@ -119,7 +128,7 @@ public class MasuController : MonoBehaviour
         Debug.Log("hello");
         if(selected_item==item1){
             if(GameController.players_coin[GameController.players_turn] >= ITEMPRICE[item1]){
-                GameController.players_coin[GameController.players_turn] -= ITEMPRICE[item1];
+                StartCoroutine(CoinMinus( ITEMPRICE[item1]));
                 GameController.players_item[GameController.players_turn, item1] += 1;
                 nekoserihu.text = "お買い上げありがとうございます！";
                 nekoImage.sprite = nekoImages[5];
@@ -187,7 +196,7 @@ public class MasuController : MonoBehaviour
     }
     
     public void SekisyoMasu(){//とりあえずクリックしたときに呼ばれる
-        SekisyoHaikeiButton.SetActive(true);
+        SekisyoHaikei.SetActive(true);
         DirichleSyojikin.text = "×" + GameController.players_coin[GameController.players_turn].ToString();
         if (commentid < 3){
             commentid += 1;
@@ -198,12 +207,18 @@ public class MasuController : MonoBehaviour
             no.SetActive(true);
         }
     }
-
+ 
     public void yesfunction(){
         if(GameController.players_coin[GameController.players_turn] < 50){
             Dirichletcomment.text = "お金が足りません";
         }else{
-            GameController.players_coin[GameController.players_turn] -= 50;
+             StartCoroutine(CoinMinus(50));
+             /*
+            for(int i=0; i<50; i++){
+                StartCoroutine(CoinMinus(0.1f*i));
+                //audioSource.PlayOneShot(coinSound);
+            }*/
+            //GameController.players_coin[GameController.players_turn] -= 50;
             GameController.players_medal[GameController.players_turn] += 1;
             yes.SetActive(false);
             no.SetActive(false);
@@ -312,6 +327,6 @@ public class MasuController : MonoBehaviour
         GameController.canChange = true;
         ShopHaikei.SetActive(false);
         EventHaikei.SetActive(false);
-        SekisyoHaikeiButton.SetActive(false);
+        SekisyoHaikei.SetActive(false);
     }
 }
