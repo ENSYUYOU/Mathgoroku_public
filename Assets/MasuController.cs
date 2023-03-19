@@ -56,7 +56,7 @@ public class MasuController : MonoBehaviour
     public TextMeshProUGUI Dirichletcomment;
     public GameObject yes;
     public GameObject no;
-    public GameObject SekisyoHaikeiButton;
+    public GameObject SekisyoHaikei;
     public TextMeshProUGUI DirichleSyojikin;
 
     
@@ -196,7 +196,7 @@ public class MasuController : MonoBehaviour
     }
     
     public void SekisyoMasu(){//とりあえずクリックしたときに呼ばれる
-        SekisyoHaikeiButton.SetActive(true);
+        SekisyoHaikei.SetActive(true);
         DirichleSyojikin.text = "×" + GameController.players_coin[GameController.players_turn].ToString();
         if (commentid < 3){
             commentid += 1;
@@ -327,6 +327,6 @@ public class MasuController : MonoBehaviour
         GameController.canChange = true;
         ShopHaikei.SetActive(false);
         EventHaikei.SetActive(false);
-        SekisyoHaikeiButton.SetActive(false);
+        SekisyoHaikei.SetActive(false);
     }
 }
