@@ -1460,7 +1460,7 @@ GameObject:
   - component: {fileID: 748480020}
   - component: {fileID: 748480021}
   m_Layer: 0
-  m_Name: ProblemControllerObject
+  m_Name: ProblemController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
