@@ -41,9 +41,9 @@ public class GameController : MonoBehaviour
 
    
 
-    static bool syokika = true;
-    public AudioSource audioSource;//オーディオソースは透明なゲームオブジェクトについてる。
-    public AudioClip BGM;//BGM用のpublic変数
+    public AudioSource SoundEffect;//オーディオソースは透明なゲームオブジェクトについてる。
+    public AudioSource BGM;//オーディオソースは透明なゲームオブジェクトについてる。
+    public AudioClip BGMClip;//BGM用のpublic変数
     static float bgmTime;//シーンに映るときにBGMが初めに戻らないようにする変数。
 
     public Button ItemPanelButton;
@@ -84,14 +84,12 @@ public class GameController : MonoBehaviour
                                                     tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)),
                                                     tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
         used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
-        for(int i=0; i<PLAYERS_NUM; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする
-        syokika = false;
-    
+        for(int i=0; i<PLAYERS_NUM; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする    
        
 
-        audioSource.clip = BGM;
-        audioSource.time = bgmTime;
-        audioSource.Play();
+        BGM.clip = BGMClip;
+        BGM.time = bgmTime;
+        BGM.Play();
     }
     public void ReturnFromProblem(){
          preTurnButton.SetActive(true);
@@ -117,7 +115,7 @@ public class GameController : MonoBehaviour
     private IEnumerator Change(int x, int y, int nokori, float waitTime, bool rev=false){
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
-        audioSource.PlayOneShot(walkSound);
+        SoundEffect.PlayOneShot(walkSound);
         canChange = true;
         if(nokori==0){
             if(rev==false){
@@ -348,14 +346,14 @@ public Image turnImage;
     
     public AudioClip selectSound;//ボタン選択時の音
     public void PreTurn(){
-        audioSource.PlayOneShot(selectSound);
+        SoundEffect.PlayOneShot(selectSound);
         preTurnButton.SetActive(false);
         turnButton.SetActive(true);
         Invoke("Turn",0.25f);
     }
     public ProblemController problemcontroller;
     public void Turn(){
-        bgmTime = audioSource.time;
+        bgmTime = BGM.time;
         turn.interactable = false;
         problemcontroller.StartProblem();
         //SceneManager.LoadScene("problem");

@@ -40,18 +40,20 @@ public class ProblemController : MonoBehaviour
     int last_problem;
     int me = 0;
     public Button dice;
-    public AudioSource audioSource;//ProblemControllerObjectに追加したオーディオソースコンポーネント
+    public AudioSource SoundEffect;//ProblemControllerObjectに追加したオーディオソースコンポーネント
+    public AudioSource BGM;//ProblemControllerObjectに追加したオーディオソースコンポーネント
     public AudioClip taikoSound;
     bool moveDice;
     public GameObject ProblemPanel;
     public void StartProblem()
     {
+        BGM.volume /= 3f;
         Answer.text = "答えを入れよう！";
         inputfield.interactable = true;
         time = 1000000000000000000f;
         ProblemPanel.SetActive(true);
         moveDice=false;
-        audioSource.PlayOneShot(taikoSound);
+        SoundEffect.PlayOneShot(taikoSound);
         dice.interactable = true;
         one = saikoro.Next(1,10);
         two = saikoro.Next(1,10);
@@ -93,20 +95,18 @@ public class ProblemController : MonoBehaviour
             time -= Time.deltaTime;
             Timer.text = "Timer:"+time.ToString("F1");
         }else if (time < 0 && isTimeUp==false && isAnswered==false){
-            audioSource.Stop();//時計の音を止める
-            audioSource.PlayOneShot(batu);
+            SoundEffect.Stop();//時計の音を止める
+            SoundEffect.PlayOneShot(batu);
             isTimeUp = true;
             GameController.players_coin[GameController.players_turn]+=3;
             GameController.players_turn += ItemController.reverse + GameController.PLAYERS_NUM;//時間切れのときはこのタイミングでターン変更
             GameController.players_turn %= GameController.PLAYERS_NUM;
             StartCoroutine(Erase(3));//時間切れ
-            Debug.Log("時間切れ");
         }
     }
     public GameController gamecontroller;
     
     IEnumerator Erase(float time){
-        Debug.Log("!!!");
         if (isTimeUp && isAnswered==false)Problem.text = "Time up";
         yield return new WaitForSeconds(time);
         blackboard.SetActive(false);
@@ -115,6 +115,7 @@ public class ProblemController : MonoBehaviour
         if(isAnswered)isWalk = true;
         ProblemPanel.SetActive(false);
         gamecontroller.ReturnFromProblem();
+        BGM.volume = 10f;
         //SceneManager.LoadScene("SampleScene");
     }
 
@@ -128,14 +129,14 @@ public class ProblemController : MonoBehaviour
     public void InputText(){
         inputfield.interactable = false;
         Debug.Log("inputtext");
-        audioSource.Stop();//時計の音を止める
+        SoundEffect.Stop();//時計の音を止める
         Problem.text += ans_list[last_problem];//答えを表示する
         if(Answer.text == ans_list[last_problem] && isAnswered==false){
-            audioSource.PlayOneShot(maru);
+            SoundEffect.PlayOneShot(maru);
             maru_image.SetActive(true);
             ans = int.Parse(ans_list[last_problem]);
         }else if (isTimeUp==false && isAnswered==false){
-            audioSource.PlayOneShot(batu);
+            SoundEffect.PlayOneShot(batu);
             batu_image.SetActive(true);
             ans = -int.Parse(ans_list[last_problem]);
         }
@@ -158,10 +159,10 @@ public class ProblemController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         blackboard.SetActive(true);
         Problem.text = "Solve me!<br>"+problem_list[last_problem];
-        audioSource.PlayOneShot(syutsudai);
+        SoundEffect.PlayOneShot(syutsudai);
         yield return new WaitForSeconds(0.5f);
-        time = 10f;
-        audioSource.PlayOneShot(tokeiSound);
+        time *= 3f;
+        SoundEffect.PlayOneShot(tokeiSound);
     }
 
     public GameObject PreSceneBack;
@@ -170,7 +171,7 @@ public class ProblemController : MonoBehaviour
     public Button SceneBackButton;
     public AudioClip selectSound;//ボタン選択時の音
     public void PreBack(){
-        audioSource.PlayOneShot(selectSound);
+        SoundEffect.PlayOneShot(selectSound);
         PreSceneBack.SetActive(false);
         SceneBack.SetActive(true);
         Invoke("Back",0.25f);
