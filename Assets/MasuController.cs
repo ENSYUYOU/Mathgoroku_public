@@ -59,7 +59,7 @@ public class MasuController : MonoBehaviour
     public GameObject SekisyoHaikeiButton;
     public TextMeshProUGUI DirichleSyojikin;
 
-
+    
     // Update is called once per frame
     void Update()
     {
