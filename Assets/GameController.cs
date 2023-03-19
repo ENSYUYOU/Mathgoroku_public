@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public const int PLAYERS_NUM = 1;
+    public const int PLAYERS_NUM = 4;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
@@ -73,25 +73,29 @@ public class GameController : MonoBehaviour
         player4 = GameObject.Find("fox_blue");
         players = new List<GameObject>() {player1, player2, player3, player4};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
 
-        if (syokika){
-            bgmTime = 0f;//BGMを初めから
-            int sx = -5;//スタート地点の座標。
-            int sy = -1;
-            //int sx = 46;//スタート地点の座標。
-           // int sy = 3;
-            players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
-            player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
-                                                      tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
-                                                      tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)),
-                                                      tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
-            used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
-            for(int i=0; i<PLAYERS_NUM; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする
-            syokika = false;
-        }else{
-            Vector3 delta = new Vector3(0,0.5f,0);
-            for(int i=0; i<PLAYERS_NUM; i++)players[i].transform.position = delta + player_destination[i];
-        }
+        bgmTime = 0f;//BGMを初めから
+        int sx = -5;//スタート地点の座標。
+        int sy = -1;
+        //int sx = 46;//スタート地点の座標。
+        // int sy = 3;
+        players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
+        player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
+                                                    tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
+                                                    tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)),
+                                                    tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
+        used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
+        for(int i=0; i<PLAYERS_NUM; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする
+        syokika = false;
+    
        
+
+        audioSource.clip = BGM;
+        audioSource.time = bgmTime;
+        audioSource.Play();
+    }
+    public void ReturnFromProblem(){
+         preTurnButton.SetActive(true);
+        turnButton.SetActive(false);
         CameraControl2.MoveCamera();
         if(ProblemController.isWalk){
             turn.interactable = false;
@@ -103,10 +107,6 @@ public class GameController : MonoBehaviour
             }
         }
         ProblemController.isWalk = false;
-
-        audioSource.clip = BGM;
-        audioSource.time = bgmTime;
-        audioSource.Play();
     }
 
 
@@ -353,11 +353,12 @@ public Image turnImage;
         turnButton.SetActive(true);
         Invoke("Turn",0.25f);
     }
-
+    public ProblemController problemcontroller;
     public void Turn(){
         bgmTime = audioSource.time;
         turn.interactable = false;
-        SceneManager.LoadScene("problem");
+        problemcontroller.StartProblem();
+        //SceneManager.LoadScene("problem");
     }
     
 

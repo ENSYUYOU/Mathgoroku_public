@@ -11,14 +11,14 @@ public class ProblemController : MonoBehaviour
     string[] problem_list = new string [] {"", "log<sub>2</sub>4=", "1+2=", "sin<sup>2</sup><i>Θ</i>+cos<sup>2</sup><i>Θ</i>=", "<i>a</i><sub>1</sub>=2, <i>a<sub>n</i>+1</sub>=2<i>a<sub>n</sub></i>+1, <i>a</i><sub>3</sub>=</i>", "(2+<i>i</i>)(2-<i>i</i>)=", "2sin(<i>π</i>/4)cos(<i>π</i>/4)=", "log<sub>3</sub>9=", "2<sup>2</sup>=", "-6cos<i>π</i>="};
     //string[] ans_list = new string [] {"", "90", "90", "90", "90", "90", "90", "90", "90", "90"};
     //string[] ans_list = new string [] {"", "15", "15", "15", "15", "15", "15", "15", "15", "15"};
-    string[] ans_list = new string [] {"", "1", "1", "1", "1", "1", "1", "1", "1", "1"};
-    //string[] ans_list = new string [] {"", "2", "3", "1", "11", "5", "1", "2", "4", "6"};
+    //string[] ans_list = new string [] {"", "1", "1", "1", "1", "1", "1", "1", "1", "1"};
+    string[] ans_list = new string [] {"", "2", "3", "1", "11", "5", "1", "2", "4", "6"};
     public TextMeshProUGUI Problem;
     public TextMeshProUGUI Timer;
     public TMP_InputField Answer;
     bool isTimeUp = false;
     bool isAnswered = false;
-    float time = 1000000000000000000f;
+    float time;
     public static bool isWalk;
     public static int ans;
 
@@ -43,8 +43,13 @@ public class ProblemController : MonoBehaviour
     public AudioSource audioSource;//ProblemControllerObjectに追加したオーディオソースコンポーネント
     public AudioClip taikoSound;
     bool moveDice;
-    void Start()
+    public GameObject ProblemPanel;
+    public void StartProblem()
     {
+        Answer.text = "答えを入れよう！";
+        inputfield.interactable = true;
+        time = 1000000000000000000f;
+        ProblemPanel.SetActive(true);
         moveDice=false;
         audioSource.PlayOneShot(taikoSound);
         dice.interactable = true;
@@ -95,17 +100,22 @@ public class ProblemController : MonoBehaviour
             GameController.players_turn += ItemController.reverse + GameController.PLAYERS_NUM;//時間切れのときはこのタイミングでターン変更
             GameController.players_turn %= GameController.PLAYERS_NUM;
             StartCoroutine(Erase(3));//時間切れ
+            Debug.Log("時間切れ");
         }
     }
+    public GameController gamecontroller;
     
     IEnumerator Erase(float time){
+        Debug.Log("!!!");
         if (isTimeUp && isAnswered==false)Problem.text = "Time up";
         yield return new WaitForSeconds(time);
         blackboard.SetActive(false);
         maru_image.SetActive(false);
         batu_image.SetActive(false);
         if(isAnswered)isWalk = true;
-        SceneManager.LoadScene("SampleScene");
+        ProblemPanel.SetActive(false);
+        gamecontroller.ReturnFromProblem();
+        //SceneManager.LoadScene("SampleScene");
     }
 
     //InputFieldの文字が変更されたらコールバックされる。
@@ -114,7 +124,10 @@ public class ProblemController : MonoBehaviour
     public AudioClip batu;
     public GameObject maru_image;
     public GameObject batu_image;
+    public TMP_InputField inputfield;
     public void InputText(){
+        inputfield.interactable = false;
+        Debug.Log("inputtext");
         audioSource.Stop();//時計の音を止める
         Problem.text += ans_list[last_problem];//答えを表示する
         if(Answer.text == ans_list[last_problem] && isAnswered==false){
