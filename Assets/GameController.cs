@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public const int PLAYERS_NUM = 1;
+    public const int PLAYERS_NUM = 4;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
@@ -41,9 +41,9 @@ public class GameController : MonoBehaviour
 
    
 
-    static bool syokika = true;
-    public AudioSource audioSource;//オーディオソースは透明なゲームオブジェクトについてる。
-    public AudioClip BGM;//BGM用のpublic変数
+    public AudioSource SoundEffect;//オーディオソースは透明なゲームオブジェクトについてる。
+    public AudioSource BGM;//オーディオソースは透明なゲームオブジェクトについてる。
+    public AudioClip BGMClip;//BGM用のpublic変数
     static float bgmTime;//シーンに映るときにBGMが初めに戻らないようにする変数。
 
     public Button ItemPanelButton;
@@ -73,25 +73,27 @@ public class GameController : MonoBehaviour
         player4 = GameObject.Find("fox_blue");
         players = new List<GameObject>() {player1, player2, player3, player4};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
 
-        if (syokika){
-            bgmTime = 0f;//BGMを初めから
-            int sx = -5;//スタート地点の座標。
-            int sy = -1;
-            //int sx = 46;//スタート地点の座標。
-           // int sy = 3;
-            players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
-            player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
-                                                      tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
-                                                      tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)),
-                                                      tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
-            used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
-            for(int i=0; i<PLAYERS_NUM; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする
-            syokika = false;
-        }else{
-            Vector3 delta = new Vector3(0,0.5f,0);
-            for(int i=0; i<PLAYERS_NUM; i++)players[i].transform.position = delta + player_destination[i];
-        }
+        bgmTime = 0f;//BGMを初めから
+        int sx = -5;//スタート地点の座標。
+        int sy = -1;
+        //int sx = 46;//スタート地点の座標。
+        // int sy = 3;
+        players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
+        player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
+                                                    tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
+                                                    tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)),
+                                                    tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
+        used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
+        for(int i=0; i<PLAYERS_NUM; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする    
        
+
+        BGM.clip = BGMClip;
+        BGM.time = bgmTime;
+        BGM.Play();
+    }
+    public void ReturnFromProblem(){
+         preTurnButton.SetActive(true);
+        turnButton.SetActive(false);
         CameraControl2.MoveCamera();
         if(ProblemController.isWalk){
             turn.interactable = false;
@@ -103,10 +105,6 @@ public class GameController : MonoBehaviour
             }
         }
         ProblemController.isWalk = false;
-
-        audioSource.clip = BGM;
-        audioSource.time = bgmTime;
-        audioSource.Play();
     }
 
 
@@ -117,7 +115,7 @@ public class GameController : MonoBehaviour
     private IEnumerator Change(int x, int y, int nokori, float waitTime, bool rev=false){
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
-        audioSource.PlayOneShot(walkSound);
+        SoundEffect.PlayOneShot(walkSound);
         canChange = true;
         if(nokori==0){
             if(rev==false){
@@ -348,16 +346,17 @@ public Image turnImage;
     
     public AudioClip selectSound;//ボタン選択時の音
     public void PreTurn(){
-        audioSource.PlayOneShot(selectSound);
+        SoundEffect.PlayOneShot(selectSound);
         preTurnButton.SetActive(false);
         turnButton.SetActive(true);
         Invoke("Turn",0.25f);
     }
-
+    public ProblemController problemcontroller;
     public void Turn(){
-        bgmTime = audioSource.time;
+        bgmTime = BGM.time;
         turn.interactable = false;
-        SceneManager.LoadScene("problem");
+        problemcontroller.StartProblem();
+        //SceneManager.LoadScene("problem");
     }
     
 

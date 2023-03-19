@@ -78,12 +78,12 @@ public class MasuController : MonoBehaviour
             if(nameID==3)name4.color = new Color(1f, 0.92f, 0.016f, 1f);
         }
     }
-    public AudioSource audioSource;//オーディオソースは透明なゲームオブジェクトについてる。
+    public AudioSource SoundEffect;//オーディオソースは透明なゲームオブジェクトについてる。
     public AudioClip coinSound;//歩く音
     public IEnumerator CoinPlus(int num){
         for(int i=0; i<num; i++){
             yield return new WaitForSeconds(0.1f);
-            audioSource.PlayOneShot(coinSound);
+            SoundEffect.PlayOneShot(coinSound);
             GameController.players_coin[GameController.players_turn] += 1;
         }
     }
@@ -92,7 +92,7 @@ public class MasuController : MonoBehaviour
     public IEnumerator CoinMinus(int num){
         for(int i=0; i<num; i++){
             yield return new WaitForSeconds(0.1f);
-            audioSource.PlayOneShot(coinSound);
+            SoundEffect.PlayOneShot(coinSound);
             GameController.players_coin[GameController.players_turn] -= 1;
             GameController.players_coin[GameController.players_turn] = Math.Max(GameController.players_coin[GameController.players_turn], 0);
         }
@@ -105,6 +105,7 @@ public class MasuController : MonoBehaviour
     */
     public GameObject ShopHaikei;
     public void ShopMasu(){//入荷アイテム3種類。今選択したアイテム。
+        nekoserihu.text = "いらっしゃいませ！";
         ShopHaikei.SetActive(true);
         while(item1==item2 || item2==item3 || item3==item1){
             item1 = saikoro.Next(0, 5);
@@ -216,7 +217,7 @@ public class MasuController : MonoBehaviour
              /*
             for(int i=0; i<50; i++){
                 StartCoroutine(CoinMinus(0.1f*i));
-                //audioSource.PlayOneShot(coinSound);
+                //SoundEffect.PlayOneShot(coinSound);
             }*/
             //GameController.players_coin[GameController.players_turn] -= 50;
             GameController.players_medal[GameController.players_turn] += 1;

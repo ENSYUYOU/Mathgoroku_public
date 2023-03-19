@@ -133,7 +133,7 @@ public class ItemController : MonoBehaviour
     public GameObject ItemPanelClose;
     public GameObject ItemPanel;
     
-    public AudioSource audioSource;//オーディオソースは透明なゲームオブジェクトについてる。
+    public AudioSource SoundEffedt;//オーディオソースは透明なゲームオブジェクトについてる。
     public AudioClip selectSound;//ボタン選択時の音
 
     IEnumerator Message(string newmessage, int cardid=-1){//メッセージ, 指定マスパネルのときはパネルを出すアクティブにする
@@ -153,7 +153,7 @@ public class ItemController : MonoBehaviour
     }
 
     public void ItemPanelPreActive(){//アイテムボタンを押すとボタンが赤くなる
-        audioSource.PlayOneShot(selectSound);
+        SoundEffedt.PlayOneShot(selectSound);
         ItemPanelPreOpen.SetActive(false);
         ItemPanelOpen.SetActive(true);
         Invoke("ItemPanelActive",0.5f);
@@ -166,7 +166,7 @@ public class ItemController : MonoBehaviour
     }
 
     public void ItemPanelPreActiveFalse(){//戻るボタンを押すとボタンが赤くなる
-        audioSource.PlayOneShot(selectSound);
+        SoundEffedt.PlayOneShot(selectSound);
         ItemPanelPreClose.SetActive(false);
         ItemPanelClose.SetActive(true);
         Invoke("ItemPanelActiveFalse",0.5f);
