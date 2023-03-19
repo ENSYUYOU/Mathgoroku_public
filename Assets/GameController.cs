@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
 
+    public TextMeshProUGUI syojimedal;
     public TextMeshProUGUI syojikin;
 
     public static GameObject player1;
@@ -188,6 +189,7 @@ public class GameController : MonoBehaviour
     
 
     void Update(){
+        syojimedal.text = "×" + players_medal[players_turn].ToString();
         syojikin.text = "×" + players_coin[players_turn].ToString();
         float speed = 0.5f;
         Vector3 delta = new Vector3(0,0.5f,0);//パネルの上に立ってるように見える補正
