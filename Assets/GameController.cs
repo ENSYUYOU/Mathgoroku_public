@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public const int PLAYERS_NUM = 4;
+    public const int PLAYERS_NUM = 1;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
     public static int players_turn = 0;//今誰のターンか
     static int[,] players_position;
     static int[,,] used;
-    public static int[] players_coin = new int[]{10, 10, 10, 10};//追加2/8(伊藤)
+    public static int[] players_coin = new int[]{50, 50, 50, 50};//追加2/8(伊藤)
     public static int[] players_medal = new int[PLAYERS_NUM];//それぞれのプレイヤーのメダルの数
     public static int[,] players_item = new int[PLAYERS_NUM, 5];//それぞれのプレイヤーのアイテムの数
 
@@ -75,10 +75,10 @@ public class GameController : MonoBehaviour
 
         if (syokika){
             bgmTime = 0f;//BGMを初めから
-            //int sx = -5;//スタート地点の座標。
-            //int sy = -1;
             int sx = -5;//スタート地点の座標。
             int sy = -1;
+            //int sx = 46;//スタート地点の座標。
+           // int sy = 3;
             players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
             player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
                                                       tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
@@ -110,8 +110,6 @@ public class GameController : MonoBehaviour
     }
 
 
-    public Image turnImage;
-    public Sprite[] turnImages;
     public AudioClip walkSound;//歩く音
     public AudioClip coinSound;//歩く音
     public static bool canChange;
@@ -125,11 +123,9 @@ public class GameController : MonoBehaviour
             if(rev==false){
                 var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(player_destination[players_turn]));
                 if(tile.sprite.name.Contains("blue")) {//プラスます
-                    masucontroller.CoinPlus();
-                    audioSource.PlayOneShot(coinSound);
+                    StartCoroutine(masucontroller.CoinPlus(5));
                 }else if(tile.sprite.name.Contains("red")){//マイナスます
-                    masucontroller.CoinMinus();
-                    audioSource.PlayOneShot(coinSound);
+                        StartCoroutine(masucontroller.CoinMinus(5));
                 }else if(tile.sprite.name.Contains("green")){//ショップます
                     yield return new WaitForSeconds(1f);
                     canChange = false;
@@ -146,7 +142,6 @@ public class GameController : MonoBehaviour
             
                 yield return new WaitForSeconds(1f);//目的地を変えてから直ぐにターン変更すると次のプレイヤーが動いてしまう
                 while(!canChange)yield return null;//店にいる間は動かない
-                Debug.Log("hello");
                 if(tile.sprite.name.Contains("kakushi1")){//ショップ優先でその後隠します解除。以後普通の分岐ますに
                     yield return new WaitForSeconds(1f);
                     path1.SetActive(false);
@@ -172,7 +167,6 @@ public class GameController : MonoBehaviour
             players_turn += ItemController.reverse + GameController.PLAYERS_NUM;
             players_turn %= PLAYERS_NUM;
             if(ItemController.skip_flg[players_turn]==1){//スキップフラグ
-                turnImage.sprite = turnImages[players_turn];
                 yield return new WaitForSeconds(1f);
                 message.text = "スキップ！";
                 yield return new WaitForSeconds(2f);
@@ -180,14 +174,15 @@ public class GameController : MonoBehaviour
                 players_turn %= PLAYERS_NUM;
                 message.text = "";
             }
-            turnImage.sprite = turnImages[players_turn];
             turn.interactable = true;
             ItemPanelButton.interactable = true;
         }
     }
     
-
+public Image turnImage;
+    public Sprite[] turnImages;
     void Update(){
+        turnImage.sprite = turnImages[players_turn];
         syojikin.text = "×" + players_coin[players_turn].ToString();
         float speed = 0.5f;
         Vector3 delta = new Vector3(0,0.5f,0);//パネルの上に立ってるように見える補正
@@ -197,7 +192,7 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
                 Vector3 pos = Input.mousePosition;   
                 var bound = tilemap.cellBounds;
-                var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                //var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
                 //Debug.Log(tile.sprite.name);
                 //Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
                 //                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);
@@ -251,14 +246,14 @@ public class GameController : MonoBehaviour
             x = players_position[players_turn, 0];
             y = players_position[players_turn, 1];
         
-            /*if(tilename.Contains("gouryu")){
+            if(tilename.Contains("gouryu")){
                 List<int> next = new List<int>();
                 nx_kouho = x + delta[tilename[6]-'0', 0];
                 ny_kouho = y + delta[tilename[6]-'0', 1];
                 next.Add(nx_kouho);
                 next.Add(ny_kouho);
                 Nexts.Add(next);
-            }else{*/
+            }else
             if (tilename.Contains("kakushi")){//まだ隠しますが見えていない
                 List<int> next = new List<int>();
                 nx_kouho = x + kakushi_next[tilename[7]-'1', 0];
