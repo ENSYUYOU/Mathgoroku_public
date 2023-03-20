@@ -82,15 +82,19 @@ public class ProblemController : MonoBehaviour
     float currentTime = 0f;
     public Image diceImage;
     public Sprite[] diceImages;
+    public AudioClip SaikoroSound;//ピピピ音
+    public AudioClip SaikoroEndSound;//ピコン
     void Update()
     {
         currentTime += Time.deltaTime;
-        if(currentTime>0.1f && dice.interactable && moveDice){
+        if(currentTime>0.1f && dice.interactable && moveDice && ProblemPanel.activeSelf){
             me+=1;
             me%=6;
             currentTime = 0f;
             diceImage.sprite = diceImages[me];
+            SoundEffect.PlayOneShot(SaikoroSound);
         }
+        
         if (0 < time && time<=10) {//10秒にセットされないと減らない。
             time -= Time.deltaTime;
             Timer.text = "Timer:"+time.ToString("F1");
@@ -129,7 +133,6 @@ public class ProblemController : MonoBehaviour
     public TMP_InputField inputfield;
     public void InputText(){
         inputfield.interactable = false;
-        Debug.Log("inputtext");
         SoundEffect.Stop();//時計の音を止める
         Problem.text += ans_list[last_problem];//答えを表示する
         if(Answer.text == ans_list[last_problem] && isAnswered==false){
@@ -149,6 +152,7 @@ public class ProblemController : MonoBehaviour
 
     
     public void Dice(){
+        SoundEffect.PlayOneShot(SaikoroEndSound);
         dice.interactable = false;
         int [] selected_problems = {one, two, three, four, five, six};
         last_problem = selected_problems[me];
@@ -162,7 +166,8 @@ public class ProblemController : MonoBehaviour
         Problem.text = "Solve me!<br>"+problem_list[last_problem];
         SoundEffect.PlayOneShot(syutsudai);
         yield return new WaitForSeconds(0.5f);
-        time *= 3f;
+        //time *= 3f;
+        time = 10f;
         SoundEffect.PlayOneShot(tokeiSound);
     }
 

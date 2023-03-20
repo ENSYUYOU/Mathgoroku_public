@@ -59,12 +59,14 @@ public class MasuController : MonoBehaviour
     public GameObject SekisyoHaikei;
     public TextMeshProUGUI DirichleSyojikin;
 
-    
+    public AudioClip RouletteSound;//ピピピ音
+    public AudioClip RouletteEndSound;//ピコン
     // Update is called once per frame
     void Update()
     {
         currentTime += Time.deltaTime;
         if(currentTime>0.1f && moveName){
+            SoundEffect.PlayOneShot(RouletteSound);
             nameID+=1;
             nameID%=4;//4アイテム選択
             currentTime = 0f;
@@ -105,6 +107,7 @@ public class MasuController : MonoBehaviour
     */
     public GameObject ShopHaikei;
     public void ShopMasu(){//入荷アイテム3種類。今選択したアイテム。
+        SoundEffect.PlayOneShot(MasuSound);
         nekoserihu.text = "いらっしゃいませ！";
         ShopHaikei.SetActive(true);
         while(item1==item2 || item2==item3 || item3==item1){
@@ -119,7 +122,7 @@ public class MasuController : MonoBehaviour
         syojikin.text = "×"+ GameController.players_coin[GameController.players_turn].ToString();
     }
 
-
+    public AudioClip NekoNakigoe;
     //ItemButton1とかはアイテムリストのボタンを押したときに反応
     public void ItemButton1(){//全部黒にしてから選んだものだけ黄色にする
         shopitem1.color = new Color(0, 0, 0, 1f);
@@ -131,6 +134,7 @@ public class MasuController : MonoBehaviour
                 StartCoroutine(CoinMinus( ITEMPRICE[item1]));
                 GameController.players_item[GameController.players_turn, item1] += 1;
                 nekoserihu.text = "お買い上げありがとうございます！";
+                SoundEffect.PlayOneShot(NekoNakigoe);
                 nekoImage.sprite = nekoImages[5];
                 syojikin.text = "×"+ GameController.players_coin[GameController.players_turn].ToString();
                 StartCoroutine(ReturnToSugoroku());
@@ -138,6 +142,7 @@ public class MasuController : MonoBehaviour
                 nekoserihu.text = "お金が足りません";
             }
         }else{
+            SoundEffect.PlayOneShot(RouletteSound);
             nekoserihu.text = ITEMS[item1] + "にしますか?";
             selected_item = item1;
             nekoImage.sprite = nekoImages[saikoro.Next(0,5)];
@@ -154,6 +159,7 @@ public class MasuController : MonoBehaviour
                 GameController.players_coin[GameController.players_turn] -= ITEMPRICE[item2];
                 GameController.players_item[GameController.players_turn, item2] += 1;
                 nekoserihu.text = "お買い上げありがとうございます！";
+                SoundEffect.PlayOneShot(NekoNakigoe);
                 nekoImage.sprite = nekoImages[5];
                 syojikin.text = "×"+ GameController.players_coin[GameController.players_turn].ToString();
                 StartCoroutine(ReturnToSugoroku());
@@ -161,6 +167,7 @@ public class MasuController : MonoBehaviour
                 nekoserihu.text = "お金が足りません";
             }
         }else{
+            SoundEffect.PlayOneShot(RouletteSound);
             nekoserihu.text = ITEMS[item2] + "にしますか?";
             selected_item = item2;
             nekoImage.sprite = nekoImages[saikoro.Next(0,5)];
@@ -177,6 +184,7 @@ public class MasuController : MonoBehaviour
                 GameController.players_coin[GameController.players_turn] -= ITEMPRICE[item3];
                 GameController.players_item[GameController.players_turn, item3] += 1;
                 nekoserihu.text = "お買い上げありがとうございます！";
+                SoundEffect.PlayOneShot(NekoNakigoe);
                 nekoImage.sprite = nekoImages[5];
                 syojikin.text = "×"+ GameController.players_coin[GameController.players_turn].ToString();
                 StartCoroutine(ReturnToSugoroku());
@@ -184,6 +192,7 @@ public class MasuController : MonoBehaviour
                 nekoserihu.text = "お金が足りません";
             }
         }else{
+            SoundEffect.PlayOneShot(RouletteSound);
             nekoserihu.text = ITEMS[item3] + "にしますか?";
             selected_item = item3;
             nekoImage.sprite = nekoImages[saikoro.Next(0,5)];
@@ -191,6 +200,7 @@ public class MasuController : MonoBehaviour
     }
 
     public void ReturnFromShop(){//戻るボタンを押すと作動
+        SoundEffect.PlayOneShot(NekoNakigoe);
         nekoserihu.text = "お気をつけてお帰りください";
         StartCoroutine(ReturnToSugoroku());
     }
@@ -199,6 +209,7 @@ public class MasuController : MonoBehaviour
         SekisyoHaikei.SetActive(true);
         DirichleSyojikin.text = "×" + GameController.players_coin[GameController.players_turn].ToString();
         if (commentid < 3){
+            SoundEffect.PlayOneShot(RouletteSound);
             commentid += 1;
             Dirichletcomment.text = comment[commentid];
         }else if(commentid==3){
@@ -222,6 +233,7 @@ public class MasuController : MonoBehaviour
             GameController.players_medal[GameController.players_turn] += 1;
             yes.SetActive(false);
             no.SetActive(false);
+            SoundEffect.PlayOneShot(NekoNakigoe);
             Dirichletcomment.text = "まいどありがとうございます";
             DirichleSyojikin.text = "×" + GameController.players_coin[GameController.players_turn].ToString();
             StartCoroutine(ReturnToSugoroku());
@@ -229,6 +241,7 @@ public class MasuController : MonoBehaviour
     }
 
     public void nofunction(){
+        SoundEffect.PlayOneShot(NekoNakigoe);
         Dirichletcomment.text = "さようなら";
         yes.SetActive(false);
         no.SetActive(false);
@@ -247,8 +260,9 @@ public class MasuController : MonoBehaviour
     public GameObject EventHaikeiButton;
     public Image sugakusyaImage;
     public Sprite[] sugakusyaImages;
-
+    public AudioClip MasuSound;
     public void EventMasu(){
+        SoundEffect.PlayOneShot(MasuSound);
         sugakusyacomment.text = "イベントマスです！<br>ルーレットを回して、イベントを決めます。<br>Stopを押してルーレットを止めよう！";
         EventHaikei.SetActive(true);
         EventHukidashi.SetActive(true);
@@ -288,6 +302,7 @@ public class MasuController : MonoBehaviour
     public void StopNameRoulette(){//数学者のルーレットを止めた時の関数
         if (sugakusyacommentid!=0)return;
         moveName = false;
+        SoundEffect.PlayOneShot(RouletteEndSound);
         int [] selected_list = {nameid1, nameid2, nameid3, nameid4};
         selected_sugakusya_id = selected_list[nameID];
         sugakusyacomment.text = sugakusya_comment_list[selected_sugakusya_id][sugakusyacommentid];
@@ -310,6 +325,7 @@ public class MasuController : MonoBehaviour
     public void SugakusyaCommentFunc(){//ボタンを押すと反応。数学者のコメント
         sugakusyacommentid += 1;
         if(sugakusyacommentid < sugakusya_comment_list[selected_sugakusya_id].Count){
+            SoundEffect.PlayOneShot(RouletteSound);
             sugakusyacomment.text = sugakusya_comment_list[selected_sugakusya_id][sugakusyacommentid];
         }else{
             if(selected_sugakusya_id%3==0){
