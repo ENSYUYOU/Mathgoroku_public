@@ -166,10 +166,8 @@ public class ProblemController : MonoBehaviour
         SoundEffect.PlayOneShot(tokeiSound);
     }
 
-    public GameObject PreSceneBack;
-    public Button PreSceneBackButton;
+    public GameObject PreSceneBack;//ボタンオブジェクト
     public GameObject SceneBack;
-    public Button SceneBackButton;
     public AudioClip selectSound;//ボタン選択時の音
     public void PreBack(){
         SoundEffect.PlayOneShot(selectSound);
@@ -178,7 +176,10 @@ public class ProblemController : MonoBehaviour
         Invoke("Back",0.25f);
     }
     public void Back(){
-        SceneManager.LoadScene("SampleScene");
+        gamecontroller.ReturnFromProblem();
+         ProblemPanel.SetActive(false);
+         PreSceneBack.SetActive(true);
+        SceneBack.SetActive(false);
     }
     
 }

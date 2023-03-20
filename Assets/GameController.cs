@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public const int PLAYERS_NUM = 4;
+    public const int PLAYERS_NUM = 2;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
@@ -54,6 +54,11 @@ public class GameController : MonoBehaviour
     public GameObject path5;
     void Start(){
         var bound = tilemap.cellBounds;
+        players_item[0, 0] = 1;
+        players_item[0, 1] = 1;
+        players_item[0, 2] = 1;
+        players_item[0, 3] = 1;
+        players_item[0, 4] = 1;
         /*
         var builder = new StringBuilder();//タイルマップ表示用プログラム
         var bound = tilemap.cellBounds;
@@ -74,12 +79,12 @@ public class GameController : MonoBehaviour
         players = new List<GameObject>() {player1, player2, player3, player4};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
 
         bgmTime = 0f;//BGMを初めから
-        //int sx = -5;//スタート地点の座標。
-        //int sy = -1;
+        int sx = -5;//スタート地点の座標。
+        int sy = -1;
         //int sx = 46;//スタート地点の座標。
         //int sy = 3;
-        int sx = 60;//スタート地点の座標。
-        int sy = -1;
+        //int sx = 60;//スタート地点の座標。
+        //int sy = -1;
         players_position = new int[,]{{sx,sy}, {sx,sy}, {sx,sy}, {sx,sy}};//それぞれのプレイヤーのいるマス目の座標。
         player_destination = new List<Vector3>() {tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
                                                     tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
