@@ -24,6 +24,7 @@ public class ItemController : MonoBehaviour
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
     public Tilemap tilemap;
     static List<Vector3Int> SarachiPos = new List<Vector3Int>();
+    public AudioSource SoundEffect;//オーディオソースは透明なゲームオブジェクトについてる。
     void Start(){
         for(int i=0; i<SarachiPos.Count; i++){
             tilemap.SetTile(SarachiPos[i], Gray);
@@ -32,6 +33,7 @@ public class ItemController : MonoBehaviour
     // Update is called once per frame
 
     public TileBase Gray;//選択しているタイル
+    public AudioClip Bakuhatu;
     void Update()
     {   
         int players_turn = GameController.players_turn;
@@ -49,6 +51,7 @@ public class ItemController : MonoBehaviour
                 tilemap.SetTile(selectCellPos, Gray);
                 SarachiPos.Add(selectCellPos);
                 sarachicount -= 1;
+                SoundEffect.PlayOneShot(Bakuhatu);
                 if(sarachicount==0)StartCoroutine(Message("更地完了！"));
                 else StartCoroutine(Message("残り" + sarachicount.ToString() + "マス！"));
 
@@ -59,6 +62,7 @@ public class ItemController : MonoBehaviour
 
     public static int[] skip_flg = new int[] {0, 0, 0, 0};
     public void Skip(){//Skipカード
+        SoundEffect.PlayOneShot(Syakiin);
         if(GameController.players_item[GameController.players_turn, 0] >= 1){
             GameController.players_item[GameController.players_turn, 0] -= 1;
             ItemPanelClose.SetActive(false);
@@ -72,6 +76,7 @@ public class ItemController : MonoBehaviour
     }
 
     public void Reverse(){//リバースカード
+        SoundEffect.PlayOneShot(Syakiin);
         if(GameController.players_item[GameController.players_turn, 1] >= 1){
             GameController.players_item[GameController.players_turn, 1] -= 1;
             ItemPanelClose.SetActive(false);
@@ -83,6 +88,7 @@ public class ItemController : MonoBehaviour
 
 
     public void HokenSyo(){//まだ実装してない
+        SoundEffect.PlayOneShot(Syakiin);
        if(GameController.players_item[GameController.players_turn, 2] >= 1){
             GameController.players_item[GameController.players_turn, 2] -= 1;
             ItemPanelClose.SetActive(false);
@@ -94,6 +100,7 @@ public class ItemController : MonoBehaviour
 
     int sarachicount;
     public void Sarachi(){//更地カード
+        SoundEffect.PlayOneShot(Syakiin);
         if(GameController.players_item[GameController.players_turn, 3] >= 1){
             GameController.players_item[GameController.players_turn, 3] -= 1;
             ItemPanelClose.SetActive(false);
@@ -104,6 +111,7 @@ public class ItemController : MonoBehaviour
 
 
     public void ShiteiMasu(){//指定マスカード
+        SoundEffect.PlayOneShot(Syakiin);
         if(GameController.players_item[GameController.players_turn, 4] >= 1){
             GameController.players_item[GameController.players_turn,4] -= 1;
             ItemPanelClose.SetActive(false);//くろいほう
@@ -133,6 +141,7 @@ public class ItemController : MonoBehaviour
     
     public AudioSource SoundEffedt;//オーディオソースは透明なゲームオブジェクトについてる。
     public AudioClip selectSound;//ボタン選択時の音
+    public AudioClip Syakiin;
 
     IEnumerator Message(string newmessage, int cardid=-1){//メッセージ, 指定マスパネルのときはパネルを出すアクティブにする
         //ItemPanelOpenButton.interactable = false;
