@@ -23,13 +23,10 @@ public class ItemController : MonoBehaviour
     public GameController gamecontroller;
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
     public Tilemap tilemap;
-    static List<Vector3Int> SarachiPos = new List<Vector3Int>();
+    public Tilemap SarachiMap;
+
     public AudioSource SoundEffect;//オーディオソースは透明なゲームオブジェクトについてる。
-    void Start(){
-        for(int i=0; i<SarachiPos.Count; i++){
-            tilemap.SetTile(SarachiPos[i], Gray);
-        }
-    }
+   
     // Update is called once per frame
 
     public TileBase Gray;//選択しているタイル
@@ -47,9 +44,8 @@ public class ItemController : MonoBehaviour
             Vector3 pos = Input.mousePosition;   
             Vector3Int selectCellPos = tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos));
             var tile = tilemap.GetTile<Tile>(selectCellPos);
-            if(tilemap.HasTile(selectCellPos) && tile.sprite.name!="castleCenter_rounded_naname"){
-                tilemap.SetTile(selectCellPos, Gray);
-                SarachiPos.Add(selectCellPos);
+            if(tilemap.HasTile(selectCellPos) && tile.sprite.name!="castleCenter_rounded_naname" && tile.sprite.name!="sekisho"){
+                SarachiMap.SetTile(selectCellPos, Gray);
                 sarachicount -= 1;
                 SoundEffect.PlayOneShot(Bakuhatu);
                 if(sarachicount==0)StartCoroutine(Message("更地完了！"));

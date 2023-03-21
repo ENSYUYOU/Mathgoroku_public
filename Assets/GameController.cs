@@ -116,7 +116,8 @@ public class GameController : MonoBehaviour
 
 
     public AudioClip walkSound;//歩く音
-    public AudioClip coinSound;//歩く音
+    public AudioClip coinSound;
+    public AudioClip PoPiSound;
     public static bool canChange;
     public TileBase tileBunkiBlue;//普通の青タイル
     private IEnumerator Change(int x, int y, int nokori, float waitTime, bool rev=false){
@@ -131,15 +132,15 @@ public class GameController : MonoBehaviour
                 if(x==58 && y==-6)StartCoroutine(Ending(1f));
                 
                 var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(player_destination[players_turn]));
-                if(tile.sprite.name.Contains("blue")) {//プラスます
+                if(tile.sprite.name.Contains("blue") && !SarachiMap.HasTile(new Vector3Int(x, y, 0))) {//プラスます
                     StartCoroutine(masucontroller.CoinPlus(5));
-                }else if(tile.sprite.name.Contains("red")){//マイナスます
+                }else if(tile.sprite.name.Contains("red") && !SarachiMap.HasTile(new Vector3Int(x, y, 0))){//マイナスます
                         StartCoroutine(masucontroller.CoinMinus(5));
-                }else if(tile.sprite.name.Contains("green")){//ショップます
+                }else if(tile.sprite.name.Contains("green") && !SarachiMap.HasTile(new Vector3Int(x, y, 0))){//イベントます
                     yield return new WaitForSeconds(1f);
                     canChange = false;
                     masucontroller.EventMasu();
-                }else if(tile.sprite.name.Contains("yellow")){
+                }else if(tile.sprite.name.Contains("yellow") && !SarachiMap.HasTile(new Vector3Int(x, y, 0))){//ショップ
                     yield return new WaitForSeconds(1f);
                     canChange = false;
                     masucontroller.ShopMasu();
@@ -175,7 +176,9 @@ public class GameController : MonoBehaviour
             }
             ChangeTurn();
             if(ItemController.skip_flg[players_turn]==1){//スキップフラグ
+                ItemController.skip_flg[players_turn]=0;
                 yield return new WaitForSeconds(1f);
+                SoundEffect.PlayOneShot(PoPiSound);
                 message.text = "スキップ！";
                 yield return new WaitForSeconds(2f);
                 ChangeTurn();
@@ -200,41 +203,42 @@ public Image turnImage;
         if (Input.GetMouseButtonDown(0)){
                 Vector3 pos = Input.mousePosition;   
                 var bound = tilemap.cellBounds;
-                //var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
-                //Debug.Log(tile.sprite.name);
+                var tile = tilemap.GetTile<Tile>(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                Debug.Log(tile.sprite.name);
                 //Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
                 //                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);
-                Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
         }
     }
 
     public TileBase m_tileYellow;//選択しているタイル
+    public Tilemap SarachiMap;//更地マップと黄色ますは同じものを使う
     IEnumerator WaitInput (int nokori, List<List<int>> Nexts) {
         int nexts_index = 0;
         Vector3Int before;
         Vector3Int selectCellPos = new Vector3Int(Nexts[0][0],Nexts[0][1],0);
-        TileBase beforeTile = tilemap.GetTile<Tile>(selectCellPos);
-        tilemap.SetTile(selectCellPos, m_tileYellow);
+        TileBase beforeTile = SarachiMap.GetTile<Tile>(selectCellPos);
+        SarachiMap.SetTile(selectCellPos, m_tileYellow);
         before = selectCellPos;
         bool canMove=false;
         while(!canMove) {
             if (Input.GetMouseButtonDown(0)){
                 Vector3 pos = Input.mousePosition;   
-                selectCellPos = tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos));
+                selectCellPos = SarachiMap.WorldToCell(Camera.main.ScreenToWorldPoint(pos));
                 for(int i=0; i<Nexts.Count; i++){
                     if(selectCellPos.x == Nexts[i][0] && selectCellPos.y == Nexts[i][1]){
                         if(before==selectCellPos)canMove=true;
                         nexts_index = i;
-                        tilemap.SetTile(before, beforeTile);
+                        SarachiMap.SetTile(before, beforeTile);
                         before = selectCellPos;
-                        beforeTile =  tilemap.GetTile<Tile>(selectCellPos);
-                        tilemap.SetTile(selectCellPos, m_tileYellow);
+                        beforeTile =  SarachiMap.GetTile<Tile>(selectCellPos);
+                        SarachiMap.SetTile(selectCellPos, m_tileYellow);
                     }
                 }
             }
             yield return null;
         }
-        tilemap.SetTile(selectCellPos, beforeTile);
+        SarachiMap.SetTile(selectCellPos, null);
         Walk(nokori, 1, nexts_index);//無限ループ防止用フラグ(分岐で移動しなくなる)
     }
 
