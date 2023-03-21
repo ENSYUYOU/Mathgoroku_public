@@ -27,19 +27,19 @@ public class EndingController : MonoBehaviour
     IEnumerator Start()
     {
         SoundEffect.PlayOneShot(Hue);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Panel4th.SetActive(true);
         SoundEffect.PlayOneShot(Don);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Panel3rd.SetActive(true);
         SoundEffect.PlayOneShot(Don);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Panel2nd.SetActive(true);
         SoundEffect.PlayOneShot(Don);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Panel1st.SetActive(true);
         SoundEffect.PlayOneShot(Don);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Result.SetActive(false);
         SoundEffect.PlayOneShot(Kansei);
         orange.SetBool("cheer", true);

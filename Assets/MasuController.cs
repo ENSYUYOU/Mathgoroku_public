@@ -156,7 +156,7 @@ public class MasuController : MonoBehaviour
         shopitem2.color = new Color(1f, 0.92f, 0.016f, 1f);
         if(selected_item==item2){
             if(GameController.players_coin[GameController.players_turn] >= ITEMPRICE[item2]){
-                GameController.players_coin[GameController.players_turn] -= ITEMPRICE[item2];
+                 StartCoroutine(CoinMinus( ITEMPRICE[item2]));
                 GameController.players_item[GameController.players_turn, item2] += 1;
                 nekoserihu.text = "お買い上げありがとうございます！";
                 SoundEffect.PlayOneShot(NekoNakigoe);
@@ -181,7 +181,7 @@ public class MasuController : MonoBehaviour
         shopitem3.color = new Color(1f, 0.92f, 0.016f, 1f);
         if(selected_item==item3){
             if(GameController.players_coin[GameController.players_turn] >= ITEMPRICE[item3]){
-                GameController.players_coin[GameController.players_turn] -= ITEMPRICE[item3];
+                 StartCoroutine(CoinMinus( ITEMPRICE[item3]));
                 GameController.players_item[GameController.players_turn, item3] += 1;
                 nekoserihu.text = "お買い上げありがとうございます！";
                 SoundEffect.PlayOneShot(NekoNakigoe);
