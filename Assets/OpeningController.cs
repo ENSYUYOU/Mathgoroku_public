@@ -41,24 +41,29 @@ public class OpeningController : MonoBehaviour
     public void One(){
         audioSource.PlayOneShot(Pirororn);
         GameController.PLAYERS_NUM = 1;
-        SceneManager.LoadScene("SampleScene");
+        StartCoroutine(LoadSugoroku());
     }
 
     public void Two(){
         audioSource.PlayOneShot(Pirororn);
         GameController.PLAYERS_NUM = 2;
-        SceneManager.LoadScene("SampleScene");
+        StartCoroutine(LoadSugoroku());
     }
 
     public void Three(){
         audioSource.PlayOneShot(Pirororn);
         GameController.PLAYERS_NUM = 3;
-        SceneManager.LoadScene("SampleScene");
+        StartCoroutine(LoadSugoroku());
     }
 
     public void Four(){
         audioSource.PlayOneShot(Pirororn);
         GameController.PLAYERS_NUM = 4;
+        StartCoroutine(LoadSugoroku());
+    }
+
+    IEnumerator LoadSugoroku(){
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("SampleScene");
     }
 
