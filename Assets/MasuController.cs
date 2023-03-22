@@ -223,21 +223,16 @@ public class MasuController : MonoBehaviour
         if(GameController.players_coin[GameController.players_turn] < 50){
             Dirichletcomment.text = "お金が足りません";
         }else{
-             StartCoroutine(CoinMinus(50));
-             /*
-            for(int i=0; i<50; i++){
-                StartCoroutine(CoinMinus(0.1f*i));
-                //SoundEffect.PlayOneShot(coinSound);
-            }*/
-            //GameController.players_coin[GameController.players_turn] -= 50;
+            StartCoroutine(CoinMinus(50));
             GameController.players_medal[GameController.players_turn] += 1;
             yes.SetActive(false);
             no.SetActive(false);
             SoundEffect.PlayOneShot(NekoNakigoe);
             Dirichletcomment.text = "まいどありがとうございます";
             DirichleSyojikin.text = "×" + GameController.players_coin[GameController.players_turn].ToString();
-            StartCoroutine(ReturnToSugoroku());
+            StartCoroutine(ReturnToSugoroku(6f));
         }
+        commentid = 0;
     }
 
     public void nofunction(){
@@ -246,6 +241,7 @@ public class MasuController : MonoBehaviour
         yes.SetActive(false);
         no.SetActive(false);
         StartCoroutine(ReturnToSugoroku());
+        commentid = 0;
     }
 
 
@@ -347,8 +343,8 @@ public class MasuController : MonoBehaviour
         }
     }
 
-    private IEnumerator ReturnToSugoroku(){
-        yield return new WaitForSeconds(2f);
+    private IEnumerator ReturnToSugoroku(float t=2f){
+        yield return new WaitForSeconds(t);
         GameController.canChange = true;
         ShopHaikei.SetActive(false);
         EventHaikei.SetActive(false);

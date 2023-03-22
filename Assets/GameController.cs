@@ -79,8 +79,10 @@ public class GameController : MonoBehaviour
         players = new List<GameObject>() {player1, player2, player3, player4};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
 
         bgmTime = 0f;//BGMを初めから
-        int sx = -5;//スタート地点の座標。
-        int sy = -1;
+        //int sx = -5;//スタート地点の座標。
+        //int sy = -1;
+        int sx = 21;//スタート地点の座標。
+        int sy = 3;
         //int sx = 46;//スタート地点の座標。
         //int sy = 3;
         //int sx = 60;//スタート地点の座標。
@@ -123,7 +125,7 @@ public class GameController : MonoBehaviour
     private IEnumerator Change(int x, int y, int nokori, float waitTime, bool rev=false){
         yield return new WaitForSeconds(waitTime);
         player_destination[players_turn] = tilemap.GetCellCenterWorld(new Vector3Int(x, y, 0));
-        SoundEffect.PlayOneShot(walkSound);
+        if(nokori!=0)SoundEffect.PlayOneShot(walkSound);
         canChange = true;
         if(nokori==0){
             if(rev==false){
@@ -207,7 +209,7 @@ public Image turnImage;
                 Debug.Log(tile.sprite.name);
                 //Debug.Log(used[players_turn, tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).x-bound.min.x,
                 //                                                 tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)).y-bound.min.y]);
-                //Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
+                Debug.Log(tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(pos)));
         }
     }
 
@@ -239,7 +241,7 @@ public Image turnImage;
             yield return null;
         }
         SarachiMap.SetTile(selectCellPos, null);
-        Walk(nokori, 1, nexts_index);//無限ループ防止用フラグ(分岐で移動しなくなる)
+        Walk(nokori, 2, nexts_index);//無限ループ防止用フラグ(分岐で移動しなくなる)
     }
 
     int[,] kakushi_next = new int[,]{{0, 1}, {1, 0}, {0, 1}, {1, 0}, {0, -1}};//隠しますが見えていない時に進むます
@@ -265,15 +267,15 @@ public Image turnImage;
                 next.Add(nx_kouho);
                 next.Add(ny_kouho);
                 Nexts.Add(next);
-            }else
-            if (tilename.Contains("kakushi")){//まだ隠しますが見えていない
+            }else if (tilename.Contains("kakushi")){//まだ隠しますが見えていない
                 List<int> next = new List<int>();
                 nx_kouho = x + kakushi_next[tilename[7]-'1', 0];
                 ny_kouho = y + kakushi_next[tilename[7]-'1', 1];
                 next.Add(nx_kouho);
                 next.Add(ny_kouho);
                 Nexts.Add(next);
-            }else{for(int j=0; j<4; j++){//上下左右の探索
+            }else{
+                for(int j=0; j<4; j++){//上下左右の探索
                     List<int> next = new List<int>();
                     nx_kouho = x + delta[j, 0];
                     ny_kouho = y + delta[j, 1];
@@ -288,11 +290,12 @@ public Image turnImage;
                     return;
                 }
             }
-            //}
-
+            
+            Debug.Log(tilename);
+            Debug.Log(flg);
             int nx, ny;
             if(tilename.Contains("bunki")){//現在分岐ます
-                if(flg==0){//フラグを1にしないとnx, nyを変更できない
+                if(flg!=2){//フラグが2の時は分岐からの始動nx, nyを変更できない
                     StartCoroutine(WaitInput(ans-i, Nexts));//黄色のポインタを出す
                 return;
                 }else{

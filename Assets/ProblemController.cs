@@ -12,7 +12,7 @@ public class ProblemController : MonoBehaviour
     //string[] ans_list = new string [] {"", "90", "90", "90", "90", "90", "90", "90", "90", "90"};
     //string[] ans_list = new string [] {"", "15", "15", "15", "15", "15", "15", "15", "15", "15"};
     //string[] ans_list = new string [] {"", "1", "1", "1", "1", "1", "1", "1", "1", "1"};
-    string[] ans_list = new string [] {"", "2", "3", "1", "11", "5", "1", "2", "4", "6"};
+    string[] ans_list = new string [] {"", "3", "3", "3", "3", "3", "3", "3", "3", "3"};
     public TextMeshProUGUI Problem;
     public TextMeshProUGUI Timer;
     public TMP_InputField Answer;
