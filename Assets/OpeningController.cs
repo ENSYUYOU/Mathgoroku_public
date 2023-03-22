@@ -7,40 +7,60 @@ using UnityEngine.SceneManagement;
 
 public class OpeningController : MonoBehaviour
 {
-    public GameObject OpeningLogo;
-    public GameObject OpeningBack;
-    public GameObject GamePreStartButton;
-    public Button GamePreStart;
+
     public GameObject GameStartButton;
-    public Button GameStart;
-    
+    public GameObject PlayerNumSelect;
+    public TextMeshProUGUI GameStartButtonText;
     public AudioSource audioSource;//オーディオソースは透明なゲームオブジェクトについてる。
     public AudioClip StartBGM;//BGM用のpublic変数
+    public AudioClip Pirororn;//BGM用のpublic変数
 
-    void Start(){
-        Invoke("StartButton", 2f);
+    IEnumerator Start(){
         audioSource.clip = StartBGM;
         audioSource.Play();
+        yield return new WaitForSeconds(2f);
+        GameStartButton.SetActive(true);
+        
     }
 
-    public void StartButton(){
-        GamePreStartButton.SetActive(true);
-    }
+   
 
     public AudioClip selectSound;//ボタン選択時の音
-    public void StartSwitch1(){
+    public void StartSwitch(){
         audioSource.PlayOneShot(selectSound);
-        GamePreStartButton.SetActive(false);
-        GameStartButton.SetActive(true);
-        Invoke("StartSwitch2",0.25f);
-    }
-
-    public void StartSwitch2(){
-
-    }
-
-    /*void Update()
-    {
+        GameStartButtonText.color = new Color(1.0f,0.0f,0.0f,1.0f);
+        StartCoroutine(PlayerNumSelectOn());
         
-    }*/
+    }
+
+    IEnumerator PlayerNumSelectOn(){//人数選択画面ON
+        yield return new WaitForSeconds(1f);
+        PlayerNumSelect.SetActive(true);
+    }
+
+    public void One(){
+        audioSource.PlayOneShot(Pirororn);
+        GameController.PLAYERS_NUM = 1;
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void Two(){
+        audioSource.PlayOneShot(Pirororn);
+        GameController.PLAYERS_NUM = 2;
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void Three(){
+        audioSource.PlayOneShot(Pirororn);
+        GameController.PLAYERS_NUM = 3;
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void Four(){
+        audioSource.PlayOneShot(Pirororn);
+        GameController.PLAYERS_NUM = 4;
+        SceneManager.LoadScene("SampleScene");
+    }
+
+  
 }

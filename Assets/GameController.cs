@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public static int PLAYERS_NUM = 2;
+    public static int PLAYERS_NUM = 1;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
@@ -294,6 +294,7 @@ public class GameController : MonoBehaviour
             Debug.Log(tilename);
             Debug.Log(flg);
             int nx, ny;
+            
             if(tilename.Contains("bunki")){//現在分岐ます
                 if(flg!=2){//フラグが2の時は分岐からの始動nx, nyを変更できない
                     StartCoroutine(WaitInput(ans-i, Nexts));//黄色のポインタを出す

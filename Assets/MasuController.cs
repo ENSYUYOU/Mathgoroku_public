@@ -217,8 +217,11 @@ public class MasuController : MonoBehaviour
             yes.SetActive(true);
             no.SetActive(true);
         }
+        
     }
  
+
+
     public void yesfunction(){
         if(GameController.players_coin[GameController.players_turn] < 50){
             Dirichletcomment.text = "お金が足りません";
