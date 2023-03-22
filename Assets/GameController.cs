@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public const int PLAYERS_NUM = 2;
+    public static int PLAYERS_NUM = 2;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
     public AudioSource SoundEffect;//オーディオソースは透明なゲームオブジェクトについてる。
     public AudioSource BGM;//オーディオソースは透明なゲームオブジェクトについてる。
     public AudioClip BGMClip;//BGM用のpublic変数
-    static float bgmTime;//シーンに映るときにBGMが初めに戻らないようにする変数。
+    
 
     public Button ItemPanelButton;
     public GameObject path1;
@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
         player4 = GameObject.Find("fox_blue");
         players = new List<GameObject>() {player1, player2, player3, player4};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
 
-        bgmTime = 0f;//BGMを初めから
+
         //int sx = -5;//スタート地点の座標。
         //int sy = -1;
         int sx = 21;//スタート地点の座標。
@@ -97,7 +97,6 @@ public class GameController : MonoBehaviour
        
 
         BGM.clip = BGMClip;
-        BGM.time = bgmTime;
         BGM.Play();
     }
     public void ReturnFromProblem(){
@@ -191,9 +190,10 @@ public class GameController : MonoBehaviour
         }
     }
     
-public Image turnImage;
+    public Image turnImage;
     public Sprite[] turnImages;
     void Update(){
+        if(BGM.time > 131f)BGM.time = 0;//BGMをループ
         turnImage.sprite = turnImages[players_turn];
         syojikin.text = "×" + players_coin[players_turn].ToString();
         syojimedal.text = "×" + players_medal[players_turn].ToString();
@@ -375,7 +375,6 @@ public Image turnImage;
     }
     public ProblemController problemcontroller;
     public void Turn(){
-        bgmTime = BGM.time;
         turn.interactable = false;
         problemcontroller.StartProblem();
         //SceneManager.LoadScene("problem");
