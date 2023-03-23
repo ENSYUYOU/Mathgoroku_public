@@ -79,10 +79,10 @@ public class GameController : MonoBehaviour
         players = new List<GameObject>() {player1, player2, player3, player4};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
 
 
-        int sx = -5;//スタート地点の座標。
-        int sy = -1;
-        //int sx = 21;//スタート地点の座標。
-        //int sy = 3;
+        //int sx = -5;//スタート地点の座標。
+        //int sy = -1;
+        int sx = 21;//スタート地点の座標。
+        int sy = 3;
         //int sx = 46;//スタート地点の座標。
         //int sy = 3;
         //int sx = 60;//スタート地点の座標。
@@ -92,8 +92,8 @@ public class GameController : MonoBehaviour
                                                     tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)), 
                                                     tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0)),
                                                     tilemap.GetCellCenterWorld(new Vector3Int(sx, sy, 0))};
-        used = new int[PLAYERS_NUM, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
-        for(int i=0; i<PLAYERS_NUM; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする    
+        used = new int[4, bound.max.x-bound.min.x, bound.max.y-bound.min.y];//プレイヤー数、縦、横
+        for(int i=0; i<4; i++)used[i, sx-bound.min.x, sy-bound.min.y] = 1;//xを+8, yを+4した値にする    
        
 
         BGM.clip = BGMClip;

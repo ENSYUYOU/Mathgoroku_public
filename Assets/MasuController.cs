@@ -239,6 +239,7 @@ public class MasuController : MonoBehaviour
         }
         commentid = 0;
         gamecontroller.Walk(1,1,0);
+        //gamecontroller.ChangeTurn();
     }
 
     public void nofunction(){
@@ -249,6 +250,7 @@ public class MasuController : MonoBehaviour
         StartCoroutine(ReturnToSugoroku());
         commentid = 0;
         gamecontroller.Walk(1,1,0);
+        //gamecontroller.ChangeTurn();
     }
 
 
@@ -352,8 +354,7 @@ public class MasuController : MonoBehaviour
 
     private IEnumerator ReturnToSugoroku(float t=2f){
         yield return new WaitForSeconds(t);
-        //GameController.canChange = true;
-        gamecontroller.ChangeTurn();
+        GameController.canChange = true;
         ShopHaikei.SetActive(false);
         EventHaikei.SetActive(false);
         SekisyoHaikei.SetActive(false);
