@@ -204,8 +204,9 @@ public class MasuController : MonoBehaviour
         nekoserihu.text = "お気をつけてお帰りください";
         StartCoroutine(ReturnToSugoroku());
     }
-    
+    public Button SekisyoHaikeiButton;
     public void SekisyoMasu(){//とりあえずクリックしたときに呼ばれる
+        SekisyoHaikeiButton.interactable = true;
         SekisyoHaikei.SetActive(true);
         DirichleSyojikin.text = "×" + GameController.players_coin[GameController.players_turn].ToString();
         if (commentid < 3){
@@ -214,6 +215,7 @@ public class MasuController : MonoBehaviour
             Dirichletcomment.text = comment[commentid];
         }else if(commentid==3){
             commentid += 1;
+            SekisyoHaikeiButton.interactable = false;
             yes.SetActive(true);
             no.SetActive(true);
         }
@@ -221,7 +223,7 @@ public class MasuController : MonoBehaviour
     }
  
 
-
+    public GameController gamecontroller;
     public void yesfunction(){
         if(GameController.players_coin[GameController.players_turn] < 50){
             Dirichletcomment.text = "お金が足りません";
@@ -236,6 +238,7 @@ public class MasuController : MonoBehaviour
             StartCoroutine(ReturnToSugoroku(6f));
         }
         commentid = 0;
+        gamecontroller.Walk(1,1,0);
     }
 
     public void nofunction(){
@@ -245,6 +248,7 @@ public class MasuController : MonoBehaviour
         no.SetActive(false);
         StartCoroutine(ReturnToSugoroku());
         commentid = 0;
+        gamecontroller.Walk(1,1,0);
     }
 
 
@@ -348,7 +352,8 @@ public class MasuController : MonoBehaviour
 
     private IEnumerator ReturnToSugoroku(float t=2f){
         yield return new WaitForSeconds(t);
-        GameController.canChange = true;
+        //GameController.canChange = true;
+        gamecontroller.ChangeTurn();
         ShopHaikei.SetActive(false);
         EventHaikei.SetActive(false);
         SekisyoHaikei.SetActive(false);

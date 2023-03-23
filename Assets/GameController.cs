@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {   
     public MasuController masucontroller;
-    public static int PLAYERS_NUM = 1;
+    public static int PLAYERS_NUM=2;
     public Tilemap tilemap;//地図のタイルマップを取得。地図のタイルマップとワールド座標は異なるためGetCellCentorWordlでタイルマップの中心の位置に変換する必要がある。
 
     public TextMeshProUGUI message;//エンディング、アイテム使用時などのメッセージ
@@ -32,8 +32,8 @@ public class GameController : MonoBehaviour
     static int[,] players_position;
     static int[,,] used;
     public static int[] players_coin = new int[]{50, 50, 50, 50};//追加2/8(伊藤)
-    public static int[] players_medal = new int[PLAYERS_NUM];//それぞれのプレイヤーのメダルの数
-    public static int[,] players_item = new int[PLAYERS_NUM, 5];//それぞれのプレイヤーのアイテムの数
+    public static int[] players_medal = new int[4];//それぞれのプレイヤーのメダルの数
+    public static int[,] players_item = new int[4, 5];//それぞれのプレイヤーのアイテムの数
 
     static List<Vector3> player_destination = new List<Vector3>();
 
@@ -79,10 +79,10 @@ public class GameController : MonoBehaviour
         players = new List<GameObject>() {player1, player2, player3, player4};//プレイヤーのゲームオブジェクトを配列として保持している。プレイヤーのゲームオブジェクトを配列として保持している。
 
 
-        //int sx = -5;//スタート地点の座標。
-        //int sy = -1;
-        int sx = 21;//スタート地点の座標。
-        int sy = 3;
+        int sx = -5;//スタート地点の座標。
+        int sy = -1;
+        //int sx = 21;//スタート地点の座標。
+        //int sy = 3;
         //int sx = 46;//スタート地点の座標。
         //int sy = 3;
         //int sx = 60;//スタート地点の座標。
