@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;//ランダム変数用
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;//マス目を記録したタイルマップ
 
 public class MasuController : MonoBehaviour
 {
@@ -222,12 +223,16 @@ public class MasuController : MonoBehaviour
         
     }
  
-
+    public Tilemap tilemap;
     public GameController gamecontroller;
     public void yesfunction(){
+        var bound = tilemap.cellBounds;
         if(GameController.players_coin[GameController.players_turn] < 50){
             Dirichletcomment.text = "お金が足りません";
         }else{
+            GameController.used[GameController.players_turn, GameController.players_position[GameController.players_turn, 0]-bound.min.x,
+            GameController.players_position[GameController.players_turn, 1]-bound.min.y] = 0;
+            GameController.players_position[GameController.players_turn, 0] += 1;
             StartCoroutine(CoinMinus(50));
             GameController.players_medal[GameController.players_turn] += 1;
             yes.SetActive(false);
@@ -238,19 +243,21 @@ public class MasuController : MonoBehaviour
             StartCoroutine(ReturnToSugoroku(6f));
         }
         commentid = 0;
-        gamecontroller.Walk(1,1,0);
-        //gamecontroller.ChangeTurn();
+
     }
 
     public void nofunction(){
+        var bound = tilemap.cellBounds;
+        GameController.used[GameController.players_turn, GameController.players_position[GameController.players_turn, 0]-bound.min.x,
+            GameController.players_position[GameController.players_turn, 1]-bound.min.y] = 0;
+        GameController.players_position[GameController.players_turn, 0] += 1;
         SoundEffect.PlayOneShot(NekoNakigoe);
         Dirichletcomment.text = "さようなら";
         yes.SetActive(false);
         no.SetActive(false);
         StartCoroutine(ReturnToSugoroku());
         commentid = 0;
-        gamecontroller.Walk(1,1,0);
-        //gamecontroller.ChangeTurn();
+
     }
 
 

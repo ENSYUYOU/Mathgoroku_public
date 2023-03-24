@@ -29,8 +29,8 @@ public class GameController : MonoBehaviour
     List<GameObject> players = new List<GameObject>();
 
     public static int players_turn = 0;//今誰のターンか
-    static int[,] players_position;
-    static int[,,] used;
+    public static int[,] players_position;
+    public static int[,,] used;
     public static int[] players_coin = new int[]{50, 50, 50, 50};//追加2/8(伊藤)
     public static int[] players_medal = new int[4];//それぞれのプレイヤーのメダルの数
     public static int[,] players_item = new int[4, 5];//それぞれのプレイヤーのアイテムの数
